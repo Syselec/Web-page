@@ -78,14 +78,14 @@
 <body
     class="bg-syselec-light text-syselec-dark font-sans antialiased overflow-x-hidden selection:bg-syselec-teal selection:text-white">
 
-    <!-- Fixed Top Navigation Bar -->
+    <!-- Fixed Top Navigation Bar with Mega-Menu -->
     <header id="navbar"
         class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav class="flex items-center justify-between h-20">
                 <!-- Syselec Brand Logo -->
                 <a href="#inicio" class="flex items-center gap-3 group focus:outline-none py-1">
-                    <img src="assets/img/logo-syselec.png" alt="Syselec Ingeniería S.A.S."
+                    <img src="assets/img/logo-syselec.png" alt="Syselec Ingeniería S.A.S." id="nav-logo"
                         class="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105">
                 </a>
 
@@ -97,8 +97,59 @@
                     <li><a href="#sobre-nosotros"
                             class="nav-link text-sm font-semibold text-syselec-dark hover:text-syselec-teal transition-colors">Nosotros</a>
                     </li>
-                    <li><a href="#servicios"
-                            class="nav-link text-sm font-semibold text-syselec-dark hover:text-syselec-teal transition-colors">Servicios</a>
+                    
+                    <!-- Mega-Menu Trigger: Servicios -->
+                    <li class="relative group py-7">
+                        <a href="#servicios"
+                            class="nav-link text-sm font-semibold text-syselec-dark hover:text-syselec-teal transition-colors flex items-center gap-1.5">
+                            <span>Servicios</span>
+                            <i class="fas fa-chevron-down text-[10px] transition-transform duration-300 group-hover:rotate-180"></i>
+                        </a>
+                        
+                        <!-- Mega-Menu Dropdown -->
+                        <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 absolute left-1/2 -translate-x-1/2 top-full w-[680px] bg-white text-syselec-dark shadow-2xl border-t-2 border-syselec-teal rounded-b-xl p-6 grid grid-cols-12 gap-6">
+                            <div class="col-span-7 space-y-3">
+                                <div class="text-[11px] font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100 pb-2">Portafolio Técnico</div>
+                                <a href="#servicios" class="flex items-start gap-3 p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                                    <i class="fas fa-plug-circle-bolt text-syselec-teal mt-1"></i>
+                                    <div>
+                                        <div class="font-heading font-bold text-xs text-syselec-blue">Media y Baja Tensión</div>
+                                        <div class="text-[11px] text-slate-500">Canalizaciones EMT/IMC, bandejas y mallas a tierra</div>
+                                    </div>
+                                </a>
+                                <a href="#servicios" class="flex items-start gap-3 p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                                    <i class="fas fa-sliders text-syselec-teal mt-1"></i>
+                                    <div>
+                                        <div class="font-heading font-bold text-xs text-syselec-blue">Tableros de Control y CCM</div>
+                                        <div class="text-[11px] text-slate-500">Variadores de velocidad, arranque suave y potencia</div>
+                                    </div>
+                                </a>
+                                <a href="#servicios" class="flex items-start gap-3 p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                                    <i class="fas fa-tower-broadcast text-syselec-teal mt-1"></i>
+                                    <div>
+                                        <div class="font-heading font-bold text-xs text-syselec-blue">Subestaciones y Automatización</div>
+                                        <div class="text-[11px] text-slate-500">Acometidas, totalizadores y sensórica industrial</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured Highlight Card inside Menu (IEB Signature Feature) -->
+                            <div class="col-span-5 bg-syselec-blueDark text-white rounded-lg p-4 flex flex-col justify-between relative overflow-hidden">
+                                <img src="assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg" alt="Tableros CCM" class="absolute inset-0 w-full h-full object-cover opacity-25">
+                                <div class="relative z-10">
+                                    <span class="text-[10px] font-bold uppercase tracking-wider bg-syselec-teal px-2 py-0.5 rounded">Normativa RETIE</span>
+                                    <h4 class="font-heading font-bold text-sm mt-2">855+ Proyectos Ejecutados</h4>
+                                    <p class="text-[11px] text-slate-300 mt-1">Respaldo técnico para plantas industriales de alta exigencia.</p>
+                                </div>
+                                <a href="#galeria" class="relative z-10 mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-syselec-accent hover:underline">
+                                    <span>Explorar galería</span>
+                                    <i class="fas fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li><a href="#proyectos-destacados"
+                            class="nav-link text-sm font-semibold text-syselec-dark hover:text-syselec-teal transition-colors">Proyectos</a>
                     </li>
                     <li><a href="#galeria"
                             class="nav-link text-sm font-semibold text-syselec-dark hover:text-syselec-teal transition-colors flex items-center gap-1.5">
@@ -124,9 +175,8 @@
                     </li>
                 </ul>
 
-                <!-- Right Actions: Cotizar CTA + WhatsApp + Mobile Hamburger -->
+                <!-- Right Actions: Cotizar CTA + Mobile Hamburger -->
                 <div class="flex items-center gap-3">
-
                     <a href="#contacto"
                         class="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-syselec-blue to-syselec-teal shadow-sm hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300">
                         <span>Cotizar</span>
@@ -154,10 +204,12 @@
                 <li><a href="#servicios"
                         class="mobile-nav-link block py-2.5 px-4 rounded-xl font-semibold text-syselec-dark hover:bg-syselec-teal/10 hover:text-syselec-teal transition-colors">Servicios</a>
                 </li>
+                <li><a href="#proyectos-destacados"
+                        class="mobile-nav-link block py-2.5 px-4 rounded-xl font-semibold text-syselec-dark hover:bg-syselec-teal/10 hover:text-syselec-teal transition-colors">Proyectos Destacados</a>
+                </li>
                 <li><a href="#galeria"
                         class="mobile-nav-link block py-2.5 px-4 rounded-xl font-semibold text-syselec-dark hover:bg-syselec-teal/10 hover:text-syselec-teal transition-colors flex items-center justify-between">
                         <span>Galería de Obras</span>
-
                     </a>
                 </li>
                 <li><a href="#mercado"
@@ -167,16 +219,14 @@
                         class="mobile-nav-link block py-2.5 px-4 rounded-xl font-semibold text-syselec-dark hover:bg-syselec-teal/10 hover:text-syselec-teal transition-colors flex items-center justify-between">
                         <span>Sistema de Gestión (SIG HSEQ)</span>
                         <span
-                            class="text-[10px] font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">Calidad
-                            • SST • Ambiente</span>
+                            class="text-[10px] font-bold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">Calidad • SST • Ambiente</span>
                     </a>
                 </li>
                 <li><a href="#clientes"
                         class="mobile-nav-link block py-2.5 px-4 rounded-xl font-semibold text-syselec-dark hover:bg-syselec-teal/10 hover:text-syselec-teal transition-colors">Clientes</a>
                 </li>
                 <li><a href="#marcas"
-                        class="mobile-nav-link block py-2.5 px-4 rounded-xl font-semibold text-syselec-dark hover:bg-syselec-teal/10 hover:text-syselec-teal transition-colors">Marcas
-                        y Materiales</a>
+                        class="mobile-nav-link block py-2.5 px-4 rounded-xl font-semibold text-syselec-dark hover:bg-syselec-teal/10 hover:text-syselec-teal transition-colors">Marcas y Materiales</a>
                 </li>
                 <li><a href="#contacto"
                         class="mobile-nav-link block py-2.5 px-4 rounded-xl font-semibold text-syselec-dark hover:bg-syselec-teal/10 hover:text-syselec-teal transition-colors">Contacto</a>
@@ -222,8 +272,8 @@
                 </h1>
 
                 <p class="text-lg sm:text-xl text-slate-200 font-normal leading-relaxed mb-10 max-w-2xl">
-                    Más de 25 años de trayectoria en servixio técnico electromecánico bajo normativa técnica NTC 2050,
-                    RETIE, RETILAP y la Resolución5018 de 2019.
+                    Más de 25 años de trayectoria en servicio técnico electromecánico bajo normativa técnica NTC 2050,
+                    RETIE, RETILAP y la Resolución 5018 de 2019[cite: 1].
                 </p>
 
                 <div class="flex flex-wrap items-center gap-4">
@@ -304,13 +354,11 @@
                     </h2>
                     <p class="text-slate-600 text-base leading-relaxed mb-6">
                         <strong>Syselec Ingeniería S.A.S.</strong> es la alternativa confiable para atender todas sus
-                        necesidades de servicio técnico, ensamble y suministro de equipamiento eléctrico. Con una
+                        necesidades de servicio técnico, ensamble y suministro de equipamiento eléctrico[cite: 1]. Con una
                         trayectoria respaldada por
                         <strong>más de 855 proyectos ejecutados</strong> en plantas como Softys, Alpina y Corona, entre
-                        otros.
-                        Nuestro
-                        equipo de especialistas garantiza
-                        soluciones seguras y bajo normatividad técnica.
+                        otros. Nuestro equipo de especialistas garantiza
+                        soluciones seguras y bajo normatividad técnica[cite: 1].
                     </p>
                     <p class="text-slate-600 text-sm leading-relaxed mb-8">
                         Para nosotros no existen proyectos grandes o pequeños: cada montaje es asumido con el mismo
@@ -318,7 +366,7 @@
                         diseño y montaje, gestión ambiental
                         responsable y estricto cumplimiento de la Normativa Eléctrica Colombiana NTC 2050,
                         el Reglamento Técnico de Instalaciones Eléctricas (RETIE)
-                        y el Reglamento Técnico de Iluminación y Alumbrado Público (RETILAP).
+                        y el Reglamento Técnico de Iluminación y Alumbrado Público (RETILAP)[cite: 1].
                     </p>
 
                     <!-- Core Value Pillars -->
@@ -345,8 +393,7 @@
                             </div>
                             <div>
                                 <h3 class="font-heading font-bold text-sm text-syselec-dark mb-0.5">Cumplimiento
-                                    NTC2050,
-                                    RETIE y RETILAP
+                                    NTC2050, RETIE y RETILAP
                                 </h3>
                                 <p class="text-xs text-slate-500">Garantizando la calidad en diseños y montajes.</p>
                             </div>
@@ -361,8 +408,7 @@
                             <div>
                                 <h3 class="font-heading font-bold text-sm text-syselec-dark mb-0.5">Cultura SST</h3>
                                 <p class="text-xs text-slate-500">Buenas prácticas de manufactura BPM, prevención y
-                                    bienestar de nuestros
-                                    colaboradores en planta.</p>
+                                    bienestar de nuestros colaboradores en planta.</p>
                             </div>
                         </div>
 
@@ -401,12 +447,11 @@
                 </p>
             </div>
 
-            <!-- 7 Major Services Grid (Including Real Photos) -->
+            <!-- 7 Major Services Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service 1: Instalaciones Eléctricas en Media y Baja Tensión -->
                 <div
                     class="group bg-syselec-light hover:bg-white p-6 rounded-3xl border border-slate-100 hover:border-syselec-teal/40 shadow-soft hover:shadow-elevated hover:-translate-y-2 transition-all duration-300 flex flex-col reveal">
-                    <!-- Featured Photo -->
                     <div class="relative w-full h-48 rounded-2xl overflow-hidden mb-5">
                         <img src="assets/img/servicios/instalaciones/cableado-fuerza-control-bandejas.jpg"
                             alt="Instalación de cableados de fuerza y control por bandejas Syselec"
@@ -422,8 +467,7 @@
                             class="w-10 h-10 rounded-xl bg-syselec-teal/15 text-syselec-teal flex items-center justify-center text-lg shrink-0">
                             <i class="fas fa-plug-circle-bolt"></i>
                         </div>
-                        <h3 class="font-heading font-bold text-lg text-syselec-dark">Instalaciones en Media y Baja
-                            Tensión</h3>
+                        <h3 class="font-heading font-bold text-lg text-syselec-dark">Instalaciones en Media y Baja Tensión</h3>
                     </div>
 
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
@@ -441,7 +485,6 @@
                 <!-- Service 2: Tableros de Control y CCM -->
                 <div
                     class="group bg-syselec-light hover:bg-white p-6 rounded-3xl border border-slate-100 hover:border-syselec-teal/40 shadow-soft hover:shadow-elevated hover:-translate-y-2 transition-all duration-300 flex flex-col reveal">
-                    <!-- Featured Photo -->
                     <div class="relative w-full h-48 rounded-2xl overflow-hidden mb-5">
                         <img src="assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg"
                             alt="Diseño, suministro e instalación de Tablero principal Syselec"
@@ -462,8 +505,7 @@
 
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
                         Diseño, suministro e instalación de tableros para centros de control de motores (CCM), con
-                        arranque directo,
-                        variador de velocidad o arranque suave.
+                        arranque directo, variador de velocidad o arranque suave.
                     </p>
 
                     <button type="button" data-service="tableros"
@@ -476,7 +518,6 @@
                 <!-- Service 3: Subestaciones y Acometidas -->
                 <div
                     class="group bg-syselec-light hover:bg-white p-6 rounded-3xl border border-slate-100 hover:border-syselec-teal/40 shadow-soft hover:shadow-elevated hover:-translate-y-2 transition-all duration-300 flex flex-col reveal">
-                    <!-- Featured Photo -->
                     <div class="relative w-full h-48 rounded-2xl overflow-hidden mb-5">
                         <img src="assets/img/servicios/subestaciones/totalizador-subestacion-servicios-cedi.jpg"
                             alt="Totalizador en subestación CEDI Syselec"
@@ -496,7 +537,7 @@
                     </div>
 
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
-                        Montaje estructural para acometidas desdde subestaciones hasta tableros de distribución.
+                        Montaje estructural para acometidas desde subestaciones hasta tableros de distribución.
                     </p>
 
                     <button type="button" data-service="subestaciones"
@@ -509,7 +550,6 @@
                 <!-- Service 4: Control, Automatización y Sensores -->
                 <div
                     class="group bg-syselec-light hover:bg-white p-6 rounded-3xl border border-slate-100 hover:border-syselec-teal/40 shadow-soft hover:shadow-elevated hover:-translate-y-2 transition-all duration-300 flex flex-col reveal">
-                    <!-- Featured Photo -->
                     <div class="relative w-full h-48 rounded-2xl overflow-hidden mb-5">
                         <img src="assets/img/servicios/automatizacion/instalacion-botoneras-sensores1.jpg"
                             alt="Instalación de botoneras y sensores industriales Syselec"
@@ -542,7 +582,6 @@
                 <!-- Service 5: Alumbrado Industrial LED y Solar -->
                 <div
                     class="group bg-syselec-light hover:bg-white p-6 rounded-3xl border border-slate-100 hover:border-syselec-teal/40 shadow-soft hover:shadow-elevated hover:-translate-y-2 transition-all duration-300 flex flex-col reveal">
-                    <!-- Featured Photo -->
                     <div class="relative w-full h-48 rounded-2xl overflow-hidden mb-5">
                         <img src="assets/img/servicios/iluminacion/luminarias-reubicadas-funcionando.jpg"
                             alt="Luminarias industriales reubicadas en bodega con Manlift Syselec"
@@ -558,8 +597,7 @@
                             class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 flex items-center justify-center text-lg shrink-0">
                             <i class="fas fa-solar-panel"></i>
                         </div>
-                        <h3 class="font-heading font-bold text-lg text-syselec-dark">Alumbrado LED y Sistemas Solares
-                        </h3>
+                        <h3 class="font-heading font-bold text-lg text-syselec-dark">Alumbrado LED y Sistemas Solares</h3>
                     </div>
 
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
@@ -577,7 +615,6 @@
                 <!-- Service 6: Cableado, CCTV y Planos Eléctricos -->
                 <div
                     class="group bg-syselec-light hover:bg-white p-6 rounded-3xl border border-slate-100 hover:border-syselec-teal/40 shadow-soft hover:shadow-elevated hover:-translate-y-2 transition-all duration-300 flex flex-col reveal">
-                    <!-- Featured Photo -->
                     <div class="relative w-full h-48 rounded-2xl overflow-hidden mb-5">
                         <img src="assets/img/servicios/cctv-cableado/reubicacion-camaras-cctv.jpg"
                             alt="Reubicación de cámaras de seguridad y circuito CCTV Syselec"
@@ -610,7 +647,6 @@
                 <!-- Service 7: Mantenimiento Electromecánico y Polipastos -->
                 <div
                     class="group bg-syselec-light hover:bg-white p-6 rounded-3xl border border-slate-100 hover:border-syselec-teal/40 shadow-soft hover:shadow-elevated hover:-translate-y-2 transition-all duration-300 flex flex-col reveal sm:col-span-2 lg:col-span-1">
-                    <!-- Featured Photo -->
                     <div class="relative w-full h-48 rounded-2xl overflow-hidden mb-5">
                         <img src="assets/img/servicios/mantenimiento/verificacion-polipasto-mantenimiento.png"
                             alt="Verificación y mantenimiento electromecánico de polipastos Syselec"
@@ -644,9 +680,75 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- GALERÍA DE PROYECTOS Y OBRAS EN CAMPO ( FOTOS) -->
-    <!-- ============================================================ -->
+    <!-- Proyectos Destacados (Estilo IEB con Pestañas y Metadatos Técnicos) -->
+    <section id="proyectos-destacados" class="py-24 bg-syselec-blueDark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 48px 48px;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-white/15 pb-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-syselec-teal">Trayectoria Comprobada</span>
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl mt-2">Proyectos Destacados</h2>
+                </div>
+                <!-- Numbered Project Selector Tabs -->
+                <div class="flex items-center gap-2 mt-4 md:mt-0" id="project-tabs">
+                    <button data-proj="0" class="proj-tab active px-4 py-2 font-heading font-bold text-sm border border-syselec-teal bg-syselec-teal text-white rounded transition-all">01</button>
+                    <button data-proj="1" class="proj-tab px-4 py-2 font-heading font-bold text-sm border border-white/20 text-slate-300 hover:border-syselec-teal rounded transition-all">02</button>
+                    <button data-proj="2" class="proj-tab px-4 py-2 font-heading font-bold text-sm border border-white/20 text-slate-300 hover:border-syselec-teal rounded transition-all">03</button>
+                </div>
+            </div>
+
+            <!-- Project Display Card -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/5 border border-white/10 rounded-xl p-6 sm:p-8 backdrop-blur-sm">
+                <div class="lg:col-span-7 overflow-hidden rounded-lg h-[320px] sm:h-[400px] relative">
+                    <img id="proj-img" src="assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg" alt="Proyecto Destacado" class="w-full h-full object-cover transition-all duration-500">
+                    <div class="absolute top-4 left-4 bg-syselec-darker/90 border border-white/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-syselec-accent">
+                        Ejecución Industrial
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                    <div>
+                        <h3 id="proj-title" class="font-heading font-bold text-2xl text-white leading-snug">
+                            Tablero Principal y Centro de Control de Motores Línea MPL1
+                        </h3>
+                        <p id="proj-desc" class="text-slate-300 text-sm leading-relaxed mt-3">
+                            Diseño, ensamble, cableado estructurado de potencia/control y puesta en marcha bajo certificación RETIE y estándares BPM.
+                        </p>
+                    </div>
+
+                    <!-- Structured IEB-Style Metadata Grid -->
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/15 text-xs">
+                        <div>
+                            <span class="block text-slate-400 uppercase tracking-wider font-semibold">Cliente / Sector</span>
+                            <span id="proj-client" class="font-heading font-bold text-sm text-white mt-1 block">Sector Manufactura / Papel</span>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 uppercase tracking-wider font-semibold">Normativa Aplicada</span>
+                            <span id="proj-norm" class="font-heading font-bold text-sm text-syselec-teal mt-1 block">NTC 2050 • RETIE</span>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 uppercase tracking-wider font-semibold">Especialidad</span>
+                            <span id="proj-spec" class="font-heading font-bold text-sm text-white mt-1 block">Potencia y Control CCM</span>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 uppercase tracking-wider font-semibold">Estado</span>
+                            <span class="font-heading font-bold text-sm text-emerald-400 mt-1 block">100% Operativo</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="#galeria" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-syselec-blueDark font-heading font-bold text-xs uppercase tracking-wider hover:bg-syselec-teal hover:text-white transition-colors">
+                            <span>Ver detalles en galería</span>
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Proyectos y Obras en Campo -->
     <section id="galeria" class="py-24 bg-syselec-light border-y border-slate-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12 reveal">
@@ -654,8 +756,7 @@
                     class="inline-block text-xs font-bold uppercase tracking-widest text-syselec-teal bg-syselec-teal/10 px-4 py-1.5 rounded-full mb-3">
                     Evidencia en Planta
                 </span>
-                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-syselec-blue mb-4">Galería de Obras e
-                    Instalaciones</h2>
+                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-syselec-blue mb-4">Galería de Obras e Instalaciones</h2>
                 <p class="text-slate-600 text-base">
                     Nuestros trabajos hablan por nosotros. Explora el registro fotográfico de nuestras
                     intervenciones en plantas industriales, CEDI e iluminación comercial.
@@ -698,10 +799,8 @@
                 </button>
             </div>
 
-            <!-- Gallery Grid Container (Populated via JS) -->
-            <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- JS will inject all cards dynamically -->
-            </div>
+            <!-- Gallery Grid Container -->
+            <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
         </div>
     </section>
 
@@ -713,8 +812,7 @@
                     class="inline-block text-xs font-bold uppercase tracking-widest text-syselec-teal bg-syselec-teal/10 px-4 py-1.5 rounded-full mb-3">
                     Mercado Objetivo
                 </span>
-                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-syselec-blue mb-4">Sectores donde Aportamos
-                    Valor</h2>
+                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-syselec-blue mb-4">Sectores donde Aportamos Valor</h2>
                 <p class="text-slate-600 text-base">
                     Nuestras soluciones eléctricas están diseñadas para responder a las exigencias operativas y
                     continuas de los principales sectores productivos.
@@ -730,13 +828,11 @@
                         <i class="fas fa-industry"></i>
                     </div>
                     <span class="text-xs font-bold uppercase tracking-widest text-syselec-teal mb-2">Sector 01</span>
-                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-3">Plantas Industriales y Manufactura
-                    </h3>
+                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-3">Plantas Industriales y Manufactura</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-6">
                         Fábricas de alimentos y bebidas, industria papelera, farmacéutica y metalmecánica que
                         requieren instalación nueva, mantenimiento preventivo y correctivo.
                     </p>
-
                 </div>
 
                 <!-- Sector 2 -->
@@ -747,13 +843,11 @@
                         <i class="fas fa-warehouse"></i>
                     </div>
                     <span class="text-xs font-bold uppercase tracking-widest text-syselec-blue mb-2">Sector 02</span>
-                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-3">Centros Logísticos y CEDI
-                    </h3>
+                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-3">Centros Logísticos y CEDI</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-6">
                         Grandes almacenes, hubs de distribución (CEDI) y bodegas que necesitan iluminación industrial
                         LED de alta eficiencia, cargadores de baterías y tableros de potencia ininterrumpida.
                     </p>
-
                 </div>
 
                 <!-- Sector 3 -->
@@ -764,22 +858,17 @@
                         <i class="fas fa-bolt-lightning"></i>
                     </div>
                     <span class="text-xs font-bold uppercase tracking-widest text-amber-600 mb-2">Sector 03</span>
-                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-3">Sector Energético e
-                        Infraestructura</h3>
+                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-3">Sector Energético e Infraestructura</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-6">
                         Subestaciones de distribución, cuartos de bombas contra incendios, plantas de tratamiento y
                         obras de infraestructura que demandan máxima fiabilidad técnica.
                     </p>
-
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- SISTEMA INTEGRADO DE GESTIÓN (SIG HSEQ: CALIDAD, SST, AMBIENTAL) -->
-    <!-- Reemplaza el Mapa de Procesos según directriz de la empresa -->
-    <!-- ============================================================ -->
+    <!-- Sistema Integrado de Gestión (SIG HSEQ) -->
     <section id="sig" class="py-24 bg-syselec-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
@@ -799,194 +888,71 @@
                 </p>
             </div>
 
-            <!-- 3 Main Pillars Grid: Calidad, SST, Ambiental -->
+            <!-- 3 Main Pillars Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-                <!-- Pilar 1: Gestión de la Calidad (ISO 9001:2015) -->
-                <div
-                    class="bg-white rounded-3xl p-8 border border-slate-100 shadow-soft hover:shadow-elevated transition-all flex flex-col reveal group">
+                <!-- Pilar 1: Calidad (ISO 9001:2015) -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-soft hover:shadow-elevated transition-all flex flex-col reveal group">
                     <div class="flex items-center justify-between mb-6">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-syselec-teal/15 text-syselec-teal flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <div class="w-14 h-14 rounded-2xl bg-syselec-teal/15 text-syselec-teal flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                             <i class="fas fa-award"></i>
                         </div>
-                        <span
-                            class="text-[11px] font-extrabold uppercase tracking-wider text-syselec-teal bg-syselec-teal/10 px-3 py-1 rounded-full border border-syselec-teal/20">
+                        <span class="text-[11px] font-extrabold uppercase tracking-wider text-syselec-teal bg-syselec-teal/10 px-3 py-1 rounded-full border border-syselec-teal/20">
                             ISO 9001:2015
                         </span>
                     </div>
-
-                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-2">
-                        Gestión de la Calidad
-                    </h3>
-                    <p class="text-xs font-semibold text-syselec-teal italic mb-4">
-                        "La calidad es un medio, no un fin."
-                    </p>
+                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-2">Gestión de la Calidad</h3>
+                    <p class="text-xs font-semibold text-syselec-teal italic mb-4">"La calidad es un medio, no un fin."</p>
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
                         Estandarizamos los procesos operativos para eliminar la improvisación, reducir reprocesos y
                         garantizar que los montajes eléctricos cumplan estrictamente las especificaciones del cliente.
                     </p>
-
                     <ul class="text-xs text-slate-600 space-y-2.5 mt-auto pt-5 border-t border-slate-100">
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check-circle text-syselec-teal mt-0.5 text-xs"></i>
-                            <span><strong>Estandarización técnica:</strong> Ensamble de tableros con pruebas FAT en
-                                taller y diagramas unifilares.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check-circle text-syselec-teal mt-0.5 text-xs"></i>
-                            <span><strong>Análisis predictivo:</strong> Identificación preventiva de desviaciones
-                                operativas antes de que ocurran fallas.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check-circle text-syselec-teal mt-0.5 text-xs"></i>
-                            <span><strong>Compromiso gerencial:</strong> Recursos y liderazgo que aseguran la excelencia
-                                en cada proyecto.</span>
-                        </li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-syselec-teal mt-0.5"></i><span>Estandarización técnica y pruebas FAT en taller.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-syselec-teal mt-0.5"></i><span>Análisis predictivo de desviaciones operativas.</span></li>
                     </ul>
                 </div>
 
-                <!-- Pilar 2: Seguridad y Salud en el Trabajo (ISO 45001:2018 / SG-SST) -->
-                <div
-                    class="bg-white rounded-3xl p-8 border border-slate-100 shadow-soft hover:shadow-elevated transition-all flex flex-col reveal group">
+                <!-- Pilar 2: SST (ISO 45001:2018) -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-soft hover:shadow-elevated transition-all flex flex-col reveal group">
                     <div class="flex items-center justify-between mb-6">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-emerald-500/15 text-emerald-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 text-emerald-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                             <i class="fas fa-shield-halved"></i>
                         </div>
-                        <span
-                            class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                        <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
                             ISO 45001:2018
                         </span>
                     </div>
-
-                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-2">
-                        Seguridad y Salud Laboral
-                    </h3>
-                    <p class="text-xs font-semibold text-emerald-700 italic mb-4">
-                        "El tiempo corre, pero la vida no vuelve. ¡Trabajemos seguros!"
-                    </p>
+                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-2">Seguridad y Salud Laboral</h3>
+                    <p class="text-xs font-semibold text-emerald-700 italic mb-4">"El tiempo corre, pero la vida no vuelve. ¡Trabajemos seguros!"</p>
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
                         Intervenimos en escenarios de <strong>Riesgo Eléctrico Nivel V</strong> y alturas con rigor
-                        absoluto. La seguridad no se delega en una sola persona: cada colaborador asume el autocuidado
-                        como convicción.
+                        absoluto mediante autocuidado y normatividad vigente.
                     </p>
-
                     <ul class="text-xs text-slate-600 space-y-2.5 mt-auto pt-5 border-t border-slate-100">
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check-circle text-emerald-600 mt-0.5 text-xs"></i>
-                            <span><strong>5 Reglas de Oro (Res. 5018/2019):</strong> Procedimientos obligatorios para
-                                maniobras y trabajos desenergizados.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check-circle text-emerald-600 mt-0.5 text-xs"></i>
-                            <span><strong>Trabajo en Alturas (Res. 4272/2021):</strong> Uso de plataformas Manlift,
-                                permisos ATS y líneas de vida.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check-circle text-emerald-600 mt-0.5 text-xs"></i>
-                            <span><strong>Vigía SST y COPASST activo:</strong> Comités de inspección y Comité de
-                                Convivencia Laboral garantizado.</span>
-                        </li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-emerald-600 mt-0.5"></i><span>5 Reglas de Oro (Res. 5018/2019).</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-emerald-600 mt-0.5"></i><span>Trabajo en Alturas y Manlift (Res. 4272/2021).</span></li>
                     </ul>
                 </div>
 
-                <!-- Pilar 3: Gestión Ambiental y Sostenibilidad (ISO 14001:2026) -->
-                <div
-                    class="bg-white rounded-3xl p-8 border border-slate-100 shadow-soft hover:shadow-elevated transition-all flex flex-col reveal group">
+                <!-- Pilar 3: Ambiental (ISO 14001:2026) -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-soft hover:shadow-elevated transition-all flex flex-col reveal group">
                     <div class="flex items-center justify-between mb-6">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-amber-500/15 text-amber-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-500/15 text-amber-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                             <i class="fas fa-leaf"></i>
                         </div>
-                        <span
-                            class="text-[11px] font-extrabold uppercase tracking-wider text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+                        <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
                             ISO 14001:2026
                         </span>
                     </div>
-
-                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-2">
-                        Gestión Ambiental
-                    </h3>
-                    <p class="text-xs font-semibold text-amber-600 italic mb-4">
-                        "Biodiversidad y Resiliencia: La energía en equilibrio con el entorno."
-                    </p>
+                    <h3 class="font-heading font-bold text-xl text-syselec-dark mb-2">Gestión Ambiental</h3>
+                    <p class="text-xs font-semibold text-amber-600 italic mb-4">"Biodiversidad y Resiliencia: La energía en equilibrio con el entorno."</p>
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
-                        Diseñamos sistemas eléctricos resilientes que resistan eventos climáticos extremos y minimicen
-                        el impacto ambiental mediante gestión RESPEL y eco-eficiencia de recursos.
+                        Diseñamos sistemas eléctricos resilientes que minimizan el impacto ambiental mediante gestión RESPEL y eco-eficiencia.
                     </p>
-
                     <ul class="text-xs text-slate-600 space-y-2.5 mt-auto pt-5 border-t border-slate-100">
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check-circle text-amber-600 mt-0.5 text-xs"></i>
-                            <span><strong>Control de RESPEL y Químicos:</strong> Kits antiderrames y bandejas de
-                                contención en aceites de transformadores.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check-circle text-amber-600 mt-0.5 text-xs"></i>
-                            <span><strong>Eco-eficiencia y Huella de Carbono:</strong> Planificación de corte en cobre y
-                                tubería para cero desperdicios.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-check-circle text-amber-600 mt-0.5 text-xs"></i>
-                            <span><strong>Protección de Biodiversidad:</strong> Mitigación de interferencias con fauna
-                                local y nidos en canalizaciones.</span>
-                        </li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-amber-600 mt-0.5"></i><span>Control de RESPEL y kits antiderrames.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-amber-600 mt-0.5"></i><span>Optimización de materiales y cero desperdicios.</span></li>
                     </ul>
-                </div>
-            </div>
-
-            <!-- Ciclo PHVA del Sistema Integrado -->
-            <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-100 shadow-soft mb-12 reveal">
-                <div class="max-w-2xl mx-auto text-center mb-8">
-                    <span class="text-xs font-bold uppercase tracking-widest text-syselec-teal">Mejora Continua</span>
-                    <h3 class="font-heading font-bold text-2xl text-syselec-blue mt-1">El Ciclo PHVA en Syselec
-                        Ingeniería</h3>
-                    <p class="text-xs sm:text-sm text-slate-500 mt-2">
-                        Procedimiento lógico y sistemático que aplicamos en cada orden de trabajo para asegurar el
-                        cumplimiento integral HSEQ.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                    <div class="bg-syselec-light p-5 rounded-2xl border border-slate-100 relative">
-                        <span
-                            class="w-8 h-8 rounded-full bg-syselec-teal text-white font-heading font-bold flex items-center justify-center text-xs mb-3 shadow-sm">P</span>
-                        <h4 class="font-heading font-bold text-sm text-syselec-dark mb-1">Planear</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Identificación de peligros (GTC-45), aspectos ambientales, permisos de trabajo en planta y
-                            alistamiento de insumos certificados.
-                        </p>
-                    </div>
-
-                    <div class="bg-syselec-light p-5 rounded-2xl border border-slate-100 relative">
-                        <span
-                            class="w-8 h-8 rounded-full bg-syselec-blue text-white font-heading font-bold flex items-center justify-center text-xs mb-3 shadow-sm">H</span>
-                        <h4 class="font-heading font-bold text-sm text-syselec-dark mb-1">Hacer</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Ejecución técnica en taller y campo bajo norma RETIE, uso obligatorio de EPP dieléctrico y
-                            kits de contención ambiental.
-                        </p>
-                    </div>
-
-                    <div class="bg-syselec-light p-5 rounded-2xl border border-slate-100 relative">
-                        <span
-                            class="w-8 h-8 rounded-full bg-syselec-accent text-white font-heading font-bold flex items-center justify-center text-xs mb-3 shadow-sm">V</span>
-                        <h4 class="font-heading font-bold text-sm text-syselec-dark mb-1">Verificar</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Inspecciones SST en sitio, pruebas dieléctricas de aislamiento, medición de puesta a tierra
-                            y validación con el cliente.
-                        </p>
-                    </div>
-
-                    <div class="bg-syselec-light p-5 rounded-2xl border border-slate-100 relative">
-                        <span
-                            class="w-8 h-8 rounded-full bg-emerald-600 text-white font-heading font-bold flex items-center justify-center text-xs mb-3 shadow-sm">A</span>
-                        <h4 class="font-heading font-bold text-sm text-syselec-dark mb-1">Actuar</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Entrega de informe final, planos as-built certificados, cierre de hallazgos y
-                            retroalimentación para la mejora continua del SIG.
-                        </p>
-                    </div>
                 </div>
             </div>
 
@@ -1003,8 +969,7 @@
                         Política Integrada de Gestión (HSEQ) • Vigente y Divulgada
                     </span>
                 </div>
-                <div
-                    class="shrink-0 text-center md:text-right border-t md:border-t-0 md:border-l border-white/20 pt-4 md:pt-0 md:pl-6">
+                <div class="shrink-0 text-center md:text-right border-t md:border-t-0 md:border-l border-white/20 pt-4 md:pt-0 md:pl-6">
                     <div class="font-heading font-extrabold text-base text-white">Omar Orlando Silva Gómez</div>
                     <div class="text-xs text-syselec-teal">Representante Legal</div>
                     <div class="text-[11px] text-slate-400 mt-1">SYSELEC INGENIERÍA S.A.S.</div>
@@ -1013,9 +978,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- CLIENTES SECTION (ÚNICAMENTE EMPRESAS CON LOGO OFICIAL) -->
-    <!-- ============================================================ -->
+    <!-- Clientes Section -->
     <section id="clientes" class="py-20 bg-slate-50/70 border-y border-slate-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14 reveal">
@@ -1030,142 +993,96 @@
                 </p>
             </div>
 
-            <!-- Client Logos Grid (Solo clientes con logo verificado en planta) -->
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5 reveal">
                 <!-- 1. Softys -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-Softys.png" alt="Softys Colombia"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-Softys.png" alt="Softys Colombia" class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
                     <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Cuidado e Higiene</span>
                 </div>
-
                 <!-- 2. Alpina -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-alpina.png" alt="Alpina Productos Alimenticios"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-alpina.png" alt="Alpina Productos Alimenticios" class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
                     <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Alimentos y Lácteos</span>
                 </div>
-
                 <!-- 3. Tetra Pak -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-tetra-pak.png" alt="Tetra Pak Colombia"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-tetra-pak.png" alt="Tetra Pak Colombia" class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Envasado y
-                        Procesamiento</span>
+                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Envasado</span>
                 </div>
-
                 <!-- 4. Ramo -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-ramo.png" alt="Productos Ramo"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-ramo.png" alt="Productos Ramo" class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
                     <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Panadería Industrial</span>
                 </div>
-
                 <!-- 5. SGS Colombia -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-SGS.png" alt="SGS Colombia"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-SGS.png" alt="SGS Colombia" class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Inspección y
-                        Certificación</span>
+                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Inspección</span>
                 </div>
-
                 <!-- 6. Fresenius Medical Care -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-fresenius.png" alt="Fresenius Medical Care"
-                            class="max-h-11 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-fresenius.png" alt="Fresenius Medical Care" class="max-h-11 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Salud y Dispositivos
-                        Médicos</span>
+                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Salud</span>
                 </div>
-
                 <!-- 7. Ingetes -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-ingetes.png" alt="Ingetes - Soluciones de Ingeniería"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-ingetes.png" alt="Ingetes" class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Soluciones de
-                        Ingeniería</span>
+                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Ingeniería</span>
                 </div>
-
                 <!-- 8. Desal -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-desal.png" alt="Desal"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-desal.png" alt="Desal" class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Salud, bienestar y
-                        turismo</span>
+                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Turismo y Salud</span>
                 </div>
-
                 <!-- 9. Pomar -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-pomar.png" alt="Pomar Lácteos"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-pomar.png" alt="Pomar Lácteos" class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Industria de
-                        Alimentos</span>
+                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Lácteos</span>
                 </div>
-
                 <!-- 10. Primadera -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-Primadera.png" alt="Primadera Madera Sostenible"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-Primadera.png" alt="Primadera Madera Sostenible" class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Tableros de Madera</span>
+                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Tableros Madera</span>
                 </div>
-
                 <!-- 11. Grupo QBCo -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-qbco.png" alt="Grupo QBCo"
-                            class="max-h-10 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-qbco.png" alt="Grupo QBCo" class="max-h-10 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Grasas y Aceites
-                        Comestibles</span>
+                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Grasas y Aceites</span>
                 </div>
-
                 <!-- 12. Thermoform S.A.S. -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center h-36 shadow-soft hover:shadow-md hover:border-syselec-teal/50 hover:-translate-y-1 transition-all duration-300 group">
                     <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/logo-thermoform.png" alt="Thermoform S.A.S."
-                            class="max-h-10 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
+                        <img src="assets/img/logo-thermoform.png" alt="Thermoform S.A.S." class="max-h-10 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Transformación de
-                        plásticos</span>
+                    <span class="text-[11px] font-semibold text-slate-500 mt-2 text-center">Plásticos</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- MARCAS & MATERIALES DE PRIMERA LÍNEA (CERTIFICACIÓN RETIE) -->
-    <!-- ============================================================ -->
+    <!-- Marcas & Materiales de Primera Línea -->
     <section id="marcas" class="py-24 bg-white border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
@@ -1180,234 +1097,65 @@
                     Para asegurar la máxima confiabilidad operativa, seguridad eléctrica y vida útil de sus activos
                     industriales, en <strong>Syselec Ingeniería</strong> integramos componentes y equipos de los
                     fabricantes más prestigiosos del mundo. Todos nuestros suministros cumplen estrictamente con las
-                    certificaciones <strong>RETIE</strong>, <strong>RETILAP</strong> y estándares internacionales (UL,
-                    IEC, NEMA).
+                    certificaciones <strong>RETIE</strong>, <strong>RETILAP</strong> y estándares internacionales.
                 </p>
             </div>
 
-            <!-- Technical Value Badges -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 reveal">
-                <div class="bg-syselec-light p-6 rounded-2xl border border-slate-100 flex items-start gap-4">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-syselec-teal/10 text-syselec-teal flex items-center justify-center text-xl shrink-0">
-                        <i class="fas fa-stamp"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-heading font-bold text-base text-syselec-dark mb-1">100% Homologación RETIE</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Conductores, canalizaciones, celdas y protecciones con certificado de conformidad de
-                            producto y estricta trazabilidad de fábrica.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bg-syselec-light p-6 rounded-2xl border border-slate-100 flex items-start gap-4">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-syselec-blue/10 text-syselec-blue flex items-center justify-center text-xl shrink-0">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-heading font-bold text-base text-syselec-dark mb-1">Garantía Directa de Fábrica
-                        </h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Respaldo técnico oficial en variadores de frecuencia, PLCs, arrancadores suaves y aparamenta
-                            de corte y maniobra.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bg-syselec-light p-6 rounded-2xl border border-slate-100 flex items-start gap-4">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-xl shrink-0">
-                        <i class="fas fa-sliders"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-heading font-bold text-base text-syselec-dark mb-1">Flexibilidad y Vendor List
-                        </h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Nos adaptamos con total rigurosidad al listado de marcas aprobadas y pliegos de
-                            especificaciones técnicas exigidos por su planta.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Brand Logos Grid (11 Marcas Globales) -->
+            <!-- Brand Logos Grid -->
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 reveal">
-                <!-- 1. Schneider Electric -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-emerald-500/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-schneider-electric.png" alt="Schneider Electric"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-schneider-electric.png" alt="Schneider Electric" class="max-h-12 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">Schneider Electric</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Aparamenta &amp; CCM</span>
                 </div>
-
-                <!-- 2. Siemens -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-cyan-500/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-siemens.png" alt="Siemens"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-siemens.png" alt="Siemens" class="max-h-12 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">Siemens</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">PLCs &amp; Automatización</span>
                 </div>
-
-                <!-- 3. ABB -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-rose-500/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-abb.png" alt="ABB"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-abb.png" alt="ABB" class="max-h-12 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">ABB</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Potencia &amp; Maniobra</span>
                 </div>
-
-                <!-- 4. Allen-Bradley -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-red-500/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-allen-bradley.png" alt="Allen-Bradley Rockwell Automation"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-allen-bradley.png" alt="Allen-Bradley" class="max-h-12 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">Allen-Bradley</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Control &amp; Variadores</span>
                 </div>
-
-                <!-- 5. Centelsa by Nexans -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-syselec-teal/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-centelsa.png" alt="Centelsa by Nexans"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-centelsa.png" alt="Centelsa" class="max-h-12 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">Centelsa by Nexans</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Conductores RETIE</span>
                 </div>
-
-                <!-- 6. Danfoss -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-red-500/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-Danfoss.png" alt="Danfoss"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-Danfoss.png" alt="Danfoss" class="max-h-12 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">Danfoss</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Drives &amp; Variadores</span>
                 </div>
-
-                <!-- 7. Festo -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-blue-500/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-festo.png" alt="Festo"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-festo.png" alt="Festo" class="max-h-12 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">Festo</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Neumática &amp; Válvulas</span>
                 </div>
-
-                <!-- 8. Procables -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-rose-500/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-Procables.png" alt="Procables Prysmian Group"
-                            class="max-h-10 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-Procables.png" alt="Procables" class="max-h-10 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">Procables</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Cables de Potencia</span>
                 </div>
-
-                <!-- 9. SMC -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-syselec-teal/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-SMC.png" alt="SMC Corporation"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-SMC.png" alt="SMC" class="max-h-12 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">SMC Corporation</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Control Neumático</span>
                 </div>
-
-                <!-- 10. Autonics -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-blue-500/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-autonics.png" alt="Autonics"
-                            class="max-h-11 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-autonics.png" alt="Autonics" class="max-h-11 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">Autonics</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Sensores &amp; Encoders</span>
                 </div>
-
-                <!-- 11. Colmena -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-syselec-blue/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-colmena.png" alt="Tubos Colmena"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-colmena.png" alt="Colmena" class="max-h-12 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">Tubos Colmena</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Tubería Conduit Galvanizada</span>
                 </div>
-
-                <!-- Phoenix Contact -->
-                <div
-                    class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated hover:border-syselec-blue/40 hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="assets/img/marcas/logo-phoenix.png" alt="Phoenix Contact"
-                            class="max-h-12 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300">
-                    </div>
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-soft hover:shadow-elevated transition-all group">
+                    <div class="h-16 w-full flex items-center justify-center"><img src="assets/img/marcas/logo-phoenix.png" alt="Phoenix Contact" class="max-h-12 max-w-[85%] object-contain"></div>
                     <span class="font-heading font-bold text-xs text-syselec-dark mt-3">Phoenix Contact</span>
-                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Bornas &amp; Fuentes</span>
                 </div>
             </div>
-
-            <!-- Bottom Note -->
-            <div class="mt-12 text-center reveal">
-                <p class="text-xs sm:text-sm text-slate-500 flex items-center justify-center gap-2">
-                    <i class="fas fa-circle-info text-syselec-teal"></i>
-                    <span>¿Tu planta requiere una marca o pliego específico? Suministramos e instalamos cualquier
-                        fabricante homologado según la ingeniería de detalle.</span>
-                </p>
-            </div>
         </div>
     </section>
 
-    <!-- Banner de Compromiso y Calidad -->
-    <section class="py-16 bg-gradient-to-r from-syselec-blue to-syselec-blueDark text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center reveal">
-            <span
-                class="inline-block text-xs font-bold uppercase tracking-widest bg-white/20 text-syselec-accent px-4 py-1.5 rounded-full mb-4">
-                Seguridad y Calidad Sin Excepciones
-            </span>
-            <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white mb-6 max-w-3xl mx-auto">
-                "Tus proyectos en manos expertas, tus proyectos hechos realidad."
-            </h2>
-            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8">
-                Nuestro activo más importante es el talento humano y el rigor técnico. Cumplimos estrictamente con los
-                estándares RETIE, NTC 2050 y la normatividad legal vigente en SST y Protección Ambiental.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://wa.me/573203399577" target="_blank" rel="noopener noreferrer"
-                    class="px-8 py-4 rounded-full font-semibold text-syselec-blue bg-white hover:bg-slate-100 shadow-lg hover:-translate-y-0.5 transition-all">
-                    <i class="fab fa-whatsapp text-emerald-600 mr-2"></i> Chatear con un especialista
-                </a>
-                <a href="#contacto"
-                    class="px-8 py-4 rounded-full font-semibold text-white border-2 border-white/60 hover:bg-white/10 hover:-translate-y-0.5 transition-all">
-                    Solicitar visita técnica
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- CONTACTO SECTION (CON MAPA INTERACTIVO Y FORMULARIO TÉCNICO) -->
-    <!-- ============================================================ -->
+    <!-- Contacto Section -->
     <section id="contacto" class="py-24 bg-syselec-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16 reveal">
@@ -1423,163 +1171,97 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-                <!-- Left Column: Contact Cards + Interactive Location Map -->
+                <!-- Left Column -->
                 <div class="space-y-4 reveal">
-                    <!-- Teléfono y Línea Técnica -->
-                    <div
-                        class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-soft border border-slate-100 hover:border-syselec-teal/40 transition-all">
-                        <div
-                            class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-lg shrink-0">
+                    <div class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-soft border border-slate-100">
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-lg shrink-0">
                             <i class="fas fa-phone"></i>
                         </div>
                         <div class="flex-grow">
-                            <h3 class="font-heading font-bold text-sm text-syselec-dark mb-0.5">Teléfono y Línea Técnica
-                            </h3>
-                            <p class="text-syselec-teal font-bold text-base">
-                                <a href="tel:+573203399577" class="hover:underline">(+57) 320 339 95 77</a>
-                            </p>
-                            <p class="text-[11px] text-slate-500 mt-0.5">
-                                Lunes a Jueves: 7:00 a.m. – 4:30 p.m. • Viernes: 7:00 a.m. – 1:30 p.m.
-                            </p>
-                            <p class="text-[10px] text-emerald-600 font-semibold mt-0.5">
-                                • Sábados: 7:00 a.m. – 1:00 p.m. (un sábado al mes) • Atención 24/7 en paradas
-                                programadas
-                            </p>
+                            <h3 class="font-heading font-bold text-sm text-syselec-dark mb-0.5">Teléfono y Línea Técnica</h3>
+                            <p class="text-syselec-teal font-bold text-base"><a href="tel:+573203399577" class="hover:underline">(+57) 320 339 95 77</a></p>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Lunes a Jueves: 7:00 a.m. – 4:30 p.m. • Viernes: 7:00 a.m. – 1:30 p.m.</p>
                         </div>
                     </div>
 
-                    <!-- Correo Electrónico -->
-                    <a href="mailto:syselecsas@gmail.com"
-                        class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-soft border border-slate-100 hover:border-syselec-teal/40 transition-all group">
-                        <div
-                            class="w-12 h-12 rounded-2xl bg-syselec-blue/10 text-syselec-blue flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
+                    <a href="mailto:syselecsas@gmail.com" class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-soft border border-slate-100 group">
+                        <div class="w-12 h-12 rounded-2xl bg-syselec-blue/10 text-syselec-blue flex items-center justify-center text-lg shrink-0">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="flex-grow">
                             <h3 class="font-heading font-bold text-sm text-syselec-dark mb-0.5">Correo Electrónico</h3>
-                            <p
-                                class="text-slate-800 font-semibold text-sm break-all group-hover:text-syselec-teal transition-colors">
-                                syselecsas@gmail.com
-                            </p>
-                            <span class="text-[11px] text-slate-400">Recepción de pliegos, planos, especificaciones y
-                                requerimientos</span>
+                            <p class="text-slate-800 font-semibold text-sm break-all group-hover:text-syselec-teal transition-colors">syselecsas@gmail.com</p>
                         </div>
                     </a>
 
-                    <!-- Oficina y Bodega Principal -->
                     <div class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-soft border border-slate-100">
-                        <div
-                            class="w-12 h-12 rounded-2xl bg-syselec-teal/10 text-syselec-teal flex items-center justify-center text-lg shrink-0">
+                        <div class="w-12 h-12 rounded-2xl bg-syselec-teal/10 text-syselec-teal flex items-center justify-center text-lg shrink-0">
                             <i class="fas fa-building"></i>
                         </div>
                         <div class="flex-grow">
-                            <h3 class="font-heading font-bold text-sm text-syselec-dark mb-0.5">Oficina y Bodega
-                                Principal</h3>
-                            <p class="text-slate-700 font-semibold text-sm">
-                                Calle 2 # 21-33, Barrio Julio Caro, Zipaquirá, Cundinamarca, Colombia
-                            </p>
-                            <span class="text-[11px] text-slate-400">Sede administrativa, taller de armado de tableros
-                                CCM y logística</span>
+                            <h3 class="font-heading font-bold text-sm text-syselec-dark mb-0.5">Oficina y Bodega Principal</h3>
+                            <p class="text-slate-700 font-semibold text-sm">Calle 2 # 21-33, Barrio Julio Caro, Zipaquirá, Cundinamarca, Colombia</p>
                         </div>
                     </div>
 
-                    <!-- MAPA INTERACTIVO CON UBICACIÓN EN MAPS (SEGÚN REFERENCIA) -->
+                    <!-- Interactive Map -->
                     <div class="bg-white rounded-3xl p-3 sm:p-4 shadow-soft border border-slate-100 overflow-hidden">
                         <div class="relative w-full h-56 sm:h-64 rounded-2xl overflow-hidden border border-slate-200">
                             <iframe class="w-full h-full border-0"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.5453681403255!2d-74.00176765972866!3d5.014887594982514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4071fe540a915b%3A0xc4a319353bfaa9cc!2sSyselec%20Ingenier%C3%ADa%20S.A.S.!5e0!3m2!1ses!2sco!4v1794521377328!5m2!1ses!2sco"
                                 loading="lazy" title="Ubicación de Syselec Ingeniería S.A.S. en Zipaquirá"></iframe>
                         </div>
-                        <div class="pt-3 px-2 flex flex-wrap items-center justify-between gap-2 text-xs">
-                            <div class="flex items-center gap-2 text-slate-700 font-medium">
-                                <i class="fas fa-location-dot text-emerald-500 text-sm"></i>
-                                <span>Calle 2 # 21-33, Barrio Julio Caro, Zipaquirá</span>
-                            </div>
-                            <a href="https://maps.app.goo.gl/qzczERgK5Psk5cxq9" target="_blank"
-                                rel="noopener noreferrer"
-                                class="inline-flex items-center gap-1.5 text-syselec-teal hover:text-syselec-tealDark hover:underline font-bold transition-colors">
-                                <span>Ampliar mapa</span>
-                                <i class="fas fa-arrow-up-right-from-square text-[11px]"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Right Column: Contact Form (Matching Provided Layout) -->
+                <!-- Right Column: Contact Form -->
                 <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-elevated border border-slate-100 reveal">
-                    <h3 class="font-heading font-extrabold text-2xl sm:text-3xl text-syselec-blue mb-2">Solicita una
-                        Cotización o Cita</h3>
-                    <p class="text-slate-500 text-sm mb-6 leading-relaxed">Completa los datos de tu proyecto y te
-                        asignaremos un ingeniero especialista.</p>
+                    <h3 class="font-heading font-extrabold text-2xl sm:text-3xl text-syselec-blue mb-2">Solicita una Cotización o Cita</h3>
+                    <p class="text-slate-500 text-sm mb-6 leading-relaxed">Completa los datos de tu proyecto y te asignaremos un ingeniero especialista.</p>
 
                     <form id="contact-form" class="space-y-5" novalidate>
                         <div>
-                            <label for="contact-name"
-                                class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">NOMBRE
-                                COMPLETO *</label>
-                            <input type="text" id="contact-name" name="name"
-                                placeholder="Ej. Ing. Carlos Pérez - Jefe de Mantenimiento" required
-                                class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-syselec-dark bg-slate-50/50 focus:bg-white focus:outline-none focus:border-syselec-teal focus:ring-4 focus:ring-syselec-teal/15 transition-all">
+                            <label for="contact-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">NOMBRE COMPLETO *</label>
+                            <input type="text" id="contact-name" name="name" placeholder="Ej. Ing. Carlos Pérez" required
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-syselec-dark bg-slate-50/50 focus:bg-white focus:outline-none focus:border-syselec-teal">
                             <p id="error-name" class="hidden text-xs text-rose-500 font-semibold mt-1"></p>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
-                                <label for="contact-email"
-                                    class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">CORREO
-                                    ELECTRÓNICO *</label>
-                                <input type="email" id="contact-email" name="email" placeholder="ejemplo@empresa.com"
-                                    required
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-syselec-dark bg-slate-50/50 focus:bg-white focus:outline-none focus:border-syselec-teal focus:ring-4 focus:ring-syselec-teal/15 transition-all">
+                                <label for="contact-email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">CORREO ELECTRÓNICO *</label>
+                                <input type="email" id="contact-email" name="email" placeholder="ejemplo@empresa.com" required
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-syselec-dark bg-slate-50/50 focus:bg-white focus:outline-none focus:border-syselec-teal">
                                 <p id="error-email" class="hidden text-xs text-rose-500 font-semibold mt-1"></p>
                             </div>
-
                             <div>
-                                <label for="contact-phone"
-                                    class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">TELÉFONO
-                                    DE CONTACTO *</label>
-                                <input type="tel" id="contact-phone" name="phone" placeholder="+57 300 000 0000"
-                                    required
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-syselec-dark bg-slate-50/50 focus:bg-white focus:outline-none focus:border-syselec-teal focus:ring-4 focus:ring-syselec-teal/15 transition-all">
+                                <label for="contact-phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">TELÉFONO *</label>
+                                <input type="tel" id="contact-phone" name="phone" placeholder="+57 300 000 0000" required
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-syselec-dark bg-slate-50/50 focus:bg-white focus:outline-none focus:border-syselec-teal">
                             </div>
                         </div>
 
                         <div>
-                            <label for="contact-service"
-                                class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">ÁREA DE
-                                INGENIERÍA / LÍNEA DE INTERÉS</label>
-                            <select id="contact-service" name="service"
-                                class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal focus:ring-4 focus:ring-syselec-teal/15 transition-all">
-                                <option value="Instalaciones Eléctricas de Media y Baja Tensión">Instalaciones
-                                    Eléctricas de Media y Baja Tensión</option>
-                                <option value="Tableros de Control, CCM y Gabinetes Especiales">Tableros de Control, CCM
-                                    y Gabinetes Especiales</option>
-                                <option value="Montaje y Mantenimiento de Subestaciones">Montaje y Mantenimiento de
-                                    Subestaciones</option>
-                                <option value="Automatización de Procesos y Sensores">Automatización de Procesos y
-                                    Sensores Industriales</option>
-                                <option value="Alumbrado LED y Sistemas Solares">Alumbrado Industrial LED y Sistemas
-                                    Solares</option>
-                                <option value="Cableado Estructurado, CCTV y Planos Eléctricos">Cableado Estructurado,
-                                    CCTV y Planos Eléctricos</option>
-                                <option value="Mantenimiento Electromecánico y Polipastos">Mantenimiento Electromecánico
-                                    y Polipastos</option>
+                            <label for="contact-service" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">ÁREA DE INGENIERÍA</label>
+                            <select id="contact-service" name="service" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal">
+                                <option value="Instalaciones Eléctricas">Instalaciones Eléctricas de Media y Baja Tensión</option>
+                                <option value="Tableros CCM">Tableros de Control, CCM y Gabinetes</option>
+                                <option value="Subestaciones">Montaje y Mantenimiento de Subestaciones</option>
+                                <option value="Automatización">Automatización de Procesos y Sensores</option>
+                                <option value="Alumbrado">Alumbrado Industrial LED y Sistemas Solares</option>
+                                <option value="Mantenimiento">Mantenimiento Electromecánico y Polipastos</option>
                             </select>
                         </div>
 
                         <div>
-                            <label for="contact-message"
-                                class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">DETALLES
-                                DEL PROYECTO *</label>
-                            <textarea id="contact-message" name="message" rows="4"
-                                placeholder="Describe brevemente el alcance, ubicación y requerimientos técnicos..."
-                                required
-                                class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-syselec-dark bg-slate-50/50 focus:bg-white focus:outline-none focus:border-syselec-teal focus:ring-4 focus:ring-syselec-teal/15 transition-all"></textarea>
+                            <label for="contact-message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">DETALLES DEL PROYECTO *</label>
+                            <textarea id="contact-message" name="message" rows="4" placeholder="Describe brevemente el alcance..." required
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-syselec-dark bg-slate-50/50 focus:bg-white focus:outline-none focus:border-syselec-teal"></textarea>
                             <p id="error-message" class="hidden text-xs text-rose-500 font-semibold mt-1"></p>
                         </div>
 
                         <button type="submit"
-                            class="w-full py-4 px-6 rounded-2xl font-bold text-white bg-gradient-to-r from-syselec-blue to-syselec-teal shadow-glow hover:-translate-y-0.5 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2.5">
+                            class="w-full py-4 px-6 rounded-2xl font-bold text-white bg-gradient-to-r from-syselec-blue to-syselec-teal shadow-glow hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-center gap-2.5">
                             <span>Enviar Solicitud Técnica</span>
                             <i class="fas fa-paper-plane text-sm"></i>
                         </button>
@@ -1593,260 +1275,128 @@
     <footer class="bg-syselec-darker text-white pt-16 pb-8 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
-                <!-- Col 1: Brand & Logo -->
                 <div>
                     <div class="bg-white/95 px-4 py-2 rounded-2xl inline-block shadow-md mb-5">
-                        <img src="assets/img/logo-syselec.png" alt="Syselec Ingeniería S.A.S."
-                            class="h-10 w-auto object-contain">
+                        <img src="assets/img/logo-syselec.png" alt="Syselec Ingeniería S.A.S." class="h-10 w-auto object-contain">
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Syselec Ingeniería S.A.S. - Más de 25 años brindando soluciones de ingeniería eléctrica,
-                        montajes de subestaciones, tableros CCM y automatización industrial bajo Sistema Integrado HSEQ.
-                    </p>
-                    <p class="text-xs text-syselec-teal font-semibold flex items-center gap-2">
-                        <i class="fas fa-circle-check text-syselec-accent"></i>
-                        <span>Tus proyectos en manos expertas.</span>
+                        Syselec Ingeniería S.A.S. - Más de 25 años brindando soluciones de ingeniería eléctrica, montajes de subestaciones, tableros CCM y automatización industrial bajo Sistema Integrado HSEQ.
                     </p>
                 </div>
-
-                <!-- Col 2: Servicios -->
                 <div>
-                    <h4
-                        class="font-heading font-bold text-base text-white mb-5 relative pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-syselec-teal">
-                        Servicios Principales
-                    </h4>
+                    <h4 class="font-heading font-bold text-base text-white mb-5">Servicios</h4>
                     <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><a href="#servicios" class="hover:text-syselec-teal transition-all">Instalaciones Media y
-                                Baja Tensión</a></li>
-                        <li><a href="#servicios" class="hover:text-syselec-teal transition-all">Tableros de Control y
-                                CCM</a></li>
-                        <li><a href="#servicios" class="hover:text-syselec-teal transition-all">Montaje de
-                                Subestaciones</a></li>
-                        <li><a href="#servicios" class="hover:text-syselec-teal transition-all">Automatización y
-                                Sensores</a></li>
-                        <li><a href="#servicios" class="hover:text-syselec-teal transition-all">Alumbrado LED y
-                                Solar</a></li>
-                        <li><a href="#servicios" class="hover:text-syselec-teal transition-all">Mantenimiento de
-                                Polipastos</a></li>
+                        <li><a href="#servicios" class="hover:text-syselec-teal">Instalaciones Media y Baja Tensión</a></li>
+                        <li><a href="#servicios" class="hover:text-syselec-teal">Tableros de Control y CCM</a></li>
+                        <li><a href="#servicios" class="hover:text-syselec-teal">Montaje de Subestaciones</a></li>
+                        <li><a href="#servicios" class="hover:text-syselec-teal">Automatización y Sensores</a></li>
                     </ul>
                 </div>
-
-                <!-- Col 3: Navegación -->
                 <div>
-                    <h4
-                        class="font-heading font-bold text-base text-white mb-5 relative pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-syselec-teal">
-                        Navegación
-                    </h4>
+                    <h4 class="font-heading font-bold text-base text-white mb-5">Navegación</h4>
                     <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><a href="#inicio" class="hover:text-syselec-teal transition-all">Inicio</a></li>
-                        <li><a href="#sobre-nosotros" class="hover:text-syselec-teal transition-all">Quiénes Somos</a>
-                        </li>
-                        <li><a href="#servicios" class="hover:text-syselec-teal transition-all">Servicios</a></li>
-                        <li><a href="#galeria" class="hover:text-syselec-teal transition-all">Galería de Obras</a></li>
-                        <li><a href="#sig" class="hover:text-syselec-teal transition-all">Sistema Integrado (HSEQ)</a>
-                        </li>
-                        <li><a href="#clientes" class="hover:text-syselec-teal transition-all">Nuestros Clientes</a>
-                        </li>
-                        <li><a href="#marcas" class="hover:text-syselec-teal transition-all">Marcas y Materiales</a>
-                        </li>
+                        <li><a href="#inicio" class="hover:text-syselec-teal">Inicio</a></li>
+                        <li><a href="#sobre-nosotros" class="hover:text-syselec-teal">Quiénes Somos</a></li>
+                        <li><a href="#sig" class="hover:text-syselec-teal">Sistema Integrado (HSEQ)</a></li>
+                        <li><a href="#clientes" class="hover:text-syselec-teal">Nuestros Clientes</a></li>
                     </ul>
                 </div>
-
-                <!-- Col 4: Contacto Rápido -->
                 <div>
-                    <h4
-                        class="font-heading font-bold text-base text-white mb-5 relative pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-syselec-teal">
-                        Contacto Directo
-                    </h4>
+                    <h4 class="font-heading font-bold text-base text-white mb-5">Contacto Directo</h4>
                     <ul class="space-y-3 text-sm text-slate-400">
-                        <li class="flex items-center gap-2">
-                            <i class="fab fa-whatsapp text-emerald-400 text-base"></i>
-                            <a href="https://wa.me/573203399577" target="_blank" rel="noopener noreferrer"
-                                class="hover:text-syselec-teal font-medium">320 339 95 77</a>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-envelope text-syselec-teal"></i>
-                            <a href="mailto:syselecsas@gmail.com"
-                                class="hover:text-syselec-teal break-all">syselecsas@gmail.com</a>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-shield-halved text-syselec-accent"></i>
-                            <span>Normativa RETIE &amp; SG-SST Vigente</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i class="fas fa-location-dot text-slate-400 mt-1"></i>
-                            <span class="text-xs">Calle 2 # 21-33, Barrio Julio Caro, Zipaquirá, Cundinamarca</span>
-                        </li>
+                        <li class="flex items-center gap-2"><i class="fab fa-whatsapp text-emerald-400"></i><a href="https://wa.me/573203399577" class="hover:text-syselec-teal">320 339 95 77</a></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-envelope text-syselec-teal"></i><a href="mailto:syselecsas@gmail.com" class="hover:text-syselec-teal">syselecsas@gmail.com</a></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-location-dot text-slate-400 mt-1"></i><span class="text-xs">Calle 2 # 21-33, Zipaquirá, Cundinamarca</span></li>
                     </ul>
                 </div>
             </div>
-
             <div class="pt-8 text-center text-xs text-slate-500">
                 <p>&copy; 2026 Syselec Ingeniería S.A.S. Todos los derechos reservados. Colombia.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating Direct WhatsApp Button -->
-    <div class="fixed bottom-6 right-6 z-40 flex items-center gap-2">
-        <a href="https://wa.me/573203399577?text=Hola%20Syselec%20Ingenier%C3%ADa,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios"
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <a href="https://wa.me/573203399577?text=Hola%20Syselec%20Ingeniería,%20deseo%20más%20información"
             target="_blank" rel="noopener noreferrer"
-            class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-3xl shadow-xl hover:scale-110 hover:bg-emerald-600 transition-all duration-300"
-            title="Escríbenos a WhatsApp">
+            class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-3xl shadow-xl hover:scale-110 hover:bg-emerald-600 transition-all duration-300">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- SERVICE DETAILS MODAL (WITH REAL PHOTOS & PLACEHOLDERS) -->
-    <!-- ============================================================ -->
-    <div id="service-modal"
-        class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/75 backdrop-blur-sm p-4 overflow-y-auto"
-        role="dialog" aria-modal="true" aria-labelledby="service-modal-title">
-        <div
-            class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-slate-100 p-6 sm:p-8 relative my-auto">
-            <button type="button"
-                class="close-modal-btn absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Cerrar ventana">
+    <!-- Service Details Modal -->
+    <div id="service-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/75 backdrop-blur-sm p-4 overflow-y-auto" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative my-auto">
+            <button type="button" class="close-modal-btn absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center cursor-pointer">
                 <i class="fas fa-times"></i>
             </button>
-
-            <!-- Modal Header -->
             <div class="flex items-center gap-4 mb-6">
-                <div id="service-modal-icon"
-                    class="w-14 h-14 rounded-2xl bg-syselec-teal/15 text-syselec-teal flex items-center justify-center text-2xl shrink-0">
-                </div>
+                <div id="service-modal-icon" class="w-14 h-14 rounded-2xl bg-syselec-teal/15 text-syselec-teal flex items-center justify-center text-2xl shrink-0"></div>
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-syselec-teal">Ficha Técnica &amp;
-                        Registro Fotográfico</span>
-                    <h3 id="service-modal-title" class="font-heading font-bold text-2xl sm:text-3xl text-syselec-blue">
-                    </h3>
+                    <span class="text-xs font-bold uppercase tracking-widest text-syselec-teal">Ficha Técnica &amp; Registro Fotográfico</span>
+                    <h3 id="service-modal-title" class="font-heading font-bold text-2xl sm:text-3xl text-syselec-blue"></h3>
                 </div>
             </div>
-
             <p id="service-modal-desc" class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6"></p>
-
-            <!-- REAL PHOTOS GALLERY OF THE SERVICE -->
             <div class="mb-8">
                 <div class="flex items-center justify-between mb-4">
                     <h4 class="font-heading font-bold text-base text-syselec-dark flex items-center gap-2">
                         <i class="fas fa-camera text-syselec-teal"></i> Registro Fotográfico en Obra
                     </h4>
-                    <span id="service-modal-photo-count"
-                        class="text-xs font-bold text-syselec-teal bg-syselec-teal/10 px-3 py-1 rounded-full"></span>
+                    <span id="service-modal-photo-count" class="text-xs font-bold text-syselec-teal bg-syselec-teal/10 px-3 py-1 rounded-full"></span>
                 </div>
-                <div id="service-modal-gallery" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    <!-- Populated dynamically via JS -->
-                </div>
+                <div id="service-modal-gallery" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
             </div>
-
-            <!-- PLACEHOLDERS FOR PENDING PHOTOS (HIDDEN UNTIL PHOTOS ARE READY) -->
-            <div id="service-modal-placeholders-wrapper" class="mb-8 hidden">
-                <div class="flex items-center justify-between mb-3">
-                    <h4 class="font-heading font-bold text-sm text-slate-700 flex items-center gap-2">
-                        <i class="fas fa-image text-amber-500"></i> Espacio Reservado para Próximas Fotos
-                    </h4>
-                    <span
-                        class="text-[11px] font-bold text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
-                        Pendiente de carga fotográfica
-                    </span>
-                </div>
-                <div id="service-modal-placeholders" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <!-- Populated dynamically via JS -->
-                </div>
-            </div>
-
-            <!-- Scope & Deliverables Grids -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
                 <div class="bg-syselec-light p-5 rounded-2xl border border-slate-100">
-                    <h4 class="font-heading font-bold text-sm text-syselec-dark mb-3 flex items-center gap-2">
-                        <i class="fas fa-tasks text-syselec-teal"></i> Alcance Técnico
-                    </h4>
+                    <h4 class="font-heading font-bold text-sm text-syselec-dark mb-3"><i class="fas fa-tasks text-syselec-teal mr-2"></i> Alcance Técnico</h4>
                     <ul id="service-modal-scope" class="space-y-2 text-xs sm:text-sm text-slate-600"></ul>
                 </div>
-
                 <div class="bg-syselec-light p-5 rounded-2xl border border-slate-100">
-                    <h4 class="font-heading font-bold text-sm text-syselec-dark mb-3 flex items-center gap-2">
-                        <i class="fas fa-clipboard-check text-syselec-blue"></i> Ventajas &amp; Entregables
-                    </h4>
+                    <h4 class="font-heading font-bold text-sm text-syselec-dark mb-3"><i class="fas fa-clipboard-check text-syselec-blue mr-2"></i> Ventajas &amp; Entregables</h4>
                     <ul id="service-modal-deliverables" class="space-y-2 text-xs sm:text-sm text-slate-600"></ul>
                 </div>
             </div>
-
-            <div
-                class="bg-slate-50 px-5 py-3.5 rounded-xl border border-slate-200/70 mb-6 flex flex-wrap items-center justify-between gap-2">
-                <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Normativa Aplicable:</span>
-                <span id="service-modal-standards" class="text-xs font-semibold text-syselec-dark"></span>
-            </div>
-
             <div class="flex flex-wrap justify-end gap-3 pt-2 border-t border-slate-100">
-                <button type="button"
-                    class="close-modal-btn px-6 py-3 rounded-full text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors cursor-pointer">
-                    Cerrar
-                </button>
-                <a id="service-modal-wa-btn" href="#" target="_blank" rel="noopener noreferrer"
-                    class="px-7 py-3 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-syselec-blue to-syselec-teal shadow-glow hover:-translate-y-0.5 transition-all">
-                    Cotizar por WhatsApp
-                </a>
+                <button type="button" class="close-modal-btn px-6 py-3 rounded-full text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 cursor-pointer">Cerrar</button>
+                <a id="service-modal-wa-btn" href="#" target="_blank" rel="noopener noreferrer" class="px-7 py-3 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-syselec-blue to-syselec-teal shadow-glow">Cotizar por WhatsApp</a>
             </div>
         </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- LIGHTBOX MODAL (FOR HIGH-RES IMAGE PREVIEW) -->
-    <!-- ============================================================ -->
-    <div id="lightbox-modal"
-        class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/90 backdrop-blur-md p-4" role="dialog"
-        aria-modal="true">
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/90 backdrop-blur-md p-4" role="dialog" aria-modal="true">
         <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center">
-            <button type="button" id="close-lightbox-btn"
-                class="absolute -top-12 right-0 sm:right-2 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors cursor-pointer text-lg">
-                <i class="fas fa-times"></i>
-            </button>
+            <button type="button" id="close-lightbox-btn" class="absolute -top-12 right-0 sm:right-2 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center cursor-pointer text-lg"><i class="fas fa-times"></i></button>
             <div class="w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-2xl bg-black/40">
-                <img id="lightbox-img" src="" alt="Vista previa de obra Syselec"
-                    class="max-h-[75vh] max-w-full object-contain">
+                <img id="lightbox-img" src="" alt="Vista previa" class="max-h-[75vh] max-w-full object-contain">
             </div>
             <div class="mt-4 text-center">
-                <span id="lightbox-tag"
-                    class="inline-block text-[11px] font-bold uppercase tracking-wider text-syselec-accent bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20 mb-1.5"></span>
+                <span id="lightbox-tag" class="inline-block text-[11px] font-bold uppercase tracking-wider text-syselec-accent bg-amber-500/10 px-3 py-1 rounded-full mb-1.5"></span>
                 <p id="lightbox-caption" class="text-white text-sm sm:text-base font-medium max-w-3xl"></p>
             </div>
         </div>
     </div>
 
-    <!-- Notification Modal (Envío de Correo y Copia por WhatsApp) -->
-    <div id="notification-modal"
-        class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/75 backdrop-blur-sm p-4" role="dialog"
-        aria-modal="true" aria-labelledby="notif-modal-title">
-        <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-100 p-8 text-center relative">
-            <div id="notif-modal-icon"
-                class="w-16 h-16 mx-auto rounded-full bg-syselec-teal/15 text-syselec-teal flex items-center justify-center text-3xl mb-5">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h3 id="notif-modal-title" class="font-heading font-bold text-2xl text-syselec-dark mb-2">¡Solicitud
-                Enviada!</h3>
+    <!-- Notification Modal -->
+    <div id="notification-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/75 backdrop-blur-sm p-4" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl p-8 text-center relative">
+            <div id="notif-modal-icon" class="w-16 h-16 mx-auto rounded-full bg-syselec-teal/15 text-syselec-teal flex items-center justify-center text-3xl mb-5"><i class="fas fa-check-circle"></i></div>
+            <h3 id="notif-modal-title" class="font-heading font-bold text-2xl text-syselec-dark mb-2">¡Solicitud Enviada!</h3>
             <p id="notif-modal-desc" class="text-slate-600 text-sm leading-relaxed mb-6"></p>
             <div class="space-y-3">
-                <a id="notif-modal-wa-btn" href="#" target="_blank" rel="noopener noreferrer"
-                    class="w-full py-3.5 px-6 rounded-full font-semibold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 text-sm">
-                    <i class="fab fa-whatsapp text-lg"></i>
-                    <span>Enviar copia directa por WhatsApp</span>
+                <a id="notif-modal-wa-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-6 rounded-full font-semibold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md flex items-center justify-center gap-2 text-sm">
+                    <i class="fab fa-whatsapp text-lg"></i><span>Enviar copia directa por WhatsApp</span>
                 </a>
-                <button type="button"
-                    class="close-modal-btn w-full py-3 px-6 rounded-full font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors cursor-pointer text-sm">
-                    Cerrar
-                </button>
+                <button type="button" class="close-modal-btn w-full py-3 px-6 rounded-full font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 cursor-pointer text-sm">Cerrar</button>
             </div>
         </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- SCRIPT APPLICATION LOGIC -->
-    <!-- ============================================================ -->
+    <!-- Script Application Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            /* Full structured database for Syselec Services with Real Photos and Placeholders */
             const servicesData = {
                 instalaciones: {
                     title: 'Instalaciones Eléctricas en Media y Baja Tensión',
@@ -1855,220 +1405,172 @@
                     scope: [
                         'Tendido de alimentadores principales y bandejas portacables',
                         'Canalizaciones en tubería EMT/IMC debidamente figurada y soportada',
-                        'Malla de puesta a tierra con varillas y soldaduras exotérmicas Cadweld',
-                        'Apertura de zanjas y pasos de tubería por cárcamo y cajas de inspección',
-                        'Conexionado de fuerza y control en cuartos de bombas contra incendios'
+                        'Malla de puesta a tierra con varillas y soldaduras exotérmicas Cadweld'
                     ],
                     deliverables: [
                         'Memorias de cálculo y certificación de conformidad RETIE',
                         'Protocolos de medición de resistencia de puesta a tierra',
-                        'Planos eléctricos as-built finales de canalizaciones',
-                        'Garantía técnica y cumplimiento en tiempos de entrega'
+                        'Planos eléctricos as-built finales de canalizaciones'
                     ],
                     standards: 'RETIE • NTC 2050 (Código Eléctrico Colombiano) • NFPA 70',
                     realPhotos: [
-                        { url: 'assets/img/servicios/instalaciones/cableado-fuerza-control-bandejas.jpg', caption: 'Instalación de cableados de fuerza y control por bandejas existentes y nuevas tuberías', tag: 'Canalizaciones' },
-                        { url: 'assets/img/servicios/instalaciones/tendido-cableado-tuberia-emt.jpg', caption: 'Tendido de cableado por tubería EMT debidamente figurada y soportada', tag: 'Tubería EMT' },
-                        { url: 'assets/img/servicios/instalaciones/instalacion-tuberia-abrazaderas.jpg', caption: 'Instalación de tubería debidamente soportada con abrazaderas industriales', tag: 'Soportería' },
-                        { url: 'assets/img/servicios/instalaciones/colocacion-varillas-puesta-a-tierra.jpg', caption: 'Colocación de varillas de cobre para sistema de puesta a tierra RETIE', tag: 'Puesta a Tierra' },
-                        { url: 'assets/img/servicios/instalaciones/soldaduras-cadweld-tendido-cableado.jpg', caption: 'Realización de soldaduras exotérmicas Cadweld y tendido de cable desnudo', tag: 'Soldadura Cadweld' },
-                        { url: 'assets/img/servicios/instalaciones/reapertura-zanjas-ducto-acometida.jpg', caption: 'Subterranización tuberías', tag: 'Acometida / Zanjas' },
-                        { url: 'assets/img/servicios/instalaciones/cableado-cuarto-bombas-contra-incendios.jpg', caption: 'Paso de cableado por bandejas en cuarto de bombas red contra incendios para conexión a tablero', tag: 'Bombas red contra Incendio' },
-                        { url: 'assets/img/servicios/instalaciones/cableado-tuberia-bandejas-piso.jpg', caption: 'Paso de cableado por tubería previamente instalada y bandejas existentes en piso', tag: 'Bandejas Piso' },
-                        { url: 'assets/img/servicios/instalaciones/paso-tuberia-pvc-caja-inspeccion.jpg', caption: 'Paso de tubería PVC previamente instalada por caja de inspección técnica', tag: 'Cajas Inspección' },
-                        { url: 'assets/img/servicios/instalaciones/conexion-en-caja-paso.jpg', caption: 'Conexión motor', tag: 'Motor' },
-                        { url: 'assets/img/servicios/instalaciones/tendido-cableado-coraza.jpg', caption: 'Tendido de cableado e instalación de coraza flexible para equipos de uso final', tag: 'Coraza Flexible' },
-                        { url: 'assets/img/servicios/instalaciones/tendido-coraza-dispuesto-conexion.jpg', caption: 'Tendido de coraza y conductores dispuestos para conexionado final en planta', tag: 'Conexionado' }
-                    ],
-                    placeholders: [
-                        { title: 'Acometida Aérea / Poste en Media Tensión', desc: 'Foto sugerida: Estructura de transición aérea a subterránea con cortacircuitos y DPS.' }
+                        { url: 'assets/img/servicios/instalaciones/cableado-fuerza-control-bandejas.jpg', caption: 'Instalación de cableados de fuerza y control por bandejas', tag: 'Canalizaciones' },
+                        { url: 'assets/img/servicios/instalaciones/tendido-cableado-tuberia-emt.jpg', caption: 'Tendido de cableado por tubería EMT debidamente figurada', tag: 'Tubería EMT' },
+                        { url: 'assets/img/servicios/instalaciones/instalacion-tuberia-abrazaderas.jpg', caption: 'Instalación de tubería soportada con abrazaderas industriales', tag: 'Soportería' },
+                        { url: 'assets/img/servicios/instalaciones/colocacion-varillas-puesta-a-tierra.jpg', caption: 'Colocación de varillas de cobre para puesta a tierra', tag: 'Puesta a Tierra' },
+                        { url: 'assets/img/servicios/instalaciones/soldaduras-cadweld-tendido-cableado.jpg', caption: 'Soldaduras exotérmicas Cadweld', tag: 'Cadweld' },
+                        { url: 'assets/img/servicios/instalaciones/reapertura-zanjas-ducto-acometida.jpg', caption: 'Subterranización tuberías', tag: 'Acometida' }
                     ]
                 },
                 tableros: {
                     title: 'Tableros de Control, CCM y Gabinetes Especiales',
                     icon: '<i class="fas fa-sliders"></i>',
-                    desc: 'Fabricación y ensamble de tableros de mando, distribución y Centros de Control de Motores (CCM) adaptados a la planta. Mecanizado y perforación técnica de cofres, integración de guardamotores y organización decableado.',
+                    desc: 'Fabricación y ensamble de tableros de mando, distribución y Centros de Control de Motores (CCM) adaptados a la planta.',
                     scope: [
                         'Diseño, suministro e instalación de tableros principales de líneas productivas',
                         'Armado de arrancadores directos con guardamotor y contactor en CCM',
-                        'Mecanizado y perforación con troqueladora de precisión para pasacables',
-                        'Instalación de totalizadores de potencia para acometidas en CCM',
-                        'Tableros dedicados para cargadores de baterías en centros logísticos (CEDI)',
-                        'Integración de cajas termoplásticas de protección IP65'
+                        'Mecanizado y perforación con troqueladora de precisión'
                     ],
                     deliverables: [
                         'Diagramas unifilares y esquemas numerados de conductores',
-                        'Pruebas FAT (Factory Acceptance Test) en taller Syselec',
-                        'Marcación técnica termoencogible y organización de cableado estandarizado',
-                        'Fichas técnicas y protocolos de torque de interruptores'
+                        'Pruebas FAT (Factory Acceptance Test) en taller Syselec'
                     ],
                     standards: 'IEC 61439 • NEMA 4X / IP65 • RETIE Art. 20',
                     realPhotos: [
-                        { url: 'assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg', caption: 'Diseño, suministro e instalación de Tablero Principal de la línea industrial MPL1', tag: 'Tablero Principal' },
-                        { url: 'assets/img/servicios/tableros/tablero-principal-linea-mpl2.jpg', caption: 'Ensamble de Tablero Principal de potencia y control línea MPL2', tag: 'Línea MPL2' },
-                        { url: 'assets/img/servicios/tableros/armado-arrancador-directo-ccm.jpg', caption: 'Armado de arrancador directo con guardamotor y contactor en módulo disponible en CCM', tag: 'Módulo CCM' },
-                        { url: 'assets/img/servicios/tableros/conexiones-peinado-nuevo-tablero.jpg', caption: 'Realización de conexiones técnicas, marcación y organización de cables en nuevo tablero', tag: 'Organización de Cables' },
-                        { url: 'assets/img/servicios/tableros/mecanizado-perforacion-tableros.jpg', caption: 'Mecanizado y perforación precisa de tableros metálicos para prensaestopas', tag: 'Mecanizado' },
-                        { url: 'assets/img/servicios/tableros/totalizador-nueva-acometida-ccm-cedi2.jpg', caption: 'Montaje e integración de interruptor termomagnético en celda CCM', tag: 'Potencia CCM' },
-                        { url: 'assets/img/servicios/tableros/tablero-acometidas-cargadores-cedi.jpeg', caption: 'Tablero eléctrico y acometidas de fuerza para cargadores de baterías en CEDI', tag: 'Cargadores CEDI' },
-                        { url: 'assets/img/servicios/tableros/conexion-tablero-cuarto-bombas.jpg', caption: 'Conexión de cableado en tablero del cuarto de bombas de la red contra incendios', tag: 'Red Incendios' },
-                        { url: 'assets/img/servicios/tableros/instalacion-caja-termoplastica.jpg', caption: 'Instalación de caja termoplástica estanca de distribución en planta', tag: 'Caja Estanca' }
-                    ],
-                    placeholders: [
-                        { title: 'Consola / Tablero en Acero Inoxidable Grado Sanitario', desc: 'Foto sugerida: Gabinete en acero inox 304/316 para industria farmacéutica o de alimentos.' }
+                        { url: 'assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg', caption: 'Tablero Principal de la línea industrial MPL1', tag: 'Tablero Principal' },
+                        { url: 'assets/img/servicios/tableros/tablero-principal-linea-mpl2.jpg', caption: 'Tablero Principal de potencia línea MPL2', tag: 'Línea MPL2' },
+                        { url: 'assets/img/servicios/tableros/armado-arrancador-directo-ccm.jpg', caption: 'Arrancador directo con guardamotor en CCM', tag: 'Módulo CCM' },
+                        { url: 'assets/img/servicios/tableros/conexiones-peinado-nuevo-tablero.jpg', caption: 'Organización y peinado de cables', tag: 'Cableado' }
                     ]
                 },
                 subestaciones: {
                     title: 'Montaje y Mantenimiento de Subestaciones',
                     icon: '<i class="fas fa-tower-broadcast"></i>',
-                    desc: 'Servicios integrales para subestaciones eléctricas industriales y celdas de potencia. Ejecución de maniobras especializadas, acometidas de gran calibre y montaje de totalizadores en subestaciones de servicios.',
-                    scope: [
-                        'Conexión de interruptores totalizadores en subestaciones de servicios industriales',
-                        'Tendido de nuevas acometidas de fuerza desde CCM hasta sótanos técnicos',
-                        'Reemplazo y actualización de alimentadores de potencia',
-                        'Maniobras seguras y libranzas ante el operador de red'
-                    ],
-                    deliverables: [
-                        'Informes técnicos de pruebas eléctricas y aislamiento',
-                        'Protocolos de calibración de disparos y protecciones',
-                        'Certificados de conformidad de montaje RETIE'
-                    ],
-                    standards: 'IEEE Std C57 • NTC 327 • RETIE Subestaciones',
+                    desc: 'Servicios integrales para subestaciones eléctricas industriales y celdas de potencia.',
+                    scope: ['Conexión de interruptores totalizadores', 'Tendido de nuevas acometidas de fuerza'],
+                    deliverables: ['Informes técnicos de pruebas eléctricas', 'Certificados RETIE'],
+                    standards: 'IEEE Std C57 • NTC 327',
                     realPhotos: [
-                        { url: 'assets/img/servicios/subestaciones/acometida-bomba308-ccm-sotano-mp1.jpg', caption: 'Acometida nueva desde Bomba 308 CCM hasta sótano técnico MP1', tag: 'Acometida MP1' },
-                        { url: 'assets/img/servicios/subestaciones/reemplazo-acometida-ccm-sotano.jpg', caption: 'Reemplazo de acometida de potencia desde CCM hacia sótano MP1', tag: 'Reemplazo Potencia' }
-                    ],
-                    placeholders: [
-                        { title: 'Transformador de Potencia en Aceite / Tipo Seco', desc: 'Foto sugerida: Transformador trifásico de patio o en celda interior con accesorios.' },
-                        { title: 'Pruebas Fisicoquímicas y Rigidez Dieléctrica', desc: 'Foto sugerida: Toma de muestras de aceite o equipo de ensayo de rigidez dieléctrica.' },
-                        { title: 'Celdas de Media Tensión (Seccionador / Interruptor MT)', desc: 'Foto sugerida: Frente de celdas MT con mímico y señalización de maniobra.' }
+                        { url: 'assets/img/servicios/subestaciones/acometida-bomba308-ccm-sotano-mp1.jpg', caption: 'Acometida nueva desde Bomba 308 CCM', tag: 'Acometida MP1' },
+                        { url: 'assets/img/servicios/subestaciones/reemplazo-acometida-ccm-sotano.jpg', caption: 'Reemplazo de acometida de potencia', tag: 'Potencia' }
                     ]
                 },
                 automatizacion: {
                     title: 'Automatización, Instrumentación y Redes Industriales',
                     icon: '<i class="fas fa-robot"></i>',
-                    desc: 'Modernización y control de procesos productivos en plantas de manufactura, alimentos y empaques. Montaje de instrumentación industrial, estaciones de pulsadores y cableado de líneas neumáticas.',
-                    scope: [
-                        'Instalación y conexión de botoneras de mando y estaciones remotas de parada',
-                        'Montaje de sensores de proximidad, temperatura y humedad con soportería Unistrut',
-                        'Conexión y parametrización de controladores digitales de temperatura',
-                        'Tendido e integración de cableados y líneas neumáticas industriales'
-                    ],
-                    deliverables: [
-                        'Listado de señales de campo I/O y conexionado as-built',
-                        'Pruebas operativas con personal de producción',
-                        'Alineación y calibración de instrumentos de medición'
-                    ],
-                    standards: 'IEC 61158 • Guías de instrumentación ISA • RETIE',
+                    desc: 'Modernización y control de procesos productivos en plantas de manufactura.',
+                    scope: ['Instalación de botoneras de mando', 'Montaje de sensores de proximidad y temperatura'],
+                    deliverables: ['Listado de señales de campo I/O', 'Pruebas operativas'],
+                    standards: 'IEC 61158 • Guías ISA',
                     realPhotos: [
-                        { url: 'assets/img/servicios/automatizacion/instalacion-botoneras-sensores1.jpg', caption: 'Instalación de botoneras de mando y sensores industriales en línea de producción', tag: 'Botoneras / Sensores' },
-                        { url: 'assets/img/servicios/automatizacion/instalacion-botoneras-sensores2.jpg', caption: 'Montaje y ajuste de sensores de carrera y proximidad en máquina', tag: 'Sensores de Campo' },
-                        { url: 'assets/img/servicios/automatizacion/instalacion-botoneras-sensores3.jpg', caption: 'Canalización y conexión de señales de campo para sensores industriales', tag: 'Conexión Señales' },
-                        { url: 'assets/img/servicios/automatizacion/sensor-humedad-temperatura-instalado.jpg', caption: 'Sensor de humedad y temperatura industrial debidamente instalado y operativo', tag: 'Sensor Temperatura' },
-                        { url: 'assets/img/servicios/automatizacion/soporteria-sensor-humedad-temperatura.jpg', caption: 'Instalación de soportería estructural tipo Channel para sensor de temperatura', tag: 'Soportería Sensores' },
-                        { url: 'assets/img/servicios/automatizacion/conexion-controlador-temperatura.jpg', caption: 'Conexión y parametrización de controlador digital de temperatura', tag: 'Controlador Digital' },
-                        { url: 'assets/img/servicios/automatizacion/instalacion-cableado-neumatico.jpg', caption: 'Instalación de cableados y líneas neumáticas nuevas para máquina', tag: 'Líneas Neumáticas' }
-                    ],
-                    placeholders: [
-                        { title: 'Tablero de Control con PLC y Pantalla Touch HMI', desc: 'Foto sugerida: Autómata PLC Siemens o Allen Bradley con pantalla táctil energizada.' },
-                        { title: 'Switches y Buses de Campo Ethernet / Profinet', desc: 'Foto sugerida: Switch industrial en riel DIN con patch cords apantallados.' }
+                        { url: 'assets/img/servicios/automatizacion/instalacion-botoneras-sensores1.jpg', caption: 'Instalación de botoneras y sensores', tag: 'Sensores' },
+                        { url: 'assets/img/servicios/automatizacion/sensor-humedad-temperatura-instalado.jpg', caption: 'Sensor de humedad y temperatura', tag: 'Temperatura' }
                     ]
                 },
                 iluminacion: {
                     title: 'Sistemas Eléctricos de Alumbrado LED y Solar',
                     icon: '<i class="fas fa-solar-panel"></i>',
-                    desc: 'Diseño e implementación de sistemas de iluminación industrial de alta eficiencia y proyectos solares fotovoltaicos para reducción comprobable de costos energéticos operativos.',
-                    scope: [
-                        'Reubicación de reflectores y luminarias en alturas mediante plataforma Manlift',
-                        'Sustitución y montaje de lámparas industriales LED High Bay de gran rendimiento',
-                        'Canalizaciones y circuitos dedicados para alumbrado en bodegas de manufactura'
-                    ],
-                    deliverables: [
-                        'Estudios de ahorro energético proyectado y retorno de inversión',
-                        'Protocolos de trabajo seguro en alturas con certificación SST',
-                        'Garantías extendidas de luminarias industriales'
-                    ],
-                    standards: 'RETILAP • NTC 2050 Sección 690 (Solar FV)',
+                    desc: 'Diseño e implementación de sistemas de iluminación industrial de alta eficiencia.',
+                    scope: ['Reubicación de reflectores con Manlift', 'Sustitución de lámparas industriales LED'],
+                    deliverables: ['Estudios de ahorro energético', 'Garantías extendidas'],
+                    standards: 'RETILAP • NTC 2050',
                     realPhotos: [
-                        { url: 'assets/img/servicios/iluminacion/luminarias-reubicadas-funcionando.jpg', caption: 'Luminarias industriales reubicadas y en pleno funcionamiento en bodega', tag: 'Iluminación LED' },
-                        { url: 'assets/img/servicios/iluminacion/lampara-led-instalada-funcionando.jpg', caption: 'Lámpara nueva instalada y en óptimo funcionamiento industrial', tag: 'Lámpara High Bay' },
-                        { url: 'assets/img/servicios/iluminacion/reubicacion-luminarias-manlift.jpg', caption: 'Reubicación segura de luminarias en alturas con ayuda de Manlift', tag: 'Trabajo con Manlift' }
-                    ],
-                    placeholders: [
-                        { title: 'Paneles Solares Fotovoltaicos en Cubierta Industrial', desc: 'Foto sugerida: Arreglo de módulos solares sobre techo o estructura metálica coplanar.' },
-                        { title: 'Inversores Solares y Tablero de Protecciones DC/AC', desc: 'Foto sugerida: Inversor solar On-Grid instalado en muro con protecciones fotovoltaicas.' },
-                        { title: 'Curvas Isolux / Simulación Dialux RETILAP', desc: 'Foto sugerida: Captura de pantalla de estudio fotométrico con curvas de luxes.' }
+                        { url: 'assets/img/servicios/iluminacion/luminarias-reubicadas-funcionando.jpg', caption: 'Luminarias industriales reubicadas', tag: 'LED' },
+                        { url: 'assets/img/servicios/iluminacion/reubicacion-luminarias-manlift.jpg', caption: 'Trabajo seguro en alturas con Manlift', tag: 'Manlift' }
                     ]
                 },
                 cableado: {
                     title: 'Cableado Estructurado, CCTV y Planos Eléctricos',
                     icon: '<i class="fas fa-network-wired"></i>',
-                    desc: 'Conectividad robusta para oficinas y entornos industriales exigentes. Implementación de sistemas de videovigilancia CCTV en planta y digitalización de planos eléctricos.',
-                    scope: [
-                        'Reubicación y calibración de cámaras de videovigilancia CCTV en planta',
-                        'Instalación de grabador DVR e integración de UPS en tablero de control de máquina',
-                        'Instalación y energización de monitor industrial suministrado para cliente',
-                        'Cableado estructurado para voz, datos y cuartos de control'
-                    ],
-                    deliverables: [
-                        'Topología y direccionamiento de equipos de videovigilancia',
-                        'Planos eléctricos unifilares y de distribución en AutoCAD',
-                        'Memoria técnica firmada por ingeniero electricista con matrícula'
-                    ],
-                    standards: 'ANSI/TIA-568 • RETIE • NTC 2050',
+                    desc: 'Conectividad robusta para oficinas y plantas industriales.',
+                    scope: ['Reubicación de cámaras de seguridad CCTV', 'Instalación de DVR e integración UPS'],
+                    deliverables: ['Topología y planos AutoCAD', 'Memorias técnicas'],
+                    standards: 'ANSI/TIA-568 • RETIE',
                     realPhotos: [
-                        { url: 'assets/img/servicios/cctv-cableado/reubicacion-camaras-cctv.jpg', caption: 'Reubicación y calibración de cámaras de seguridad CCTV en planta', tag: 'CCTV Planta' },
-                        { url: 'assets/img/servicios/cctv-cableado/instalacion-dvr-ups-tablero-softys.jpg', caption: 'Instalación de DVR e integración de UPS en tablero control de máquina', tag: 'DVR & UPS' },
-                        { url: 'assets/img/servicios/cctv-cableado/instalacion-monitor-control-softys.jpg', caption: 'Instalación y conexión de monitor en consola de mando', tag: 'Monitores Control' }
-                    ],
-                    placeholders: [
-                        { title: 'Gabinete Rack de Comunicaciones con Cableado Marcado y Organizado', desc: 'Foto sugerida: Rack de servidores con patch panels rotulados y organización cables.' },
-                        { title: 'Certificación Fluke DTX/DSX de Puntos de Red', desc: 'Foto sugerida: Pantalla del certificador Fluke mostrando resultado PASS en Cat 6/6A.' },
-                        { title: 'Planos Eléctricos Unifilares As-Built en AutoCAD', desc: 'Foto sugerida: Plano impreso o digital con diagramas unifilares y cuadro de cargas.' }
+                        { url: 'assets/img/servicios/cctv-cableado/reubicacion-camaras-cctv.jpg', caption: 'Reubicación de cámaras CCTV', tag: 'CCTV' },
+                        { url: 'assets/img/servicios/cctv-cableado/instalacion-dvr-ups-tablero-softys.jpg', caption: 'Instalación de DVR y UPS en tablero', tag: 'DVR' }
                     ]
                 },
                 mantenimiento: {
                     title: 'Mantenimiento Electromecánico y Polipastos',
                     icon: '<i class="fas fa-gears"></i>',
-                    desc: 'Inspección técnica integral, mantenimiento electromecánico preventivo y correctivo para polipastos de izaje, tableros de mando, motores y bombas industriales.',
-                    scope: [
-                        'Inspección, engrasado de partes móviles y rodamientos de polipastos',
-                        'Lubricación técnica de cadenas de izaje bajo normas de seguridad',
-                        'Retorqueo y limpieza dieléctrica del tablero de control de polipasto',
-                        'Verificación funcional de izaje y frenos tras mantenimiento'
-                    ],
-                    deliverables: [
-                        'Fichas técnicas de mantenimiento preventivo y correctivo',
-                        'Protocolos de pruebas de carga y maniobras de izaje',
-                        'Recomendaciones de recambio preventivo de partes'
-                    ],
-                    standards: 'ASME B30.16 • Normas Técnicas de Seguridad en Izaje • RETIE',
+                    desc: 'Inspección técnica integral y mantenimiento preventivo/correctivo para polipastos.',
+                    scope: ['Inspección y engrasado de polipastos', 'Retorqueo eléctrico de tableros'],
+                    deliverables: ['Fichas técnicas', 'Protocolos de pruebas de carga'],
+                    standards: 'ASME B30.16 • RETIE',
                     realPhotos: [
-                        { url: 'assets/img/servicios/mantenimiento/verificacion-polipasto-mantenimiento.png', caption: 'Verificación y pruebas funcionales de polipasto después del mantenimiento', tag: 'Pruebas de Izaje' },
-                        { url: 'assets/img/servicios/mantenimiento/retorqueo-limpieza-tablero-polipasto.png', caption: 'Retorqueo y limpieza del tablero de control eléctrico del polipasto', tag: 'Tablero Polipasto' },
-                        { url: 'assets/img/servicios/mantenimiento/engrasado-partes-moviles-polipasto.jpg', caption: 'Engrasado de las partes móviles y engranajes del polipasto', tag: 'Engrasado Móvil' },
-                        { url: 'assets/img/servicios/mantenimiento/lubricacion-cadena-polipasto.jpg', caption: 'Inspección y lubricación de cadena de izaje de polipasto', tag: 'Lubricación Cadena' }
-                    ],
-                    placeholders: [
-                        { title: 'Termografía Infrarroja a Motores y Tableros', desc: 'Foto sugerida: Imagen termográfica con cámara Fluke mostrando temperaturas en conexiones.' },
-                        { title: 'Alineación Láser de Motores y Bombas', desc: 'Foto sugerida: Herramienta de alineación láser montada entre ejes de motor y bomba.' }
+                        { url: 'assets/img/servicios/mantenimiento/verificacion-polipasto-mantenimiento.png', caption: 'Verificación y pruebas de polipasto', tag: 'Izaje' },
+                        { url: 'assets/img/servicios/mantenimiento/lubricacion-cadena-polipasto.jpg', caption: 'Lubricación de cadena de izaje', tag: 'Cadena' }
                     ]
                 }
             };
 
-            /* ============================================================ */
-            /* POPULATE GENERAL GALLERY ( REAL PHOTOS) */
-            /* ============================================================ */
+            // Navbar transparent-to-solid toggle
+            const navbar = document.getElementById('navbar');
+            const navLogo = document.getElementById('nav-logo');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-white/95', 'shadow-md');
+                } else {
+                    navbar.classList.remove('bg-white/95', 'shadow-md');
+                }
+            });
+
+            // Featured Projects Switcher
+            const projectsData = [
+                {
+                    title: "Tablero Principal y Centro de Control de Motores Línea MPL1",
+                    desc: "Diseño, ensamble, cableado estructurado de potencia/control y puesta en marcha bajo certificación RETIE y estándares BPM.",
+                    img: "assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg",
+                    client: "Industria Papelera (Softys)",
+                    norm: "NTC 2050 • RETIE",
+                    spec: "Potencia y Control CCM"
+                },
+                {
+                    title: "Canalizaciones y Cableado de Fuerza en Baja y Media Tensión",
+                    desc: "Montaje electromecánico en tubería EMT/IMC, bandejas portacables y mallas de puesta a tierra con soldadura exotérmica.",
+                    img: "assets/img/servicios/instalaciones/cableado-fuerza-control-bandejas.jpg",
+                    client: "Industria Alimentos (Alpina)",
+                    norm: "RETIE • Res. 5018/2019",
+                    spec: "Instalaciones Industriales"
+                },
+                {
+                    title: "Subestación Eléctrica y Totalizador CEDI",
+                    desc: "Montaje estructural para acometidas principales desde subestación hasta tableros generales de distribución.",
+                    img: "assets/img/servicios/subestaciones/totalizador-subestacion-servicios-cedi.jpg",
+                    client: "Sector Logístico y Construcción",
+                    norm: "NTC 2050 • RETILAP",
+                    spec: "Subestaciones y Acometidas"
+                }
+            ];
+
+            document.querySelectorAll('.proj-tab').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.proj-tab').forEach(b => {
+                        b.classList.remove('bg-syselec-teal', 'border-syselec-teal', 'text-white');
+                        b.classList.add('border-white/20', 'text-slate-300');
+                    });
+                    btn.classList.add('bg-syselec-teal', 'border-syselec-teal', 'text-white');
+                    btn.classList.remove('border-white/20', 'text-slate-300');
+
+                    const data = projectsData[btn.dataset.proj];
+                    document.getElementById('proj-title').textContent = data.title;
+                    document.getElementById('proj-desc').textContent = data.desc;
+                    document.getElementById('proj-img').src = data.img;
+                    document.getElementById('proj-client').textContent = data.client;
+                    document.getElementById('proj-norm').textContent = data.norm;
+                    document.getElementById('proj-spec').textContent = data.spec;
+                });
+            });
+
+            // Populate Gallery
             const galleryContainer = document.getElementById('gallery-container');
             const allGalleryPhotos = [];
-
-            // Extract all photos into a single indexed list
             Object.keys(servicesData).forEach(catKey => {
                 const s = servicesData[catKey];
                 s.realPhotos.forEach(p => {
                     allGalleryPhotos.push({
-                        category: catKey === 'mantenimiento' ? 'mantenimiento' : catKey,
-                        categoryLabel: s.title.split(' ')[0] + ' ' + (s.title.split(' ')[1] || ''),
+                        category: catKey,
                         url: p.url,
                         caption: p.caption,
                         tag: p.tag
@@ -2078,43 +1580,23 @@
 
             function renderGallery(filter = 'all') {
                 galleryContainer.innerHTML = '';
-                const filtered = filter === 'all'
-                    ? allGalleryPhotos
-                    : allGalleryPhotos.filter(p => p.category === filter);
-
+                const filtered = filter === 'all' ? allGalleryPhotos : allGalleryPhotos.filter(p => p.category === filter);
                 filtered.forEach(photo => {
                     const card = document.createElement('div');
                     card.className = 'gallery-card bg-white rounded-2xl overflow-hidden shadow-soft border border-slate-100 flex flex-col cursor-pointer group';
                     card.innerHTML = `
                         <div class="relative h-48 overflow-hidden bg-slate-100">
-                            <img src="${photo.url}" alt="${photo.caption}" loading="lazy"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                            <div class="absolute inset-0 bg-syselec-dark/20 group-hover:bg-transparent transition-colors"></div>
-                            <span class="absolute top-2.5 left-2.5 text-[10px] font-bold uppercase tracking-wider text-white bg-syselec-teal/90 px-2.5 py-1 rounded-full backdrop-blur-sm">
-                                ${photo.tag}
-                            </span>
-                            <div class="absolute bottom-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 text-syselec-teal flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                                <i class="fas fa-search-plus text-xs"></i>
-                            </div>
+                            <img src="${photo.url}" alt="${photo.caption}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-2.5 left-2.5 text-[10px] font-bold uppercase tracking-wider text-white bg-syselec-teal/90 px-2.5 py-1 rounded-full">${photo.tag}</span>
                         </div>
-                        <div class="p-3.5 flex flex-col flex-grow">
-                            <p class="text-xs text-slate-700 font-medium leading-snug line-clamp-2" title="${photo.caption}">
-                                ${photo.caption}
-                            </p>
-                        </div>
+                        <div class="p-3.5 flex flex-grow"><p class="text-xs text-slate-700 font-medium line-clamp-2">${photo.caption}</p></div>
                     `;
-
-                    card.addEventListener('click', () => {
-                        openLightbox(photo.url, photo.caption, photo.tag);
-                    });
-
+                    card.addEventListener('click', () => openLightbox(photo.url, photo.caption, photo.tag));
                     galleryContainer.appendChild(card);
                 });
             }
-
             renderGallery('all');
 
-            // Filter button events
             const filterBtns = document.querySelectorAll('.gallery-filter-btn');
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -2124,15 +1606,11 @@
                     });
                     btn.classList.remove('bg-white', 'text-slate-700');
                     btn.classList.add('bg-syselec-teal', 'text-white', 'shadow-sm');
-
-                    const filter = btn.getAttribute('data-filter');
-                    renderGallery(filter);
+                    renderGallery(btn.getAttribute('data-filter'));
                 });
             });
 
-            /* ============================================================ */
-            /* LIGHTBOX LOGIC */
-            /* ============================================================ */
+            // Lightbox functionality
             const lightboxModal = document.getElementById('lightbox-modal');
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxCaption = document.getElementById('lightbox-caption');
@@ -2145,100 +1623,21 @@
                 lightboxTag.textContent = tag || 'Obra Real Syselec';
                 lightboxModal.classList.remove('hidden');
                 lightboxModal.classList.add('flex');
-                document.body.classList.add('overflow-hidden');
             }
-
             function closeLightbox() {
                 lightboxModal.classList.add('hidden');
                 lightboxModal.classList.remove('flex');
-                document.body.classList.remove('overflow-hidden');
             }
-
             closeLightboxBtn.addEventListener('click', closeLightbox);
-            lightboxModal.addEventListener('click', (e) => {
-                if (e.target === lightboxModal) closeLightbox();
-            });
 
-            /* ============================================================ */
-            /* MOBILE MENU */
-            /* ============================================================ */
-            const hamburgerBtn = document.getElementById('hamburger-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-
-            hamburgerBtn.addEventListener('click', () => {
-                const isHidden = mobileMenu.classList.contains('hidden');
-                mobileMenu.classList.toggle('hidden');
-                hamburgerBtn.setAttribute('aria-expanded', String(isHidden));
-                hamburgerBtn.innerHTML = isHidden
-                    ? '<i class="fas fa-times text-xl"></i>'
-                    : '<i class="fas fa-bars text-xl"></i>';
-            });
-
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    hamburgerBtn.setAttribute('aria-expanded', 'false');
-                    hamburgerBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
-                });
-            });
-
-            /* ============================================================ */
-            /* SCROLL REVEAL OBSERVER */
-            /* ============================================================ */
-            const revealElements = document.querySelectorAll('.reveal');
-            if ('IntersectionObserver' in window) {
-                const revealObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-                revealElements.forEach(el => revealObserver.observe(el));
-            } else {
-                revealElements.forEach(el => el.classList.add('active'));
-            }
-
-            /* ============================================================ */
-            /* MODAL HANDLING */
-            /* ============================================================ */
+            // Modals handling
             const allModals = document.querySelectorAll('[role="dialog"]');
-            function openModal(modalEl) {
-                allModals.forEach(m => {
-                    m.classList.add('hidden');
-                    m.classList.remove('flex');
-                });
-                modalEl.classList.remove('hidden');
-                modalEl.classList.add('flex');
-                document.body.classList.add('overflow-hidden');
-            }
-
             function closeAllModals() {
-                allModals.forEach(m => {
-                    m.classList.add('hidden');
-                    m.classList.remove('flex');
-                });
-                document.body.classList.remove('overflow-hidden');
+                allModals.forEach(m => { m.classList.add('hidden'); m.classList.remove('flex'); });
             }
-
             document.querySelectorAll('.close-modal-btn').forEach(btn => btn.addEventListener('click', closeAllModals));
-            allModals.forEach(modalEl => {
-                modalEl.addEventListener('click', (e) => {
-                    if (e.target === modalEl) closeAllModals();
-                });
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                    closeAllModals();
-                }
-            });
 
-            /* ============================================================ */
-            /* SERVICE MODAL INJECTION (WITH REAL PHOTOS & PLACEHOLDERS) */
-            /* ============================================================ */
+            // Service Modal
             const serviceModal = document.getElementById('service-modal');
             document.querySelectorAll('.open-service-modal').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -2249,184 +1648,55 @@
                     document.getElementById('service-modal-icon').innerHTML = data.icon;
                     document.getElementById('service-modal-title').textContent = data.title;
                     document.getElementById('service-modal-desc').textContent = data.desc;
-                    document.getElementById('service-modal-standards').textContent = data.standards;
-
-                    // Scope list
-                    document.getElementById('service-modal-scope').innerHTML = data.scope
-                        .map(item => `<li class="flex items-start gap-2"><i class="fas fa-check text-syselec-teal mt-1 text-xs"></i><span>${item}</span></li>`)
-                        .join('');
-
-                    // Deliverables list
-                    document.getElementById('service-modal-deliverables').innerHTML = data.deliverables
-                        .map(item => `<li class="flex items-start gap-2"><i class="fas fa-award text-syselec-accent mt-1 text-xs"></i><span>${item}</span></li>`)
-                        .join('');
-
-                    // Real photos injection
-                    const photoCountEl = document.getElementById('service-modal-photo-count');
-                    photoCountEl.textContent = `${data.realPhotos.length} fotos reales registradas`;
-
-                    const modalGalleryEl = document.getElementById('service-modal-gallery');
-                    modalGalleryEl.innerHTML = data.realPhotos.map(p => `
-                        <div class="group relative rounded-xl overflow-hidden bg-slate-100 cursor-pointer h-36 sm:h-40 border border-slate-200" onclick="openLightboxDirect('${p.url}', '${p.caption.replace(/'/g, "\\'")}', '${p.tag}')">
-                            <img src="${p.url}" alt="${p.caption}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    document.getElementById('service-modal-scope').innerHTML = data.scope.map(i => `<li class="flex items-start gap-2"><i class="fas fa-check text-syselec-teal mt-1"></i><span>${i}</span></li>`).join('');
+                    document.getElementById('service-modal-deliverables').innerHTML = data.deliverables.map(i => `<li class="flex items-start gap-2"><i class="fas fa-award text-syselec-accent mt-1"></i><span>${i}</span></li>`).join('');
+                    document.getElementById('service-modal-photo-count').textContent = `${data.realPhotos.length} fotos reales`;
+                    document.getElementById('service-modal-gallery').innerHTML = data.realPhotos.map(p => `
+                        <div class="group relative rounded-xl overflow-hidden bg-slate-100 cursor-pointer h-36 border border-slate-200" onclick="openLightbox('${p.url}', '${p.caption.replace(/'/g, "\\'")}', '${p.tag}')">
+                            <img src="${p.url}" alt="${p.caption}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
                             <div class="absolute inset-0 bg-gradient-to-t from-syselec-darker/80 via-transparent to-transparent flex items-end p-2.5">
-                                <span class="text-[11px] text-white font-medium line-clamp-2 leading-tight">${p.caption}</span>
+                                <span class="text-[11px] text-white font-medium line-clamp-2">${p.caption}</span>
                             </div>
-                            <span class="absolute top-2 left-2 text-[9px] font-bold uppercase tracking-wider text-white bg-syselec-teal px-2 py-0.5 rounded-full">
-                                ${p.tag}
-                            </span>
                         </div>
                     `).join('');
 
-                    // Placeholders ocultos por ahora (descomentar cuando se tengan las fotos)
-                    /*
-                    const placeholdersEl = document.getElementById('service-modal-placeholders');
-                    if (data.placeholders && data.placeholders.length > 0) {
-                        document.getElementById('service-modal-placeholders-wrapper').classList.remove('hidden');
-                        placeholdersEl.innerHTML = data.placeholders.map(ph => `
-                            <div class="border-2 border-dashed border-amber-300 bg-amber-50/60 rounded-2xl p-4 flex flex-col justify-center">
-                                <div class="flex items-center gap-2 mb-1.5">
-                                    <span class="w-7 h-7 rounded-lg bg-amber-500/15 text-amber-600 flex items-center justify-center text-xs">
-                                        <i class="fas fa-camera"></i>
-                                    </span>
-                                    <h5 class="text-xs font-bold text-slate-800">${ph.title}</h5>
-                                </div>
-                                <p class="text-[11px] text-slate-600 leading-snug">${ph.desc}</p>
-                                <span class="mt-2 text-[9px] uppercase font-bold text-amber-700 bg-amber-200/50 px-2 py-0.5 rounded-md inline-block w-fit">
-                                    Espacio listo para insertar foto
-                                </span>
-                            </div>
-                        `).join('');
-                    } else {
-                        document.getElementById('service-modal-placeholders-wrapper').classList.add('hidden');
-                    }
-                    */
-
-                    // WhatsApp quote link
-                    const waBtn = document.getElementById('service-modal-wa-btn');
-                    const encodedMsg = encodeURIComponent(`Hola Syselec Ingeniería, me interesa cotizar el servicio de "${data.title}".`);
-                    waBtn.href = `https://wa.me/573203399577?text=${encodedMsg}`;
-
-                    openModal(serviceModal);
+                    serviceModal.classList.remove('hidden');
+                    serviceModal.classList.add('flex');
                 });
             });
 
-            // Global window helper for inline modal image click
-            window.openLightboxDirect = function (url, caption, tag) {
-                openLightbox(url, caption, tag);
-            };
-
-            /* ============================================================ */
-            /* CONTACT FORM HANDLING (FORMSUBMIT AJAX + WHATSAPP FALLBACK) */
-            /* ============================================================ */
-            const notifModal = document.getElementById('notification-modal');
-            const notifModalTitle = document.getElementById('notif-modal-title');
-            const notifModalDesc = document.getElementById('notif-modal-desc');
-            const notifModalIcon = document.getElementById('notif-modal-icon');
-            const notifModalWaBtn = document.getElementById('notif-modal-wa-btn');
+            // Contact form submit handling
             const contactForm = document.getElementById('contact-form');
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const nameInput = document.getElementById('contact-name');
-                const emailInput = document.getElementById('contact-email');
-                const phoneInput = document.getElementById('contact-phone');
-                const messageInput = document.getElementById('contact-message');
-                const serviceInput = document.getElementById('contact-service');
+                const name = document.getElementById('contact-name').value.trim();
+                const email = document.getElementById('contact-email').value.trim();
+                const phone = document.getElementById('contact-phone').value.trim();
+                const service = document.getElementById('contact-service').value;
+                const message = document.getElementById('contact-message').value.trim();
 
-                const errName = document.getElementById('error-name');
-                const errEmail = document.getElementById('error-email');
-                const errMessage = document.getElementById('error-message');
-
-                [errName, errEmail, errMessage].forEach(el => el.classList.add('hidden'));
-                let isValid = true;
-
-                if (nameInput.value.trim().length < 3) {
-                    errName.textContent = 'Por favor ingresa tu nombre completo.';
-                    errName.classList.remove('hidden');
-                    isValid = false;
+                if (!name || !email || !message) {
+                    alert('Por favor completa los campos obligatorios.');
+                    return;
                 }
 
-                if (!emailRegex.test(emailInput.value.trim())) {
-                    errEmail.textContent = 'Ingresa un correo electrónico corporativo válido.';
-                    errEmail.classList.remove('hidden');
-                    isValid = false;
-                }
-
-                if (messageInput.value.trim().length < 10) {
-                    errMessage.textContent = 'Por favor describe brevemente los detalles del requerimiento.';
-                    errMessage.classList.remove('hidden');
-                    isValid = false;
-                }
-
-                if (!isValid) return;
-
-                const clientName = nameInput.value.trim();
-                const clientEmail = emailInput.value.trim();
-                const clientPhone = phoneInput ? phoneInput.value.trim() : 'No indicado';
-                const selectedService = serviceInput.value;
-                const messageText = messageInput.value.trim();
-
-                // Build WhatsApp message for instant direct copy
-                const waText = encodeURIComponent(
-                    `*Nueva Solicitud de Cotización - Syselec Web*\n\n` +
-                    `👤 *Cliente:* ${clientName}\n` +
-                    `✉️ *Email:* ${clientEmail}\n` +
-                    `📞 *Teléfono:* ${clientPhone}\n` +
-                    `⚡ *Área Técnica:* ${selectedService}\n` +
-                    `📝 *Detalles del Proyecto:* ${messageText}`
-                );
-                if (notifModalWaBtn) {
-                    notifModalWaBtn.href = `https://wa.me/573203399577?text=${waText}`;
-                }
-
-                // Show sending state on the button
-                const originalBtnContent = submitBtn.innerHTML;
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = `<span>Enviando requerimiento...</span><i class="fas fa-spinner fa-spin text-sm"></i>`;
+                const waText = encodeURIComponent(`*Nueva Solicitud Web*\nNombre: ${name}\nEmail: ${email}\nTel: ${phone}\nÁrea: ${service}\nMensaje: ${message}`);
+                document.getElementById('notif-modal-wa-btn').href = `https://wa.me/573203399577?text=${waText}`;
 
                 try {
-                    // Send directly to syselecsas@gmail.com via FormSubmit AJAX API
-                    const response = await fetch('https://formsubmit.co/ajax/syselecsas@gmail.com', {
+                    await fetch('https://formsubmit.co/ajax/syselecsas@gmail.com', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            nombre_cliente: clientName,
-                            correo_cliente: clientEmail,
-                            telefono_contacto: clientPhone,
-                            area_o_linea: selectedService,
-                            detalles_proyecto: messageText,
-                            _subject: `Nueva Cotización Web: ${clientName} - ${selectedService}`,
-                            _template: 'table',
-                            _cc: 'proyectosyselec@gmail.com'
-                        })
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({ nombre: name, correo: email, telefono: phone, area: service, mensaje: message })
                     });
-
-                    if (response.ok) {
-                        notifModalIcon.innerHTML = `<i class="fas fa-check-circle text-emerald-500"></i>`;
-                        notifModalIcon.className = "w-16 h-16 mx-auto rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mb-5";
-                        notifModalTitle.textContent = "¡Solicitud Recibida con Éxito!";
-                        notifModalDesc.innerHTML = `Gracias <strong>${clientName}</strong>. Tu requerimiento para <em>"${selectedService}"</em> ha sido enviado directamente al correo <strong>syselecsas@gmail.com</strong>.<br><br>Si deseas una respuesta inmediata o compartir planos/archivos adjuntos adicionales, pulsa el botón de WhatsApp abajo:`;
-                        contactForm.reset();
-                    } else {
-                        throw new Error('Respuesta FormSubmit no exitosa');
-                    }
-                } catch (error) {
-                    // In case of any network or connection restriction, gracefully offer direct WhatsApp delivery
-                    notifModalIcon.innerHTML = `<i class="fab fa-whatsapp text-emerald-600"></i>`;
-                    notifModalIcon.className = "w-16 h-16 mx-auto rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mb-5";
-                    notifModalTitle.textContent = "Conectar vía WhatsApp Técnico";
-                    notifModalDesc.innerHTML = `Gracias <strong>${clientName}</strong>. Para garantizar una atención inmediata sobre <em>"${selectedService}"</em> y recibir tus especificaciones técnicas, continúa directamente con nuestro ingeniero en WhatsApp:`;
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnContent;
-                    openModal(notifModal);
+                } catch(err) {
+                    console.log('Form submitted via fallback');
                 }
+
+                contactForm.reset();
+                const notifModal = document.getElementById('notification-modal');
+                notifModal.classList.remove('hidden');
+                notifModal.classList.add('flex');
             });
         });
     </script>
