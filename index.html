@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome 6 Icons-->
+    <!-- Font Awesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Tailwind CSS CDN -->
@@ -48,95 +48,99 @@
     </script>
 
     <style>
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+        .view-section {
+            display: none;
+            animation: viewFadeIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .view-section.active-view {
+            display: block;
         }
 
-        /* IEB-style subtle underline link animation */
+        @keyframes viewFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .nav-underline {
             position: relative;
         }
         .nav-underline::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -6px;
             left: 0;
             width: 0;
             height: 2px;
             background-color: #0184dd;
             transition: width 0.25s ease;
         }
-        .nav-underline:hover::after {
+        .nav-underline:hover::after,
+        .nav-underline.active-nav::after {
             width: 100%;
         }
     </style>
 </head>
 
-<body class="bg-white text-syselec-dark font-sans antialiased overflow-x-hidden selection:bg-syselec-teal selection:text-white">
+<body class="bg-white text-syselec-dark font-sans antialiased overflow-x-hidden selection:bg-syselec-teal selection:text-white flex flex-col min-h-screen">
 
-    <!-- Transparent-to-Solid Enterprise Top Navigation Bar -->
+    <!-- Persistent Corporate Top Navigation Bar -->
     <header id="navbar"
-        class="fixed top-0 left-0 w-full bg-syselec-darker/80 text-white backdrop-blur-md z-50 transition-all duration-300 border-b border-white/10">
+        class="fixed top-0 left-0 w-full bg-white/95 text-syselec-dark backdrop-blur-md z-50 transition-all duration-300 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav class="flex items-center justify-between h-20">
                 <!-- Brand Logo -->
-                <a href="#inicio" class="flex items-center gap-3 focus:outline-none py-1.5 px-2.5 rounded bg-white/95">
-                    <img src="assets/img/logo-syselec.png" alt="Syselec Ingeniería S.A.S." id="nav-logo"
-                        class="h-10 sm:h-11 w-auto object-contain">
+                <a href="#inicio" data-route="inicio" class="route-link flex items-center gap-3 focus:outline-none py-1">
+                    <img src="assets/img/logo-syselec.png" alt="Syselec Ingeniería S.A.S."
+                        class="h-11 sm:h-12 w-auto object-contain">
                 </a>
 
-                <!-- Streamlined 6-Item Desktop Navigation -->
+                <!-- Desktop Navigation (6 Clean Enterprise Views) -->
                 <ul class="hidden lg:flex items-center gap-8">
-                    <!-- Dropdown: Empresa & SIG -->
-                    <li class="relative group py-7">
-                        <a href="#sobre-nosotros"
-                            class="nav-link nav-underline text-xs uppercase tracking-wider font-heading font-bold transition-colors flex items-center gap-1.5">
-                            <span>Empresa</span>
-                            <i class="fas fa-chevron-down text-[9px] opacity-70 transition-transform duration-300 group-hover:rotate-180"></i>
+                    <li>
+                        <a href="#inicio" data-route="inicio"
+                            class="route-link nav-underline text-xs uppercase tracking-wider font-heading font-bold text-syselec-dark hover:text-syselec-teal transition-colors">
+                            Inicio
                         </a>
-                        <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute left-0 top-full w-64 bg-white text-syselec-dark shadow-xl border-t-2 border-syselec-teal rounded-b-lg py-2">
-                            <a href="#sobre-nosotros" class="block px-5 py-3 text-xs font-semibold hover:bg-slate-50 hover:text-syselec-teal border-b border-slate-100">
-                                Quiénes Somos (25+ Años)
-                            </a>
-                            <a href="#sig" class="block px-5 py-3 text-xs font-semibold hover:bg-slate-50 hover:text-syselec-teal">
-                                Sistema Integrado SIG (HSEQ)
-                            </a>
-                        </div>
                     </li>
-
-                    <!-- Mega-Menu: Servicios -->
+                    <li>
+                        <a href="#empresa" data-route="empresa"
+                            class="route-link nav-underline text-xs uppercase tracking-wider font-heading font-bold text-syselec-dark hover:text-syselec-teal transition-colors">
+                            Empresa &amp; SIG
+                        </a>
+                    </li>
+                    <!-- Mega-Menu Trigger: Soluciones -->
                     <li class="relative group py-7">
-                        <a href="#servicios"
-                            class="nav-link nav-underline text-xs uppercase tracking-wider font-heading font-bold transition-colors flex items-center gap-1.5">
+                        <a href="#soluciones" data-route="soluciones"
+                            class="route-link nav-underline text-xs uppercase tracking-wider font-heading font-bold text-syselec-dark hover:text-syselec-teal transition-colors flex items-center gap-1.5">
                             <span>Soluciones</span>
                             <i class="fas fa-chevron-down text-[9px] opacity-70 transition-transform duration-300 group-hover:rotate-180"></i>
                         </a>
 
-                        <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute left-1/2 -translate-x-1/2 top-full w-[680px] bg-white text-syselec-dark shadow-2xl border-t-2 border-syselec-teal rounded-b-lg p-6 grid grid-cols-12 gap-6">
+                        <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute left-1/2 -translate-x-1/2 top-full w-[680px] bg-white text-syselec-dark shadow-2xl border-t-2 border-syselec-teal rounded-b-lg p-6 grid grid-cols-12 gap-6 border-x border-b border-slate-200">
                             <div class="col-span-7 space-y-2">
-                                <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100 pb-2 mb-2">Portafolio de Ingeniería</div>
-                                <a href="#servicios" class="flex items-start gap-3 p-2.5 rounded hover:bg-slate-50 transition-colors">
+                                <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100 pb-2 mb-2">Especialidades Técnicas</div>
+                                <a href="#soluciones" data-route="soluciones" class="route-link flex items-start gap-3 p-2.5 rounded hover:bg-slate-50 transition-colors">
                                     <i class="fas fa-plug-circle-bolt text-syselec-teal mt-0.5"></i>
                                     <div>
                                         <div class="font-heading font-bold text-xs text-syselec-blue">Media y Baja Tensión</div>
                                         <div class="text-[11px] text-slate-500">Canalizaciones EMT/IMC, bandejas y mallas a tierra</div>
                                     </div>
                                 </a>
-                                <a href="#servicios" class="flex items-start gap-3 p-2.5 rounded hover:bg-slate-50 transition-colors">
+                                <a href="#soluciones" data-route="soluciones" class="route-link flex items-start gap-3 p-2.5 rounded hover:bg-slate-50 transition-colors">
                                     <i class="fas fa-sliders text-syselec-teal mt-0.5"></i>
                                     <div>
                                         <div class="font-heading font-bold text-xs text-syselec-blue">Tableros de Control y CCM</div>
                                         <div class="text-[11px] text-slate-500">Variadores de velocidad, arranque suave y potencia</div>
                                     </div>
                                 </a>
-                                <a href="#servicios" class="flex items-start gap-3 p-2.5 rounded hover:bg-slate-50 transition-colors">
+                                <a href="#soluciones" data-route="soluciones" class="route-link flex items-start gap-3 p-2.5 rounded hover:bg-slate-50 transition-colors">
                                     <i class="fas fa-tower-broadcast text-syselec-teal mt-0.5"></i>
                                     <div>
                                         <div class="font-heading font-bold text-xs text-syselec-blue">Subestaciones y Automatización</div>
@@ -149,40 +153,45 @@
                                 <div class="relative z-10">
                                     <span class="text-[10px] font-bold uppercase tracking-wider bg-syselec-teal px-2 py-0.5 rounded-sm">Normativa RETIE</span>
                                     <h4 class="font-heading font-bold text-sm mt-3">855+ Proyectos Ejecutados</h4>
-                                    <p class="text-[11px] text-slate-300 mt-1.5 leading-relaxed">Respaldo técnico comprobado para plantas industriales de operación continua.</p>
+                                    <p class="text-[11px] text-slate-300 mt-1.5 leading-relaxed">Evidencia comprobada en plantas industriales de operación continua.</p>
                                 </div>
-                                <a href="#galeria" class="relative z-10 mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-syselec-accent hover:underline">
-                                    <span>Explorar registro en obra</span>
+                                <a href="#proyectos" data-route="proyectos" class="route-link relative z-10 mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-syselec-accent hover:underline">
+                                    <span>Ver proyectos en obra</span>
                                     <i class="fas fa-arrow-right text-[10px]"></i>
                                 </a>
                             </div>
                         </div>
                     </li>
-
-                    <li><a href="#proyectos-destacados"
-                            class="nav-link nav-underline text-xs uppercase tracking-wider font-heading font-bold transition-colors">Proyectos</a>
+                    <li>
+                        <a href="#proyectos" data-route="proyectos"
+                            class="route-link nav-underline text-xs uppercase tracking-wider font-heading font-bold text-syselec-dark hover:text-syselec-teal transition-colors">
+                            Proyectos
+                        </a>
                     </li>
-                    <li><a href="#mercado"
-                            class="nav-link nav-underline text-xs uppercase tracking-wider font-heading font-bold transition-colors">Sectores</a>
+                    <li>
+                        <a href="#sectores" data-route="sectores"
+                            class="route-link nav-underline text-xs uppercase tracking-wider font-heading font-bold text-syselec-dark hover:text-syselec-teal transition-colors">
+                            Sectores y Aliados
+                        </a>
                     </li>
-                    <li><a href="#clientes"
-                            class="nav-link nav-underline text-xs uppercase tracking-wider font-heading font-bold transition-colors">Aliados</a>
-                    </li>
-                    <li><a href="#contacto"
-                            class="nav-link nav-underline text-xs uppercase tracking-wider font-heading font-bold transition-colors">Contacto</a>
+                    <li>
+                        <a href="#contacto" data-route="contacto"
+                            class="route-link nav-underline text-xs uppercase tracking-wider font-heading font-bold text-syselec-dark hover:text-syselec-teal transition-colors">
+                            Contacto
+                        </a>
                     </li>
                 </ul>
 
-                <!-- Right Actions: Architectural Sharp CTA + Mobile Button -->
+                <!-- Right Actions: Sharp CTA + Mobile Toggle -->
                 <div class="flex items-center gap-3">
-                    <a href="#contacto"
-                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded text-xs font-heading font-bold uppercase tracking-wider text-white bg-syselec-teal hover:bg-syselec-tealDark transition-colors">
+                    <a href="#contacto" data-route="contacto"
+                        class="route-link inline-flex items-center gap-2 px-5 py-2.5 rounded text-xs font-heading font-bold uppercase tracking-wider text-white bg-syselec-blueDark hover:bg-syselec-teal transition-colors">
                         <span>Cotizar Proyecto</span>
                         <i class="fas fa-arrow-right text-[10px]"></i>
                     </a>
 
                     <button id="hamburger-btn" type="button"
-                        class="lg:hidden p-2.5 rounded text-current hover:bg-white/10 focus:outline-none transition-colors cursor-pointer"
+                        class="lg:hidden p-2.5 rounded text-syselec-dark hover:bg-slate-100 focus:outline-none transition-colors cursor-pointer"
                         aria-label="Abrir menú de navegación" aria-expanded="false">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
@@ -191,17 +200,14 @@
         </div>
 
         <!-- Mobile Slide-Down Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white text-syselec-dark border-t border-slate-200 shadow-xl max-h-[85vh] overflow-y-auto">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white text-syselec-dark border-t border-slate-200 shadow-xl">
             <ul class="flex flex-col px-6 py-5 divide-y divide-slate-100">
-                <li><a href="#inicio" class="mobile-nav-link block py-3 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Inicio</a></li>
-                <li><a href="#sobre-nosotros" class="mobile-nav-link block py-3 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Quiénes Somos</a></li>
-                <li><a href="#servicios" class="mobile-nav-link block py-3 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Soluciones y Servicios</a></li>
-                <li><a href="#proyectos-destacados" class="mobile-nav-link block py-3 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Proyectos Destacados</a></li>
-                <li><a href="#galeria" class="mobile-nav-link block py-3 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Galería en Obra</a></li>
-                <li><a href="#mercado" class="mobile-nav-link block py-3 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Sectores</a></li>
-                <li><a href="#sig" class="mobile-nav-link block py-3 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Sistema Integrado SIG (HSEQ)</a></li>
-                <li><a href="#clientes" class="mobile-nav-link block py-3 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Clientes y Marcas</a></li>
-                <li><a href="#contacto" class="mobile-nav-link block py-3 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Contacto</a></li>
+                <li><a href="#inicio" data-route="inicio" class="route-link mobile-nav-link block py-3.5 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Inicio</a></li>
+                <li><a href="#empresa" data-route="empresa" class="route-link mobile-nav-link block py-3.5 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Empresa &amp; Sistema SIG</a></li>
+                <li><a href="#soluciones" data-route="soluciones" class="route-link mobile-nav-link block py-3.5 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Soluciones de Ingeniería</a></li>
+                <li><a href="#proyectos" data-route="proyectos" class="route-link mobile-nav-link block py-3.5 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Proyectos y Galería en Obra</a></li>
+                <li><a href="#sectores" data-route="sectores" class="route-link mobile-nav-link block py-3.5 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Sectores, Clientes y Marcas</a></li>
+                <li><a href="#contacto" data-route="contacto" class="route-link mobile-nav-link block py-3.5 font-heading font-bold text-xs uppercase tracking-wider hover:text-syselec-teal">Contacto y Cotizaciones</a></li>
                 <li class="pt-4">
                     <a href="https://wa.me/573203399577" target="_blank" rel="noopener noreferrer"
                         class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded font-heading font-bold text-xs uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-700 transition-colors">
@@ -213,869 +219,957 @@
         </div>
     </header>
 
-    <!-- Hero Section (IEB Editorial Style: Clean Grid, High Contrast, Restrained Geometry) -->
-    <section id="inicio" class="relative min-h-[92vh] flex items-center pt-28 pb-20 overflow-hidden bg-syselec-darker">
-        <div class="absolute inset-0 z-0">
-            <img src="assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg"
-                alt="Montaje electromecánico de Tableros CCM Syselec Ingeniería"
-                class="w-full h-full object-cover object-center scale-105">
-            <div class="absolute inset-0 bg-gradient-to-r from-syselec-darker/95 via-syselec-blueDark/88 to-syselec-darker/75"></div>
-            <!-- Architectural Grid Lines -->
-            <div class="absolute inset-0 opacity-10"
-                style="background-image: linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 80px 80px;">
-            </div>
-        </div>
+    <!-- ========================================================================= -->
+    <!-- MAIN VIEWPORT CONTAINER (6 DEDICATED VIEWS)                               -->
+    <!-- ========================================================================= -->
+    <main class="flex-grow pt-20">
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-                <div class="lg:col-span-8 reveal active">
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="h-0.5 w-10 bg-syselec-teal"></span>
-                        <span class="text-xs font-heading font-bold uppercase tracking-[0.2em] text-syselec-teal">
-                            Ingeniería Eléctrica &amp; Automatización Industrial
-                        </span>
-                    </div>
-
-                    <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-[54px] text-white leading-[1.12] tracking-tight mb-6">
-                        Confiabilidad operativa y montajes electromecánicos de alta precisión.
-                    </h1>
-
-                    <p class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed mb-10 max-w-2xl">
-                        Más de 25 años ejecutando proyectos en media y baja tensión, tableros CCM y subestaciones bajo estricta normativa NTC 2050, RETIE, RETILAP y Resolución 5018 de 2019.
-                    </p>
-
-                    <div class="flex flex-wrap items-center gap-4">
-                        <a href="#servicios"
-                            class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded text-xs font-heading font-bold uppercase tracking-wider text-white bg-syselec-teal hover:bg-syselec-tealDark transition-colors">
-                            <span>Explorar Soluciones</span>
-                            <i class="fas fa-arrow-right text-xs"></i>
-                        </a>
-                        <a href="#proyectos-destacados"
-                            class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded text-xs font-heading font-bold uppercase tracking-wider text-white border border-white/40 hover:bg-white hover:text-syselec-blueDark transition-colors">
-                            <span>Proyectos Ejecutados</span>
-                        </a>
+        <!-- ===================================================================== -->
+        <!-- VIEW 1: INICIO (EXECUTIVE LANDING OVERVIEW)                           -->
+        <!-- ===================================================================== -->
+        <div id="view-inicio" class="view-section active-view">
+            <!-- Hero Section -->
+            <section class="relative min-h-[86vh] flex items-center py-20 overflow-hidden bg-syselec-darker">
+                <div class="absolute inset-0 z-0">
+                    <img src="assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg"
+                        alt="Montaje electromecánico de Tableros CCM Syselec Ingeniería"
+                        class="w-full h-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-r from-syselec-darker/95 via-syselec-blueDark/88 to-syselec-darker/75"></div>
+                    <div class="absolute inset-0 opacity-10"
+                        style="background-image: linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 80px 80px;">
                     </div>
                 </div>
 
-                <!-- Right Architectural KPI Card (IEB Data Strip Style) -->
-                <div class="lg:col-span-4 reveal active">
-                    <div class="bg-white/5 backdrop-blur-md border border-white/15 rounded-lg p-6 sm:p-8 divide-y divide-white/15">
-                        <div class="pb-5 flex items-baseline justify-between">
-                            <div>
-                                <div class="font-heading font-extrabold text-3xl sm:text-4xl text-white">855+</div>
-                                <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">Proyectos Ejecutados</div>
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+                        <div class="lg:col-span-8">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="h-0.5 w-10 bg-syselec-teal"></span>
+                                <span class="text-xs font-heading font-bold uppercase tracking-[0.2em] text-syselec-teal">
+                                    Ingeniería Eléctrica &amp; Automatización Industrial
+                                </span>
                             </div>
-                            <i class="fas fa-check-double text-syselec-teal text-xl"></i>
-                        </div>
-                        <div class="py-5 flex items-baseline justify-between">
-                            <div>
-                                <div class="font-heading font-extrabold text-3xl sm:text-4xl text-white">25+</div>
-                                <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">Años de Trayectoria</div>
+
+                            <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-[52px] text-white leading-[1.12] tracking-tight mb-6">
+                                Confiabilidad operativa y montajes electromecánicos de alta precisión.
+                            </h1>
+
+                            <p class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed mb-10 max-w-2xl">
+                                Más de 25 años ejecutando proyectos en media y baja tensión, tableros CCM y subestaciones bajo estricta normativa NTC 2050, RETIE, RETILAP y Resolución 5018 de 2019.
+                            </p>
+
+                            <div class="flex flex-wrap items-center gap-4">
+                                <a href="#soluciones" data-route="soluciones"
+                                    class="route-link inline-flex items-center justify-center gap-3 px-7 py-4 rounded text-xs font-heading font-bold uppercase tracking-wider text-white bg-syselec-teal hover:bg-syselec-tealDark transition-colors">
+                                    <span>Explorar Soluciones</span>
+                                    <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                                <a href="#proyectos" data-route="proyectos"
+                                    class="route-link inline-flex items-center justify-center gap-3 px-7 py-4 rounded text-xs font-heading font-bold uppercase tracking-wider text-white border border-white/40 hover:bg-white hover:text-syselec-blueDark transition-colors">
+                                    <span>Ver Proyectos en Obra</span>
+                                </a>
                             </div>
-                            <i class="fas fa-industry text-syselec-accent text-xl"></i>
                         </div>
-                        <div class="pt-5">
-                            <div class="font-heading font-bold text-sm text-syselec-teal uppercase tracking-wider">100% Cumplimiento Normativo</div>
-                            <div class="text-xs text-slate-300 mt-1">NTC 2050 • RETIE • RETILAP • Res. 5018/2019</div>
+
+                        <!-- Right Architectural KPI Box -->
+                        <div class="lg:col-span-4">
+                            <div class="bg-white/5 backdrop-blur-md border border-white/15 rounded-lg p-6 sm:p-8 divide-y divide-white/15">
+                                <div class="pb-5 flex items-baseline justify-between">
+                                    <div>
+                                        <div class="font-heading font-extrabold text-3xl sm:text-4xl text-white">855+</div>
+                                        <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">Proyectos Ejecutados</div>
+                                    </div>
+                                    <i class="fas fa-check-double text-syselec-teal text-xl"></i>
+                                </div>
+                                <div class="py-5 flex items-baseline justify-between">
+                                    <div>
+                                        <div class="font-heading font-extrabold text-3xl sm:text-4xl text-white">25+</div>
+                                        <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">Años de Trayectoria</div>
+                                    </div>
+                                    <i class="fas fa-industry text-syselec-accent text-xl"></i>
+                                </div>
+                                <div class="pt-5">
+                                    <div class="font-heading font-bold text-sm text-syselec-teal uppercase tracking-wider">100% Cumplimiento Normativo</div>
+                                    <div class="text-xs text-slate-300 mt-1">NTC 2050 • RETIE • RETILAP • ISO 9001/45001/14001</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Sobre Nosotros Section -->
-    <section id="sobre-nosotros" class="py-24 bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-                <!-- Left Image with Sharp Architectural Framing -->
-                <div class="lg:col-span-6 relative reveal group">
-                    <div class="overflow-hidden rounded-lg border border-slate-200">
-                        <img src="assets/img/nuestro-equipo-syselec.jpg"
-                            alt="Equipo de ingenieros y técnicos especializados de Syselec Ingeniería S.A.S."
-                            class="w-full h-[460px] sm:h-[520px] object-cover object-center group-hover:scale-103 transition-transform duration-500">
-                    </div>
-
-                    <!-- Clean Corporate Overlay Box -->
-                    <div class="mt-4 sm:mt-0 sm:absolute sm:-bottom-6 sm:right-6 bg-syselec-blueDark text-white px-7 py-5 rounded-lg shadow-xl border-l-4 border-syselec-teal">
-                        <div class="font-heading font-extrabold text-3xl leading-none flex items-center gap-2">
-                            <span>25+ Años</span>
-                        </div>
-                        <div class="text-[11px] font-semibold uppercase tracking-widest text-slate-300 mt-1.5">
-                            Respaldo Técnico Industrial
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Content -->
-                <div class="lg:col-span-6 reveal">
-                    <div class="flex items-center gap-2.5 mb-3">
-                        <span class="h-0.5 w-6 bg-syselec-teal"></span>
-                        <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">
-                            Quiénes Somos
-                        </span>
-                    </div>
-                    <h2 class="font-heading font-bold text-3xl sm:text-4xl text-syselec-blue leading-tight mb-6">
-                        Tu aliado estratégico en servicio técnico electromecánico
-                    </h2>
-                    <p class="text-slate-600 text-base leading-relaxed mb-5">
-                        <strong>Syselec Ingeniería S.A.S.</strong> es la alternativa confiable para atender sus necesidades de ingeniería, ensamble y suministro de equipamiento eléctrico. Con <strong>más de 855 proyectos ejecutados</strong> en plantas como Softys, Alpina y Corona, garantizamos continuidad operativa y seguridad.
-                    </p>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-8">
-                        Cada montaje es asumido con el mismo rigor técnico, protocolos de Seguridad y Salud en el Trabajo (SST), gestión ambiental responsable y estricto cumplimiento de NTC 2050, RETIE y RETILAP.
-                    </p>
-
-                    <!-- Clean Grid Value Pillars -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-200 pt-8">
-                        <div class="p-4 rounded-lg bg-syselec-light border border-slate-200/80">
-                            <div class="flex items-center gap-2.5 mb-1.5">
-                                <i class="fas fa-shield-halved text-syselec-teal text-sm"></i>
-                                <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue">Rigor Normativo</h3>
-                            </div>
-                            <p class="text-xs text-slate-600 leading-relaxed">Certificación y cumplimiento integral bajo NTC 2050, RETIE y RETILAP.</p>
-                        </div>
-
-                        <div class="p-4 rounded-lg bg-syselec-light border border-slate-200/80">
-                            <div class="flex items-center gap-2.5 mb-1.5">
-                                <i class="fas fa-hard-hat text-emerald-600 text-sm"></i>
-                                <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue">Cultura SST &amp; BPM</h3>
-                            </div>
-                            <p class="text-xs text-slate-600 leading-relaxed">Buenas prácticas de manufactura y control estricto de riesgo eléctrico.</p>
-                        </div>
-
-                        <div class="p-4 rounded-lg bg-syselec-light border border-slate-200/80">
-                            <div class="flex items-center gap-2.5 mb-1.5">
-                                <i class="fas fa-tags text-syselec-teal text-sm"></i>
-                                <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue">Eficiencia en Costos</h3>
-                            </div>
-                            <p class="text-xs text-slate-600 leading-relaxed">Optimización en suministros de primera línea y tiempos de parada en planta.</p>
-                        </div>
-
-                        <div class="p-4 rounded-lg bg-syselec-light border border-slate-200/80">
-                            <div class="flex items-center gap-2.5 mb-1.5">
-                                <i class="fas fa-sliders text-amber-600 text-sm"></i>
-                                <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue">Ingeniería a Medida</h3>
-                            </div>
-                            <p class="text-xs text-slate-600 leading-relaxed">Diseño y ensamble adaptado a los retos específicos de cada línea productiva.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Soluciones y Servicios (Architectural Grid Cards) -->
-    <section id="servicios" class="py-24 bg-syselec-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 reveal">
-                <div class="max-w-2xl">
-                    <div class="flex items-center gap-2.5 mb-3">
-                        <span class="h-0.5 w-6 bg-syselec-teal"></span>
-                        <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">
-                            Portafolio Técnico
-                        </span>
-                    </div>
-                    <h2 class="font-heading font-bold text-3xl sm:text-4xl text-syselec-blue">Soluciones de Ingeniería</h2>
-                </div>
-                <p class="text-slate-600 text-sm max-w-md mt-4 md:mt-0">
-                    Equipamiento certificado, montaje electromecánico y mantenimiento preventivo y correctivo en planta.
-                </p>
-            </div>
-
-            <!-- 7 Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Service 1 -->
-                <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden reveal">
-                    <div class="relative h-52 overflow-hidden bg-slate-900">
-                        <img src="assets/img/servicios/instalaciones/cableado-fuerza-control-bandejas.jpg"
-                            alt="Instalación de cableados de fuerza y control por bandejas Syselec"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
-                            12 Registros en Obra
-                        </span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <div class="text-xs font-heading font-bold text-syselec-teal mb-1">01</div>
-                        <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
-                            Instalaciones en Media y Baja Tensión
-                        </h3>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
-                            Canalizaciones en tubería EMT/IMC, bandejas portacables, mallas de puesta a tierra con soldadura Cadweld y cableados de potencia.
-                        </p>
-                        <button type="button" data-service="instalaciones"
-                            class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
-                            <span>Ficha técnica y evidencia</span>
-                            <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Service 2 -->
-                <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden reveal">
-                    <div class="relative h-52 overflow-hidden bg-slate-900">
-                        <img src="assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg"
-                            alt="Diseño, suministro e instalación de Tablero principal Syselec"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
-                            9 Registros en Obra
-                        </span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <div class="text-xs font-heading font-bold text-syselec-teal mb-1">02</div>
-                        <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
-                            Tableros de Control y CCM
-                        </h3>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
-                            Diseño, suministro e instalación de tableros para centros de control de motores (CCM), con arranque directo, variador o arranque suave.
-                        </p>
-                        <button type="button" data-service="tableros"
-                            class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
-                            <span>Ficha técnica y evidencia</span>
-                            <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Service 3 -->
-                <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden reveal">
-                    <div class="relative h-52 overflow-hidden bg-slate-900">
-                        <img src="assets/img/servicios/subestaciones/totalizador-subestacion-servicios-cedi.jpg"
-                            alt="Totalizador en subestación CEDI Syselec"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
-                            3 Registros en Obra
-                        </span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <div class="text-xs font-heading font-bold text-syselec-teal mb-1">03</div>
-                        <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
-                            Montaje de Subestaciones
-                        </h3>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
-                            Montaje estructural para acometidas principales desde subestaciones hasta tableros generales de distribución.
-                        </p>
-                        <button type="button" data-service="subestaciones"
-                            class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
-                            <span>Ficha técnica y evidencia</span>
-                            <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Service 4 -->
-                <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden reveal">
-                    <div class="relative h-52 overflow-hidden bg-slate-900">
-                        <img src="assets/img/servicios/automatizacion/instalacion-botoneras-sensores1.jpg"
-                            alt="Instalación de botoneras y sensores industriales Syselec"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
-                            7 Registros en Obra
-                        </span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <div class="text-xs font-heading font-bold text-syselec-teal mb-1">04</div>
-                        <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
-                            Automatización e Instrumentación
-                        </h3>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
-                            Modernización de procesos, montaje de sensores industriales, controladores digitales y líneas neumáticas de maquinaria.
-                        </p>
-                        <button type="button" data-service="automatizacion"
-                            class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
-                            <span>Ficha técnica y evidencia</span>
-                            <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Service 5 -->
-                <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden reveal">
-                    <div class="relative h-52 overflow-hidden bg-slate-900">
-                        <img src="assets/img/servicios/iluminacion/luminarias-reubicadas-funcionando.jpg"
-                            alt="Luminarias industriales reubicadas en bodega con Manlift Syselec"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
-                            3 Registros en Obra
-                        </span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <div class="text-xs font-heading font-bold text-syselec-teal mb-1">05</div>
-                        <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
-                            Alumbrado LED y Sistemas Solares
-                        </h3>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
-                            Montaje y mantenimiento de sistemas de alumbrado High Bay y lámparas industriales LED bajo normativa RETILAP.
-                        </p>
-                        <button type="button" data-service="iluminacion"
-                            class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
-                            <span>Ficha técnica y evidencia</span>
-                            <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Service 6 -->
-                <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden reveal">
-                    <div class="relative h-52 overflow-hidden bg-slate-900">
-                        <img src="assets/img/servicios/cctv-cableado/reubicacion-camaras-cctv.jpg"
-                            alt="Reubicación de cámaras de seguridad y circuito CCTV Syselec"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
-                            3 Registros en Obra
-                        </span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <div class="text-xs font-heading font-bold text-syselec-teal mb-1">06</div>
-                        <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
-                            Cableado, CCTV y Planos As-Built
-                        </h3>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
-                            Instalación de circuitos CCTV industrial, cableado estructurado, respaldo UPS y levantamiento de planos eléctricos.
-                        </p>
-                        <button type="button" data-service="cableado"
-                            class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
-                            <span>Ficha técnica y evidencia</span>
-                            <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Service 7 (Full-width horizontal featured bar on desktop for balanced 3+3+1 grid) -->
-                <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 md:col-span-2 lg:col-span-3 grid grid-cols-1 lg:grid-cols-12 overflow-hidden reveal">
-                    <div class="lg:col-span-4 relative h-52 lg:h-auto overflow-hidden bg-slate-900">
-                        <img src="assets/img/servicios/mantenimiento/verificacion-polipasto-mantenimiento.png"
-                            alt="Verificación y mantenimiento electromecánico de polipastos Syselec"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
-                            4 Registros en Obra
-                        </span>
-                    </div>
-                    <div class="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between">
+            <!-- Home Quick Navigation Pillars (IEB Modular Entry Cards) -->
+            <section class="py-20 bg-white border-b border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                         <div>
-                            <div class="text-xs font-heading font-bold text-syselec-teal mb-1">07 • MANTENIMIENTO ESPECIALIZADO</div>
-                            <h3 class="font-heading font-bold text-xl text-syselec-blue mb-3 group-hover:text-syselec-teal transition-colors">
-                                Mantenimiento Electromecánico y Polipastos de Izaje
-                            </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-6 max-w-3xl">
-                                Inspección técnica integral, lubricación de cadenas de izaje, engrasado de partes móviles, pruebas de carga y retorqueo dieléctrico de tableros de control en maquinaria crítica.
+                            <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Áreas Estratégicas</span>
+                            <h2 class="font-heading font-bold text-3xl text-syselec-blue mt-1">Capacidades de Ingeniería</h2>
+                        </div>
+                        <a href="#soluciones" data-route="soluciones" class="route-link mt-4 md:mt-0 inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue hover:text-syselec-teal">
+                            <span>Ver portafolio completo (7 especialidades)</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <a href="#soluciones" data-route="soluciones" class="route-link group bg-syselec-light p-8 rounded-lg border border-slate-200 hover:border-syselec-teal transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-6">
+                                    <span class="font-heading font-extrabold text-2xl text-slate-300 group-hover:text-syselec-teal transition-colors">01</span>
+                                    <i class="fas fa-plug-circle-bolt text-syselec-blue text-xl"></i>
+                                </div>
+                                <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2">Media y Baja Tensión</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-6">Canalizaciones EMT/IMC, bandejas portacables, mallas a tierra Cadweld y acometidas industriales.</p>
+                            </div>
+                            <span class="text-xs font-heading font-bold uppercase tracking-wider text-syselec-teal inline-flex items-center gap-2">
+                                <span>Explorar</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </a>
+
+                        <a href="#soluciones" data-route="soluciones" class="route-link group bg-syselec-light p-8 rounded-lg border border-slate-200 hover:border-syselec-teal transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-6">
+                                    <span class="font-heading font-extrabold text-2xl text-slate-300 group-hover:text-syselec-teal transition-colors">02</span>
+                                    <i class="fas fa-sliders text-syselec-blue text-xl"></i>
+                                </div>
+                                <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2">Tableros de Control y CCM</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-6">Diseño, ensamble y pruebas FAT de Centros de Control de Motores, variadores y arrancadores suaves.</p>
+                            </div>
+                            <span class="text-xs font-heading font-bold uppercase tracking-wider text-syselec-teal inline-flex items-center gap-2">
+                                <span>Explorar</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </a>
+
+                        <a href="#soluciones" data-route="soluciones" class="route-link group bg-syselec-light p-8 rounded-lg border border-slate-200 hover:border-syselec-teal transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-6">
+                                    <span class="font-heading font-extrabold text-2xl text-slate-300 group-hover:text-syselec-teal transition-colors">03</span>
+                                    <i class="fas fa-tower-broadcast text-syselec-blue text-xl"></i>
+                                </div>
+                                <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2">Subestaciones y Automatización</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-6">Montaje de totalizadores, instrumentación industrial, sensórica y redes de control en planta.</p>
+                            </div>
+                            <span class="text-xs font-heading font-bold uppercase tracking-wider text-syselec-teal inline-flex items-center gap-2">
+                                <span>Explorar</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Home Trust Strip (Selected Clients Preview) -->
+            <section class="py-16 bg-syselec-light">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8">
+                        <span class="text-xs font-heading font-bold uppercase tracking-widest text-slate-500">
+                            Respaldo comprobado en plantas líderes de Colombia
+                        </span>
+                        <a href="#sectores" data-route="sectores" class="route-link text-xs font-heading font-bold uppercase tracking-wider text-syselec-teal hover:underline mt-2 sm:mt-0">
+                            Ver todos los clientes y marcas →
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 border-t border-l border-slate-200 bg-white">
+                        <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center">
+                            <img src="assets/img/logo-Softys.png" alt="Softys" class="max-h-10 max-w-[85%] object-contain grayscale opacity-80">
+                        </div>
+                        <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center">
+                            <img src="assets/img/logo-alpina.png" alt="Alpina" class="max-h-10 max-w-[85%] object-contain grayscale opacity-80">
+                        </div>
+                        <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center">
+                            <img src="assets/img/logo-tetra-pak.png" alt="Tetra Pak" class="max-h-10 max-w-[85%] object-contain grayscale opacity-80">
+                        </div>
+                        <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center">
+                            <img src="assets/img/logo-ramo.png" alt="Ramo" class="max-h-10 max-w-[85%] object-contain grayscale opacity-80">
+                        </div>
+                        <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center">
+                            <img src="assets/img/logo-SGS.png" alt="SGS" class="max-h-10 max-w-[85%] object-contain grayscale opacity-80">
+                        </div>
+                        <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center">
+                            <img src="assets/img/logo-fresenius.png" alt="Fresenius" class="max-h-9 max-w-[85%] object-contain grayscale opacity-80">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- VIEW 2: EMPRESA & SISTEMA SIG (HSEQ)                                  -->
+        <!-- ===================================================================== -->
+        <div id="view-empresa" class="view-section">
+            <!-- Corporate View Banner -->
+            <div class="bg-syselec-blueDark text-white py-14 border-b border-white/10">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-xs font-heading font-semibold uppercase tracking-widest text-slate-400 mb-3">
+                        <a href="#inicio" data-route="inicio" class="route-link hover:text-white">Inicio</a>
+                        <span class="mx-2">/</span>
+                        <span class="text-syselec-teal">Empresa &amp; Sistema SIG</span>
+                    </div>
+                    <h1 class="font-heading font-extrabold text-3xl sm:text-4xl">Nuestra Compañía y Gobernanza HSEQ</h1>
+                    <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
+                        Más de 25 años de trayectoria en servicio técnico electromecánico bajo estándares internacionales de Calidad, Seguridad y Gestión Ambiental.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sobre Nosotros -->
+            <section class="py-20 bg-white border-b border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-6 relative">
+                            <div class="overflow-hidden rounded-lg border border-slate-200">
+                                <img src="assets/img/nuestro-equipo-syselec.jpg"
+                                    alt="Equipo de ingenieros y técnicos especializados de Syselec Ingeniería S.A.S."
+                                    class="w-full h-[460px] object-cover object-center">
+                            </div>
+                            <div class="mt-4 sm:mt-0 sm:absolute sm:-bottom-6 sm:right-6 bg-syselec-blueDark text-white px-7 py-5 rounded-lg shadow-xl border-l-4 border-syselec-teal">
+                                <div class="font-heading font-extrabold text-3xl leading-none">25+ Años</div>
+                                <div class="text-[11px] font-semibold uppercase tracking-widest text-slate-300 mt-1.5">
+                                    Respaldo Técnico Industrial
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-6">
+                            <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Resumen Ejecutivo</span>
+                            <h2 class="font-heading font-bold text-3xl text-syselec-blue leading-tight mt-2 mb-5">
+                                Tu aliado estratégico en servicio técnico electromecánico
+                            </h2>
+                            <p class="text-slate-600 text-base leading-relaxed mb-5">
+                                <strong>Syselec Ingeniería S.A.S.</strong> es la alternativa confiable para atender sus necesidades de ingeniería, ensamble y suministro de equipamiento eléctrico. Con <strong>más de 855 proyectos ejecutados</strong> en plantas como Softys, Alpina y Corona, garantizamos continuidad operativa y seguridad.
+                            </p>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-8">
+                                Para nosotros no existen proyectos grandes o pequeños: cada montaje es asumido con el mismo rigor técnico, protocolos de Seguridad y Salud en el Trabajo (SST), gestión ambiental responsable y estricto cumplimiento de NTC 2050, RETIE y RETILAP.
+                            </p>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-200 pt-6">
+                                <div class="p-4 rounded-lg bg-syselec-light border border-slate-200">
+                                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue mb-1">Cumplimiento RETIE / RETILAP</h3>
+                                    <p class="text-xs text-slate-600">Garantía de calidad y seguridad en diseños y montajes.</p>
+                                </div>
+                                <div class="p-4 rounded-lg bg-syselec-light border border-slate-200">
+                                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue mb-1">Cultura SST &amp; BPM</h3>
+                                    <p class="text-xs text-slate-600">Buenas prácticas de manufactura y control de riesgos en planta.</p>
+                                </div>
+                                <div class="p-4 rounded-lg bg-syselec-light border border-slate-200">
+                                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue mb-1">Precios Competitivos</h3>
+                                    <p class="text-xs text-slate-600">Eficiencia en compras y optimización de costos operativos.</p>
+                                </div>
+                                <div class="p-4 rounded-lg bg-syselec-light border border-slate-200">
+                                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue mb-1">Soluciones a Medida</h3>
+                                    <p class="text-xs text-slate-600">Ingeniería adaptada a los requerimientos específicos de su operación.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sistema Integrado de Gestión (SIG HSEQ) -->
+            <section class="py-20 bg-syselec-light">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl mb-12">
+                        <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Calidad • SST • Ambiental</span>
+                        <h2 class="font-heading font-bold text-3xl text-syselec-blue mt-2 mb-3">
+                            Sistema Integrado de Gestión (SIG)
+                        </h2>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            La estandarización bajo normas internacionales alinea nuestra estrategia empresarial con la ejecución técnica en campo, asegurando sostenibilidad, bienestar humano y excelencia operativa.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+                        <div class="bg-white rounded-lg p-7 border border-slate-200 flex flex-col">
+                            <div class="flex items-center justify-between mb-5 pb-4 border-b border-slate-100">
+                                <span class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-teal">ISO 9001:2015</span>
+                                <i class="fas fa-award text-syselec-teal text-lg"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2">Gestión de la Calidad</h3>
+                            <p class="text-xs font-semibold text-slate-500 italic mb-4">"La calidad es un medio, no un fin."</p>
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
+                                Estandarizamos los procesos operativos para eliminar la improvisación, reducir reprocesos y garantizar cumplimiento estricto de especificaciones.
+                            </p>
+                            <ul class="text-xs text-slate-600 space-y-2 mt-auto pt-4 border-t border-slate-100">
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-syselec-teal mt-0.5"></i><span>Estandarización técnica y pruebas FAT en taller.</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-syselec-teal mt-0.5"></i><span>Análisis predictivo de desviaciones operativas.</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-7 border border-slate-200 flex flex-col">
+                            <div class="flex items-center justify-between mb-5 pb-4 border-b border-slate-100">
+                                <span class="font-heading font-bold text-xs uppercase tracking-wider text-emerald-700">ISO 45001:2018</span>
+                                <i class="fas fa-shield-halved text-emerald-600 text-lg"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2">Seguridad y Salud Laboral</h3>
+                            <p class="text-xs font-semibold text-slate-500 italic mb-4">"El tiempo corre, pero la vida no vuelve. ¡Trabajemos seguros!"</p>
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
+                                Intervenimos en escenarios de <strong>Riesgo Eléctrico Nivel V</strong> y alturas con rigor absoluto mediante autocuidado y normatividad vigente.
+                            </p>
+                            <ul class="text-xs text-slate-600 space-y-2 mt-auto pt-4 border-t border-slate-100">
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>5 Reglas de Oro (Res. 5018/2019).</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Trabajo en Alturas y Manlift (Res. 4272/2021).</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-7 border border-slate-200 flex flex-col">
+                            <div class="flex items-center justify-between mb-5 pb-4 border-b border-slate-100">
+                                <span class="font-heading font-bold text-xs uppercase tracking-wider text-amber-700">ISO 14001</span>
+                                <i class="fas fa-leaf text-amber-600 text-lg"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2">Gestión Ambiental</h3>
+                            <p class="text-xs font-semibold text-slate-500 italic mb-4">"Biodiversidad y Resiliencia: La energía en equilibrio con el entorno."</p>
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
+                                Diseñamos sistemas eléctricos resilientes que minimizan el impacto ambiental mediante gestión RESPEL y eco-eficiencia.
+                            </p>
+                            <ul class="text-xs text-slate-600 space-y-2 mt-auto pt-4 border-t border-slate-100">
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-amber-600 mt-0.5"></i><span>Control de RESPEL y kits antiderrames en obra.</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-amber-600 mt-0.5"></i><span>Optimización de materiales y cero desperdicios.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-syselec-blueDark text-white p-8 rounded-lg border-l-4 border-syselec-teal flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="max-w-2xl">
+                            <p class="text-sm sm:text-base font-normal italic leading-relaxed text-slate-200">
+                                "En Syselec, la excelencia no se trata de no equivocarnos nunca, sino de construir un sistema donde la ética, la comunicación y la mejora continua nos permitan transformar cualquier desafío en una oportunidad de crecimiento sostenible."
+                            </p>
+                            <span class="block text-[11px] font-heading font-bold text-syselec-teal uppercase tracking-wider mt-3">
+                                Política Integrada de Gestión (HSEQ) • Vigente y Divulgada
+                            </span>
+                        </div>
+                        <div class="shrink-0 text-center md:text-right border-t md:border-t-0 md:border-l border-white/15 pt-4 md:pt-0 md:pl-8">
+                            <div class="font-heading font-bold text-base text-white">Omar Orlando Silva Gómez</div>
+                            <div class="text-xs text-syselec-teal font-semibold">Representante Legal</div>
+                            <div class="text-[11px] text-slate-400 mt-0.5">SYSELEC INGENIERÍA S.A.S.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- VIEW 3: SOLUCIONES DE INGENIERÍA (SERVICES & SPECS)                   -->
+        <!-- ===================================================================== -->
+        <div id="view-soluciones" class="view-section">
+            <!-- Corporate View Banner -->
+            <div class="bg-syselec-blueDark text-white py-14 border-b border-white/10">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-xs font-heading font-semibold uppercase tracking-widest text-slate-400 mb-3">
+                        <a href="#inicio" data-route="inicio" class="route-link hover:text-white">Inicio</a>
+                        <span class="mx-2">/</span>
+                        <span class="text-syselec-teal">Soluciones de Ingeniería</span>
+                    </div>
+                    <h1 class="font-heading font-extrabold text-3xl sm:text-4xl">Portafolio Técnico y Servicios</h1>
+                    <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
+                        Selecciona cualquier línea de ingeniería para inspeccionar su alcance técnico, entregables normativos y registro fotográfico en planta.
+                    </p>
+                </div>
+            </div>
+
+            <section class="py-20 bg-syselec-light">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Service 1 -->
+                        <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden">
+                            <div class="relative h-52 overflow-hidden bg-slate-900">
+                                <img src="assets/img/servicios/instalaciones/cableado-fuerza-control-bandejas.jpg"
+                                    alt="Instalaciones Media y Baja Tensión"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
+                                    12 Registros en Obra
+                                </span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="text-xs font-heading font-bold text-syselec-teal mb-1">01</div>
+                                <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
+                                    Instalaciones en Media y Baja Tensión
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
+                                    Canalizaciones en tubería EMT/IMC, bandejas portacables, mallas de puesta a tierra con soldadura Cadweld y cableados de potencia en planta.
+                                </p>
+                                <button type="button" data-service="instalaciones"
+                                    class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
+                                    <span>Ficha técnica y evidencia</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Service 2 -->
+                        <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden">
+                            <div class="relative h-52 overflow-hidden bg-slate-900">
+                                <img src="assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg"
+                                    alt="Tableros de Control y CCM"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
+                                    9 Registros en Obra
+                                </span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="text-xs font-heading font-bold text-syselec-teal mb-1">02</div>
+                                <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
+                                    Tableros de Control y CCM
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
+                                    Diseño, suministro e instalación de tableros para centros de control de motores (CCM), con arranque directo, variador de velocidad o arranque suave.
+                                </p>
+                                <button type="button" data-service="tableros"
+                                    class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
+                                    <span>Ficha técnica y evidencia</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Service 3 -->
+                        <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden">
+                            <div class="relative h-52 overflow-hidden bg-slate-900">
+                                <img src="assets/img/servicios/subestaciones/totalizador-subestacion-servicios-cedi.jpg"
+                                    alt="Montaje de Subestaciones"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
+                                    3 Registros en Obra
+                                </span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="text-xs font-heading font-bold text-syselec-teal mb-1">03</div>
+                                <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
+                                    Montaje de Subestaciones
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
+                                    Montaje estructural para acometidas principales desde subestaciones hasta tableros generales de distribución.
+                                </p>
+                                <button type="button" data-service="subestaciones"
+                                    class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
+                                    <span>Ficha técnica y evidencia</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Service 4 -->
+                        <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden">
+                            <div class="relative h-52 overflow-hidden bg-slate-900">
+                                <img src="assets/img/servicios/automatizacion/instalacion-botoneras-sensores1.jpg"
+                                    alt="Automatización Industrial"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
+                                    7 Registros en Obra
+                                </span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="text-xs font-heading font-bold text-syselec-teal mb-1">04</div>
+                                <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
+                                    Automatización e Instrumentación
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
+                                    Modernización de procesos, montaje de sensores industriales, controladores digitales y líneas neumáticas de maquinaria.
+                                </p>
+                                <button type="button" data-service="automatizacion"
+                                    class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
+                                    <span>Ficha técnica y evidencia</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Service 5 -->
+                        <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden">
+                            <div class="relative h-52 overflow-hidden bg-slate-900">
+                                <img src="assets/img/servicios/iluminacion/luminarias-reubicadas-funcionando.jpg"
+                                    alt="Alumbrado LED y Sistemas Solares"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
+                                    3 Registros en Obra
+                                </span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="text-xs font-heading font-bold text-syselec-teal mb-1">05</div>
+                                <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
+                                    Alumbrado LED y Sistemas Solares
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
+                                    Montaje y mantenimiento de sistemas de alumbrado High Bay y lámparas industriales LED de alta eficiencia lumínica bajo RETILAP.
+                                </p>
+                                <button type="button" data-service="iluminacion"
+                                    class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
+                                    <span>Ficha técnica y evidencia</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Service 6 -->
+                        <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 flex flex-col overflow-hidden">
+                            <div class="relative h-52 overflow-hidden bg-slate-900">
+                                <img src="assets/img/servicios/cctv-cableado/reubicacion-camaras-cctv.jpg"
+                                    alt="Cableado, CCTV y Planos"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
+                                    3 Registros en Obra
+                                </span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="text-xs font-heading font-bold text-syselec-teal mb-1">06</div>
+                                <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2.5 group-hover:text-syselec-teal transition-colors">
+                                    Cableado, CCTV y Planos As-Built
+                                </h3>
+                                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
+                                    Instalación de circuitos CCTV industrial, cableado estructurado, respaldo UPS y levantamiento de planos eléctricos.
+                                </p>
+                                <button type="button" data-service="cableado"
+                                    class="open-service-modal inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
+                                    <span>Ficha técnica y evidencia</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Service 7 (Horizontal Full-Width Card) -->
+                        <article class="group bg-white rounded-lg border border-slate-200 hover:border-syselec-teal transition-all duration-300 md:col-span-2 lg:col-span-3 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
+                            <div class="lg:col-span-4 relative h-52 lg:h-auto overflow-hidden bg-slate-900">
+                                <img src="assets/img/servicios/mantenimiento/verificacion-polipasto-mantenimiento.png"
+                                    alt="Mantenimiento Electromecánico y Polipastos"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute bottom-3 left-3 bg-syselec-darker/90 text-white text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
+                                    4 Registros en Obra
+                                </span>
+                            </div>
+                            <div class="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between">
+                                <div>
+                                    <div class="text-xs font-heading font-bold text-syselec-teal mb-1">07 • MANTENIMIENTO ESPECIALIZADO</div>
+                                    <h3 class="font-heading font-bold text-xl text-syselec-blue mb-3 group-hover:text-syselec-teal transition-colors">
+                                        Mantenimiento Electromecánico y Polipastos de Izaje
+                                    </h3>
+                                    <p class="text-slate-600 text-sm leading-relaxed mb-6 max-w-3xl">
+                                        Inspección técnica integral, lubricación de cadenas de izaje, engrasado de partes móviles, pruebas de carga y retorqueo dieléctrico de tableros de control en maquinaria crítica.
+                                    </p>
+                                </div>
+                                <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                                    <span class="text-xs text-slate-400 font-semibold">Normativa ASME B30.16 • RETIE</span>
+                                    <button type="button" data-service="mantenimiento"
+                                        class="open-service-modal inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
+                                        <span>Ver ficha técnica y fotos</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- VIEW 4: PROYECTOS DESTACADOS & GALERÍA EN OBRA                        -->
+        <!-- ===================================================================== -->
+        <div id="view-proyectos" class="view-section">
+            <!-- Corporate View Banner -->
+            <div class="bg-syselec-blueDark text-white py-14 border-b border-white/10">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-xs font-heading font-semibold uppercase tracking-widest text-slate-400 mb-3">
+                        <a href="#inicio" data-route="inicio" class="route-link hover:text-white">Inicio</a>
+                        <span class="mx-2">/</span>
+                        <span class="text-syselec-teal">Proyectos y Evidencia en Planta</span>
+                    </div>
+                    <h1 class="font-heading font-extrabold text-3xl sm:text-4xl">Proyectos Ejecutados (855+)</h1>
+                    <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
+                        Casos emblemáticos y archivo fotográfico de montajes realizados en plantas industriales y centros de distribución.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactive Case Study Switcher (IEB Style) -->
+            <section class="py-16 bg-syselec-blueDark text-white border-b border-white/10">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-5 border-b border-white/15">
+                        <div>
+                            <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Casos Emblemáticos</span>
+                            <h2 class="font-heading font-bold text-2xl sm:text-3xl mt-1">Proyectos Destacados</h2>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 md:mt-0" id="project-tabs">
+                            <button data-proj="0" class="proj-tab active px-4 py-2 font-heading font-bold text-xs border border-syselec-teal bg-syselec-teal text-white rounded transition-all cursor-pointer">01</button>
+                            <button data-proj="1" class="proj-tab px-4 py-2 font-heading font-bold text-xs border border-white/20 text-slate-300 hover:border-syselec-teal rounded transition-all cursor-pointer">02</button>
+                            <button data-proj="2" class="proj-tab px-4 py-2 font-heading font-bold text-xs border border-white/20 text-slate-300 hover:border-syselec-teal rounded transition-all cursor-pointer">03</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/[0.03] border border-white/15 rounded-lg p-6 sm:p-8">
+                        <div class="lg:col-span-7 overflow-hidden rounded h-[320px] sm:h-[380px] relative">
+                            <img id="proj-img" src="assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg" alt="Proyecto Destacado" class="w-full h-full object-cover transition-all duration-500">
+                            <div class="absolute top-4 left-4 bg-syselec-darker/90 border border-white/15 px-3 py-1 text-[11px] font-heading font-bold uppercase tracking-wider text-syselec-accent rounded-sm">
+                                Ejecución Industrial
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                            <div>
+                                <h3 id="proj-title" class="font-heading font-bold text-2xl text-white leading-snug">
+                                    Tablero Principal y Centro de Control de Motores Línea MPL1
+                                </h3>
+                                <p id="proj-desc" class="text-slate-300 text-sm leading-relaxed mt-3">
+                                    Diseño, ensamble, cableado estructurado de potencia/control y puesta en marcha bajo certificación RETIE y estándares BPM.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4 pt-5 border-t border-white/15 text-xs">
+                                <div>
+                                    <span class="block text-slate-400 uppercase tracking-wider font-semibold text-[10px]">Cliente / Sector</span>
+                                    <span id="proj-client" class="font-heading font-bold text-sm text-white mt-1 block">Industria Papelera (Softys)</span>
+                                </div>
+                                <div>
+                                    <span class="block text-slate-400 uppercase tracking-wider font-semibold text-[10px]">Normativa Aplicada</span>
+                                    <span id="proj-norm" class="font-heading font-bold text-sm text-syselec-teal mt-1 block">NTC 2050 • RETIE</span>
+                                </div>
+                                <div>
+                                    <span class="block text-slate-400 uppercase tracking-wider font-semibold text-[10px]">Especialidad</span>
+                                    <span id="proj-spec" class="font-heading font-bold text-sm text-white mt-1 block">Potencia y Control CCM</span>
+                                </div>
+                                <div>
+                                    <span class="block text-slate-400 uppercase tracking-wider font-semibold text-[10px]">Estado</span>
+                                    <span class="font-heading font-bold text-sm text-emerald-400 mt-1 block">100% Operativo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Full Filterable Field Gallery -->
+            <section class="py-20 bg-syselec-light">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="mb-8">
+                        <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Archivo Fotográfico</span>
+                        <h2 class="font-heading font-bold text-2xl sm:text-3xl text-syselec-blue mt-1">Registro de Obras en Campo (41)</h2>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 mb-10 border-b border-slate-200 pb-5">
+                        <button type="button" data-filter="all"
+                            class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-bold uppercase tracking-wider bg-syselec-blueDark text-white transition-all cursor-pointer">
+                            Todos (41)
+                        </button>
+                        <button type="button" data-filter="tableros"
+                            class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
+                            Tableros CCM (9)
+                        </button>
+                        <button type="button" data-filter="instalaciones"
+                            class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
+                            Canalizaciones (12)
+                        </button>
+                        <button type="button" data-filter="automatizacion"
+                            class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
+                            Automatización (7)
+                        </button>
+                        <button type="button" data-filter="subestaciones"
+                            class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
+                            Subestaciones (3)
+                        </button>
+                        <button type="button" data-filter="iluminacion"
+                            class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
+                            Iluminación LED (3)
+                        </button>
+                        <button type="button" data-filter="cableado"
+                            class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
+                            CCTV y Redes (3)
+                        </button>
+                        <button type="button" data-filter="mantenimiento"
+                            class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
+                            Polipastos (4)
+                        </button>
+                    </div>
+
+                    <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- VIEW 5: SECTORES, CLIENTES Y MARCAS ALIADAS                           -->
+        <!-- ===================================================================== -->
+        <div id="view-sectores" class="view-section">
+            <!-- Corporate View Banner -->
+            <div class="bg-syselec-blueDark text-white py-14 border-b border-white/10">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-xs font-heading font-semibold uppercase tracking-widest text-slate-400 mb-3">
+                        <a href="#inicio" data-route="inicio" class="route-link hover:text-white">Inicio</a>
+                        <span class="mx-2">/</span>
+                        <span class="text-syselec-teal">Sectores y Aliados</span>
+                    </div>
+                    <h1 class="font-heading font-extrabold text-3xl sm:text-4xl">Sectores, Clientes y Marcas</h1>
+                    <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
+                        Atendemos industrias de operación continua e integramos equipamiento de los fabricantes líderes del sector eléctrico.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sectors -->
+            <section class="py-20 bg-syselec-light border-b border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="mb-12">
+                        <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Cobertura Productiva</span>
+                        <h2 class="font-heading font-bold text-3xl text-syselec-blue mt-1">Sectores donde Aportamos Valor</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-lg p-8 border border-slate-200">
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="font-heading font-extrabold text-2xl text-slate-300">01</span>
+                                <i class="fas fa-industry text-syselec-teal text-2xl"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-syselec-blue mb-3">Plantas Industriales y Manufactura</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Fábricas de alimentos y bebidas, industria papelera, farmacéutica y metalmecánica que requieren instalación nueva, mantenimiento preventivo y correctivo.
                             </p>
                         </div>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-xs text-slate-400 font-semibold">Normativa ASME B30.16 • RETIE</span>
-                            <button type="button" data-service="mantenimiento"
-                                class="open-service-modal inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-wider text-syselec-blue group-hover:text-syselec-teal transition-colors cursor-pointer">
-                                <span>Ver ficha técnica y fotos</span>
-                                <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
-                            </button>
+
+                        <div class="bg-white rounded-lg p-8 border border-slate-200">
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="font-heading font-extrabold text-2xl text-slate-300">02</span>
+                                <i class="fas fa-warehouse text-syselec-blue text-2xl"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-syselec-blue mb-3">Centros Logísticos y CEDI</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Grandes almacenes y hubs de distribución (CEDI) que necesitan iluminación industrial LED de alta eficiencia, cargadores de baterías y tableros de potencia.
+                            </p>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-8 border border-slate-200">
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="font-heading font-extrabold text-2xl text-slate-300">03</span>
+                                <i class="fas fa-bolt-lightning text-amber-600 text-2xl"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-syselec-blue mb-3">Sector Energético e Infraestructura</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Subestaciones de distribución, cuartos de bombas contra incendios (NFPA), plantas de tratamiento y obras de infraestructura crítica.
+                            </p>
                         </div>
                     </div>
-                </article>
-            </div>
-        </div>
-    </section>
+                </div>
+            </section>
 
-    <!-- Proyectos Destacados (IEB Case Study Showcase) -->
-    <section id="proyectos-destacados" class="py-24 bg-syselec-blueDark text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 64px 64px;"></div>
+            <!-- Clients & Brands Architectural Matrices -->
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!-- Clients -->
+                    <div class="mb-20">
+                        <div class="mb-10">
+                            <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Confianza Comprobada</span>
+                            <h2 class="font-heading font-bold text-3xl text-syselec-blue mt-1">Nuestros Clientes</h2>
+                        </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-white/15 pb-6">
-                <div>
-                    <div class="flex items-center gap-2.5 mb-2">
-                        <span class="h-0.5 w-6 bg-syselec-teal"></span>
-                        <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Trayectoria Comprobada</span>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 border-t border-l border-slate-200">
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-Softys.png" alt="Softys Colombia" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-alpina.png" alt="Alpina" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-tetra-pak.png" alt="Tetra Pak" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-ramo.png" alt="Productos Ramo" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-SGS.png" alt="SGS Colombia" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-fresenius.png" alt="Fresenius Medical Care" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-ingetes.png" alt="Ingetes" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-desal.png" alt="Desal" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-pomar.png" alt="Pomar" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-Primadera.png" alt="Primadera" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-qbco.png" alt="Grupo QBCo" class="max-h-9 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
+                                <img src="assets/img/logo-thermoform.png" alt="Thermoform S.A.S." class="max-h-9 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="font-heading font-bold text-3xl sm:text-4xl">Proyectos Destacados</h2>
-                </div>
-                <div class="flex items-center gap-2 mt-4 md:mt-0" id="project-tabs">
-                    <button data-proj="0" class="proj-tab active px-4 py-2 font-heading font-bold text-xs border border-syselec-teal bg-syselec-teal text-white rounded transition-all cursor-pointer">01</button>
-                    <button data-proj="1" class="proj-tab px-4 py-2 font-heading font-bold text-xs border border-white/20 text-slate-300 hover:border-syselec-teal rounded transition-all cursor-pointer">02</button>
-                    <button data-proj="2" class="proj-tab px-4 py-2 font-heading font-bold text-xs border border-white/20 text-slate-300 hover:border-syselec-teal rounded transition-all cursor-pointer">03</button>
-                </div>
-            </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/[0.03] border border-white/15 rounded-lg p-6 sm:p-8">
-                <div class="lg:col-span-7 overflow-hidden rounded h-[320px] sm:h-[400px] relative">
-                    <img id="proj-img" src="assets/img/servicios/tableros/tablero-principal-linea-mpl1.jpg" alt="Proyecto Destacado" class="w-full h-full object-cover transition-all duration-500">
-                    <div class="absolute top-4 left-4 bg-syselec-darker/90 border border-white/15 px-3 py-1 text-[11px] font-heading font-bold uppercase tracking-wider text-syselec-accent rounded-sm">
-                        Caso de Éxito Industrial
-                    </div>
-                </div>
-
-                <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                    <!-- Brands -->
                     <div>
-                        <h3 id="proj-title" class="font-heading font-bold text-2xl text-white leading-snug">
-                            Tablero Principal y Centro de Control de Motores Línea MPL1
-                        </h3>
-                        <p id="proj-desc" class="text-slate-300 text-sm leading-relaxed mt-3">
-                            Diseño, ensamble, cableado estructurado de potencia/control y puesta en marcha bajo certificación RETIE y estándares BPM.
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4 pt-5 border-t border-white/15 text-xs">
-                        <div>
-                            <span class="block text-slate-400 uppercase tracking-wider font-semibold text-[10px]">Cliente / Sector</span>
-                            <span id="proj-client" class="font-heading font-bold text-sm text-white mt-1 block">Industria Papelera (Softys)</span>
-                        </div>
-                        <div>
-                            <span class="block text-slate-400 uppercase tracking-wider font-semibold text-[10px]">Normativa Aplicada</span>
-                            <span id="proj-norm" class="font-heading font-bold text-sm text-syselec-teal mt-1 block">NTC 2050 • RETIE</span>
-                        </div>
-                        <div>
-                            <span class="block text-slate-400 uppercase tracking-wider font-semibold text-[10px]">Especialidad</span>
-                            <span id="proj-spec" class="font-heading font-bold text-sm text-white mt-1 block">Potencia y Control CCM</span>
-                        </div>
-                        <div>
-                            <span class="block text-slate-400 uppercase tracking-wider font-semibold text-[10px]">Estado</span>
-                            <span class="font-heading font-bold text-sm text-emerald-400 mt-1 block">100% Operativo</span>
-                        </div>
-                    </div>
-
-                    <div class="pt-2">
-                        <a href="#galeria" class="inline-flex items-center gap-2 px-5 py-3 rounded bg-white text-syselec-blueDark font-heading font-bold text-xs uppercase tracking-wider hover:bg-syselec-teal hover:text-white transition-colors">
-                            <span>Ver registro fotográfico completo</span>
-                            <i class="fas fa-arrow-down text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Galería de Obras en Campo (Paginated for Clean UX) -->
-    <section id="galeria" class="py-24 bg-syselec-light border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 reveal">
-                <div>
-                    <div class="flex items-center gap-2.5 mb-2">
-                        <span class="h-0.5 w-6 bg-syselec-teal"></span>
-                        <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Evidencia en Planta</span>
-                    </div>
-                    <h2 class="font-heading font-bold text-3xl sm:text-4xl text-syselec-blue">Registro Fotográfico de Obras</h2>
-                </div>
-                <p class="text-slate-600 text-sm max-w-md mt-3 md:mt-0">
-                    Filtra por especialidad técnica para inspeccionar nuestros montajes reales en campo.
-                </p>
-            </div>
-
-            <!-- Architectural Filter Tabs -->
-            <div class="flex flex-wrap items-center gap-2 mb-10 border-b border-slate-200 pb-5 reveal">
-                <button type="button" data-filter="all"
-                    class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-bold uppercase tracking-wider bg-syselec-blueDark text-white transition-all cursor-pointer">
-                    Todos (41)
-                </button>
-                <button type="button" data-filter="tableros"
-                    class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
-                    Tableros CCM (9)
-                </button>
-                <button type="button" data-filter="instalaciones"
-                    class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
-                    Canalizaciones (12)
-                </button>
-                <button type="button" data-filter="automatizacion"
-                    class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
-                    Automatización (7)
-                </button>
-                <button type="button" data-filter="subestaciones"
-                    class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
-                    Subestaciones (3)
-                </button>
-                <button type="button" data-filter="iluminacion"
-                    class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
-                    Iluminación LED (3)
-                </button>
-                <button type="button" data-filter="cableado"
-                    class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
-                    CCTV y Redes (3)
-                </button>
-                <button type="button" data-filter="mantenimiento"
-                    class="gallery-filter-btn px-4 py-2 rounded text-xs font-heading font-semibold uppercase tracking-wider bg-white text-slate-700 hover:border-syselec-teal border border-slate-200 transition-all cursor-pointer">
-                    Polipastos (4)
-                </button>
-            </div>
-
-            <!-- Gallery Grid Container -->
-            <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"></div>
-
-            <!-- Load More Button -->
-            <div id="gallery-load-more-wrap" class="mt-10 text-center hidden">
-                <button type="button" id="gallery-load-more-btn"
-                    class="inline-flex items-center gap-2 px-7 py-3.5 rounded border border-syselec-blue text-syselec-blue hover:bg-syselec-blue hover:text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer">
-                    <span>Cargar más registros en obra</span>
-                    <i class="fas fa-plus text-[10px]"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sectores Atendidos -->
-    <section id="mercado" class="py-24 bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-14 reveal">
-                <div class="flex items-center gap-2.5 mb-2">
-                    <span class="h-0.5 w-6 bg-syselec-teal"></span>
-                    <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Cobertura Industrial</span>
-                </div>
-                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-syselec-blue mb-3">Sectores donde Aportamos Valor</h2>
-                <p class="text-slate-600 text-sm">
-                    Soluciones diseñadas para entornos productivos de alta exigencia y operación 24/7.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-syselec-light rounded-lg p-8 border border-slate-200 hover:border-syselec-teal transition-colors reveal">
-                    <div class="flex items-center justify-between mb-6">
-                        <span class="font-heading font-extrabold text-2xl text-slate-300">01</span>
-                        <i class="fas fa-industry text-syselec-teal text-2xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-lg text-syselec-blue mb-3">Plantas Industriales y Manufactura</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Fábricas de alimentos y bebidas, industria papelera, farmacéutica y metalmecánica que requieren montajes nuevos y mantenimiento especializado.
-                    </p>
-                </div>
-
-                <div class="bg-syselec-light rounded-lg p-8 border border-slate-200 hover:border-syselec-teal transition-colors reveal">
-                    <div class="flex items-center justify-between mb-6">
-                        <span class="font-heading font-extrabold text-2xl text-slate-300">02</span>
-                        <i class="fas fa-warehouse text-syselec-blue text-2xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-lg text-syselec-blue mb-3">Centros Logísticos y CEDI</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Grandes almacenes y hubs de distribución que requieren iluminación industrial LED de alta eficiencia, zonas de carga de baterías y respaldo eléctrico.
-                    </p>
-                </div>
-
-                <div class="bg-syselec-light rounded-lg p-8 border border-slate-200 hover:border-syselec-teal transition-colors reveal">
-                    <div class="flex items-center justify-between mb-6">
-                        <span class="font-heading font-extrabold text-2xl text-slate-300">03</span>
-                        <i class="fas fa-bolt-lightning text-amber-600 text-2xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-lg text-syselec-blue mb-3">Sector Energético e Infraestructura</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Subestaciones de distribución, cuartos de bombas contra incendios (NFPA), plantas de tratamiento y obras de infraestructura crítica.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sistema Integrado de Gestión (SIG HSEQ) -->
-    <section id="sig" class="py-24 bg-syselec-light border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mb-14 reveal">
-                <div class="flex items-center gap-2.5 mb-2">
-                    <span class="h-0.5 w-6 bg-syselec-teal"></span>
-                    <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Gobernanza &amp; Sostenibilidad HSEQ</span>
-                </div>
-                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-syselec-blue mb-4">
-                    Sistema Integrado de Gestión (SIG)
-                </h2>
-                <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-                    Alineamos nuestra estrategia empresarial con la ejecución técnica en campo bajo estándares internacionales de Calidad, Seguridad Industrial y Gestión Ambiental.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-                <!-- Pilar 1 -->
-                <div class="bg-white rounded-lg p-7 border border-slate-200 flex flex-col reveal">
-                    <div class="flex items-center justify-between mb-5 pb-4 border-b border-slate-100">
-                        <span class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-teal">ISO 9001:2015</span>
-                        <i class="fas fa-award text-syselec-teal text-lg"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2">Gestión de la Calidad</h3>
-                    <p class="text-xs font-semibold text-slate-500 italic mb-4">"La calidad es un medio, no un fin."</p>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
-                        Estandarizamos los procesos operativos para eliminar la improvisación y garantizar que cada montaje eléctrico cumpla las especificaciones técnicas del cliente.
-                    </p>
-                    <ul class="text-xs text-slate-600 space-y-2 mt-auto pt-4 border-t border-slate-100">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-syselec-teal mt-0.5"></i><span>Estandarización técnica y pruebas FAT en taller.</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-syselec-teal mt-0.5"></i><span>Trazabilidad documental y planos as-built.</span></li>
-                    </ul>
-                </div>
-
-                <!-- Pilar 2 -->
-                <div class="bg-white rounded-lg p-7 border border-slate-200 flex flex-col reveal">
-                    <div class="flex items-center justify-between mb-5 pb-4 border-b border-slate-100">
-                        <span class="font-heading font-bold text-xs uppercase tracking-wider text-emerald-700">ISO 45001:2018</span>
-                        <i class="fas fa-shield-halved text-emerald-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2">Seguridad y Salud Laboral</h3>
-                    <p class="text-xs font-semibold text-slate-500 italic mb-4">"El tiempo corre, pero la vida no vuelve."</p>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
-                        Intervenimos en escenarios de <strong>Riesgo Eléctrico Nivel V</strong> y trabajo en alturas con rigor absoluto mediante autocuidado y protocolos LOTO.
-                    </p>
-                    <ul class="text-xs text-slate-600 space-y-2 mt-auto pt-4 border-t border-slate-100">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>5 Reglas de Oro (Res. 5018/2019).</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Trabajo en Alturas y Manlift (Res. 4272/2021).</span></li>
-                    </ul>
-                </div>
-
-                <!-- Pilar 3 -->
-                <div class="bg-white rounded-lg p-7 border border-slate-200 flex flex-col reveal">
-                    <div class="flex items-center justify-between mb-5 pb-4 border-b border-slate-100">
-                        <span class="font-heading font-bold text-xs uppercase tracking-wider text-amber-700">ISO 14001</span>
-                        <i class="fas fa-leaf text-amber-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-lg text-syselec-blue mb-2">Gestión Ambiental</h3>
-                    <p class="text-xs font-semibold text-slate-500 italic mb-4">"La energía en equilibrio con el entorno."</p>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
-                        Ejecutamos proyectos eléctricos resilientes que minimizan el impacto ambiental mediante control de residuos peligrosos y eco-eficiencia.
-                    </p>
-                    <ul class="text-xs text-slate-600 space-y-2 mt-auto pt-4 border-t border-slate-100">
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-amber-600 mt-0.5"></i><span>Control de RESPEL y kits antiderrames en obra.</span></li>
-                        <li class="flex items-start gap-2"><i class="fas fa-check text-amber-600 mt-0.5"></i><span>Optimización de conductores y cero desperdicios.</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Institucional Quote Bar -->
-            <div class="bg-syselec-blueDark text-white p-8 rounded-lg border-l-4 border-syselec-teal reveal flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="max-w-2xl">
-                    <p class="text-sm sm:text-base font-normal italic leading-relaxed text-slate-200">
-                        "En Syselec, la excelencia no se trata de no equivocarnos nunca, sino de construir un sistema donde la ética, la comunicación y la mejora continua nos permitan transformar cualquier desafío en crecimiento sostenible."
-                    </p>
-                    <span class="block text-[11px] font-heading font-bold text-syselec-teal uppercase tracking-wider mt-3">
-                        Política Integrada de Gestión (HSEQ) • Vigente
-                    </span>
-                </div>
-                <div class="shrink-0 text-center md:text-right border-t md:border-t-0 md:border-l border-white/15 pt-4 md:pt-0 md:pl-8">
-                    <div class="font-heading font-bold text-base text-white">Omar Orlando Silva Gómez</div>
-                    <div class="text-xs text-syselec-teal font-semibold">Representante Legal</div>
-                    <div class="text-[11px] text-slate-400 mt-0.5">SYSELEC INGENIERÍA S.A.S.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Clientes & Marcas (Clean IEB Architectural Logo Matrix) -->
-    <section id="clientes" class="py-24 bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Clients Block -->
-            <div class="mb-20 reveal">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
-                    <div>
-                        <div class="flex items-center gap-2.5 mb-2">
-                            <span class="h-0.5 w-6 bg-syselec-teal"></span>
-                            <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Confianza en Planta</span>
-                        </div>
-                        <h2 class="font-heading font-bold text-3xl text-syselec-blue">Nuestros Clientes</h2>
-                    </div>
-                    <p class="text-slate-500 text-xs sm:text-sm max-w-md mt-2 md:mt-0">
-                        Empresas líderes en manufactura, consumo masivo y sector farmacéutico que confían en nuestra ingeniería.
-                    </p>
-                </div>
-
-                <!-- Architectural Border-Grid Logo Wall -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 border-t border-l border-slate-200">
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-Softys.png" alt="Softys Colombia" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-alpina.png" alt="Alpina" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-tetra-pak.png" alt="Tetra Pak" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-ramo.png" alt="Productos Ramo" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-SGS.png" alt="SGS Colombia" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-fresenius.png" alt="Fresenius Medical Care" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-ingetes.png" alt="Ingetes" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-desal.png" alt="Desal" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-pomar.png" alt="Pomar" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-Primadera.png" alt="Primadera" class="max-h-11 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-qbco.png" alt="Grupo QBCo" class="max-h-9 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-6 h-28 flex items-center justify-center bg-white hover:bg-slate-50 transition-colors group">
-                        <img src="assets/img/logo-thermoform.png" alt="Thermoform S.A.S." class="max-h-9 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Brands Block -->
-            <div id="marcas" class="reveal">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
-                    <div>
-                        <div class="flex items-center gap-2.5 mb-2">
-                            <span class="h-0.5 w-6 bg-syselec-teal"></span>
+                        <div class="mb-10">
                             <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Suministros Certificados RETIE</span>
+                            <h2 class="font-heading font-bold text-3xl text-syselec-blue mt-1">Marcas y Materiales de Primera Línea</h2>
                         </div>
-                        <h2 class="font-heading font-bold text-3xl text-syselec-blue">Marcas y Equipamiento de Primera Línea</h2>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 border-t border-l border-slate-200">
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-schneider-electric.png" alt="Schneider Electric" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-siemens.png" alt="Siemens" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-abb.png" alt="ABB" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-allen-bradley.png" alt="Allen-Bradley" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-centelsa.png" alt="Centelsa" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-Danfoss.png" alt="Danfoss" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-festo.png" alt="Festo" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-Procables.png" alt="Procables" class="max-h-9 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-SMC.png" alt="SMC" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-autonics.png" alt="Autonics" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-colmena.png" alt="Tubos Colmena" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                            <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
+                                <img src="assets/img/marcas/logo-phoenix.png" alt="Phoenix Contact" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-slate-500 text-xs sm:text-sm max-w-md mt-2 md:mt-0">
-                        Integramos componentes de fabricantes globales certificados bajo estándares IEC, UL y RETIE.
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- VIEW 6: CONTACTO Y COTIZACIONES                                       -->
+        <!-- ===================================================================== -->
+        <div id="view-contacto" class="view-section">
+            <!-- Corporate View Banner -->
+            <div class="bg-syselec-blueDark text-white py-14 border-b border-white/10">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-xs font-heading font-semibold uppercase tracking-widest text-slate-400 mb-3">
+                        <a href="#inicio" data-route="inicio" class="route-link hover:text-white">Inicio</a>
+                        <span class="mx-2">/</span>
+                        <span class="text-syselec-teal">Contacto</span>
+                    </div>
+                    <h1 class="font-heading font-extrabold text-3xl sm:text-4xl">Canales de Atención e Ingeniería</h1>
+                    <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
+                        Asigna un ingeniero especialista para evaluar requerimientos de tableros CCM, montajes eléctricos o mantenimiento preventivo.
                     </p>
                 </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 border-t border-l border-slate-200">
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-schneider-electric.png" alt="Schneider Electric" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-siemens.png" alt="Siemens" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-abb.png" alt="ABB" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-allen-bradley.png" alt="Allen-Bradley" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-centelsa.png" alt="Centelsa" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-Danfoss.png" alt="Danfoss" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-festo.png" alt="Festo" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-Procables.png" alt="Procables" class="max-h-9 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-SMC.png" alt="SMC" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-autonics.png" alt="Autonics" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-colmena.png" alt="Tubos Colmena" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <div class="border-r border-b border-slate-200 p-5 h-24 flex items-center justify-center bg-slate-50/50 hover:bg-white transition-colors group">
-                        <img src="assets/img/marcas/logo-phoenix.png" alt="Phoenix Contact" class="max-h-10 max-w-[85%] object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacto Section -->
-    <section id="contacto" class="py-24 bg-syselec-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mb-14 reveal">
-                <div class="flex items-center gap-2.5 mb-2">
-                    <span class="h-0.5 w-6 bg-syselec-teal"></span>
-                    <span class="text-xs font-heading font-bold uppercase tracking-widest text-syselec-teal">Atención Corporativa</span>
-                </div>
-                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-syselec-blue mb-3">Contáctanos</h2>
-                <p class="text-slate-600 text-sm">
-                    Asignamos un ingeniero especialista para evaluar el alcance técnico de su proyecto industrial.
-                </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <!-- Left Column -->
-                <div class="lg:col-span-5 space-y-4 reveal">
-                    <div class="flex items-start gap-4 bg-white p-5 rounded-lg border border-slate-200">
-                        <div class="w-10 h-10 rounded bg-syselec-blue/10 text-syselec-blue flex items-center justify-center text-base shrink-0">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue mb-1">Línea Técnica</h3>
-                            <p class="text-syselec-teal font-bold text-base"><a href="tel:+573203399577" class="hover:underline">(+57) 320 339 95 77</a></p>
-                            <p class="text-[11px] text-slate-500 mt-1">Lun – Jue: 7:00 a.m. – 4:30 p.m. • Vie: 7:00 a.m. – 1:30 p.m.</p>
-                        </div>
-                    </div>
-
-                    <a href="mailto:syselecsas@gmail.com" class="flex items-start gap-4 bg-white p-5 rounded-lg border border-slate-200 hover:border-syselec-teal transition-colors group">
-                        <div class="w-10 h-10 rounded bg-syselec-blue/10 text-syselec-blue flex items-center justify-center text-base shrink-0">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue mb-1">Correo Corporativo</h3>
-                            <p class="text-slate-800 font-semibold text-sm break-all group-hover:text-syselec-teal transition-colors">syselecsas@gmail.com</p>
-                        </div>
-                    </a>
-
-                    <div class="flex items-start gap-4 bg-white p-5 rounded-lg border border-slate-200">
-                        <div class="w-10 h-10 rounded bg-syselec-blue/10 text-syselec-blue flex items-center justify-center text-base shrink-0">
-                            <i class="fas fa-location-dot"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue mb-1">Sede Principal y Taller</h3>
-                            <p class="text-slate-700 font-semibold text-sm">Calle 2 # 21-33, Barrio Julio Caro, Zipaquirá, Cundinamarca, Colombia</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg p-2 border border-slate-200 overflow-hidden">
-                        <div class="relative w-full h-56 rounded overflow-hidden">
-                            <iframe class="w-full h-full border-0"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.5453681403255!2d-74.00176765972866!3d5.014887594982514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4071fe540a915b%3A0xc4a319353bfaa9cc!2sSyselec%20Ingenier%C3%ADa%20S.A.S.!5e0!3m2!1ses!2sco!4v1794521377328!5m2!1ses!2sco"
-                                loading="lazy" title="Ubicación de Syselec Ingeniería S.A.S. en Zipaquirá"></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: Form -->
-                <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-lg border border-slate-200 reveal">
-                    <h3 class="font-heading font-bold text-2xl text-syselec-blue mb-2">Solicitud de Cotización Técnica</h3>
-                    <p class="text-slate-500 text-sm mb-8">Completa los datos del requerimiento y nuestro departamento de ingeniería te responderá a la brevedad.</p>
-
-                    <form id="contact-form" class="space-y-5" novalidate>
-                        <div>
-                            <label for="contact-name" class="block text-[11px] font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">Nombre Completo / Empresa *</label>
-                            <input type="text" id="contact-name" name="name" placeholder="Ej. Ing. Carlos Pérez" required
-                                class="w-full px-4 py-3 rounded border border-slate-300 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal">
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                            <div>
-                                <label for="contact-email" class="block text-[11px] font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">Correo Electrónico *</label>
-                                <input type="email" id="contact-email" name="email" placeholder="nombre@empresa.com" required
-                                    class="w-full px-4 py-3 rounded border border-slate-300 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal">
+            <section class="py-20 bg-syselec-light">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        <!-- Left Column -->
+                        <div class="lg:col-span-5 space-y-4">
+                            <div class="flex items-start gap-4 bg-white p-5 rounded-lg border border-slate-200">
+                                <div class="w-10 h-10 rounded bg-syselec-blue/10 text-syselec-blue flex items-center justify-center text-base shrink-0">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue mb-1">Línea Técnica</h3>
+                                    <p class="text-syselec-teal font-bold text-base"><a href="tel:+573203399577" class="hover:underline">(+57) 320 339 95 77</a></p>
+                                    <p class="text-[11px] text-slate-500 mt-1">Lun – Jue: 7:00 a.m. – 4:30 p.m. • Vie: 7:00 a.m. – 1:30 p.m.</p>
+                                </div>
                             </div>
-                            <div>
-                                <label for="contact-phone" class="block text-[11px] font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">Teléfono de Contacto *</label>
-                                <input type="tel" id="contact-phone" name="phone" placeholder="+57 300 000 0000" required
-                                    class="w-full px-4 py-3 rounded border border-slate-300 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal">
+
+                            <a href="mailto:syselecsas@gmail.com" class="flex items-start gap-4 bg-white p-5 rounded-lg border border-slate-200 hover:border-syselec-teal transition-colors group">
+                                <div class="w-10 h-10 rounded bg-syselec-blue/10 text-syselec-blue flex items-center justify-center text-base shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue mb-1">Correo Corporativo</h3>
+                                    <p class="text-slate-800 font-semibold text-sm break-all group-hover:text-syselec-teal transition-colors">syselecsas@gmail.com</p>
+                                </div>
+                            </a>
+
+                            <div class="flex items-start gap-4 bg-white p-5 rounded-lg border border-slate-200">
+                                <div class="w-10 h-10 rounded bg-syselec-blue/10 text-syselec-blue flex items-center justify-center text-base shrink-0">
+                                    <i class="fas fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-syselec-blue mb-1">Sede Principal y Taller</h3>
+                                    <p class="text-slate-700 font-semibold text-sm">Calle 2 # 21-33, Barrio Julio Caro, Zipaquirá, Cundinamarca, Colombia</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg p-2 border border-slate-200 overflow-hidden">
+                                <div class="relative w-full h-60 rounded overflow-hidden">
+                                    <iframe class="w-full h-full border-0"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.5453681403255!2d-74.00176765972866!3d5.014887594982514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4071fe540a915b%3A0xc4a319353bfaa9cc!2sSyselec%20Ingenier%C3%ADa%20S.A.S.!5e0!3m2!1ses!2sco!4v1794521377328!5m2!1ses!2sco"
+                                        loading="lazy" title="Ubicación de Syselec Ingeniería S.A.S. en Zipaquirá"></iframe>
+                                </div>
                             </div>
                         </div>
 
-                        <div>
-                            <label for="contact-service" class="block text-[11px] font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">Especialidad Requerida</label>
-                            <select id="contact-service" name="service" class="w-full px-4 py-3 rounded border border-slate-300 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal">
-                                <option value="Instalaciones Eléctricas">Instalaciones Eléctricas de Media y Baja Tensión</option>
-                                <option value="Tableros CCM">Tableros de Control, CCM y Gabinetes</option>
-                                <option value="Subestaciones">Montaje y Mantenimiento de Subestaciones</option>
-                                <option value="Automatización">Automatización de Procesos e Instrumentación</option>
-                                <option value="Alumbrado">Alumbrado Industrial LED y Sistemas Solares</option>
-                                <option value="Mantenimiento">Mantenimiento Electromecánico y Polipastos</option>
-                            </select>
-                        </div>
+                        <!-- Right Column: Form -->
+                        <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-lg border border-slate-200">
+                            <h2 class="font-heading font-bold text-2xl text-syselec-blue mb-2">Solicitud de Cotización Técnica</h2>
+                            <p class="text-slate-500 text-sm mb-8">Completa los datos del requerimiento y nuestro departamento de ingeniería te responderá a la brevedad.</p>
 
-                        <div>
-                            <label for="contact-message" class="block text-[11px] font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">Alcance del Proyecto *</label>
-                            <textarea id="contact-message" name="message" rows="4" placeholder="Describe brevemente el requerimiento técnico..." required
-                                class="w-full px-4 py-3 rounded border border-slate-300 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal"></textarea>
-                        </div>
+                            <form id="contact-form" class="space-y-5" novalidate>
+                                <div>
+                                    <label for="contact-name" class="block text-[11px] font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">Nombre Completo / Empresa *</label>
+                                    <input type="text" id="contact-name" name="name" placeholder="Ej. Ing. Carlos Pérez" required
+                                        class="w-full px-4 py-3 rounded border border-slate-300 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal">
+                                </div>
 
-                        <button type="submit"
-                            class="w-full py-4 px-6 rounded font-heading font-bold text-xs uppercase tracking-wider text-white bg-syselec-blueDark hover:bg-syselec-teal transition-colors cursor-pointer flex items-center justify-center gap-2.5">
-                            <span>Enviar Solicitud Técnica</span>
-                            <i class="fas fa-arrow-right text-xs"></i>
-                        </button>
-                    </form>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label for="contact-email" class="block text-[11px] font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">Correo Electrónico *</label>
+                                        <input type="email" id="contact-email" name="email" placeholder="nombre@empresa.com" required
+                                            class="w-full px-4 py-3 rounded border border-slate-300 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal">
+                                    </div>
+                                    <div>
+                                        <label for="contact-phone" class="block text-[11px] font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">Teléfono de Contacto *</label>
+                                        <input type="tel" id="contact-phone" name="phone" placeholder="+57 300 000 0000" required
+                                            class="w-full px-4 py-3 rounded border border-slate-300 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="contact-service" class="block text-[11px] font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">Especialidad Requerida</label>
+                                    <select id="contact-service" name="service" class="w-full px-4 py-3 rounded border border-slate-300 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal">
+                                        <option value="Instalaciones Eléctricas">Instalaciones Eléctricas de Media y Baja Tensión</option>
+                                        <option value="Tableros CCM">Tableros de Control, CCM y Gabinetes</option>
+                                        <option value="Subestaciones">Montaje y Mantenimiento de Subestaciones</option>
+                                        <option value="Automatización">Automatización de Procesos e Instrumentación</option>
+                                        <option value="Alumbrado">Alumbrado Industrial LED y Sistemas Solares</option>
+                                        <option value="Mantenimiento">Mantenimiento Electromecánico y Polipastos</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="contact-message" class="block text-[11px] font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">Alcance del Proyecto *</label>
+                                    <textarea id="contact-message" name="message" rows="4" placeholder="Describe brevemente el requerimiento técnico..." required
+                                        class="w-full px-4 py-3 rounded border border-slate-300 text-sm text-syselec-dark bg-white focus:outline-none focus:border-syselec-teal"></textarea>
+                                </div>
+
+                                <button type="submit"
+                                    class="w-full py-4 px-6 rounded font-heading font-bold text-xs uppercase tracking-wider text-white bg-syselec-blueDark hover:bg-syselec-teal transition-colors cursor-pointer flex items-center justify-center gap-2.5">
+                                    <span>Enviar Solicitud Técnica</span>
+                                    <i class="fas fa-arrow-right text-xs"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-syselec-darker text-white pt-16 pb-8 border-t border-white/10">
+    </main>
+
+    <!-- Persistent Corporate Footer -->
+    <footer class="bg-syselec-darker text-white pt-16 pb-8 border-t border-white/10 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
                 <div>
@@ -1089,19 +1183,19 @@
                 <div>
                     <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-white mb-5">Soluciones</h4>
                     <ul class="space-y-2.5 text-xs text-slate-400">
-                        <li><a href="#servicios" class="hover:text-syselec-teal transition-colors">Media y Baja Tensión</a></li>
-                        <li><a href="#servicios" class="hover:text-syselec-teal transition-colors">Tableros de Control y CCM</a></li>
-                        <li><a href="#servicios" class="hover:text-syselec-teal transition-colors">Montaje de Subestaciones</a></li>
-                        <li><a href="#servicios" class="hover:text-syselec-teal transition-colors">Automatización Industrial</a></li>
+                        <li><a href="#soluciones" data-route="soluciones" class="route-link hover:text-syselec-teal transition-colors">Media y Baja Tensión</a></li>
+                        <li><a href="#soluciones" data-route="soluciones" class="route-link hover:text-syselec-teal transition-colors">Tableros de Control y CCM</a></li>
+                        <li><a href="#soluciones" data-route="soluciones" class="route-link hover:text-syselec-teal transition-colors">Montaje de Subestaciones</a></li>
+                        <li><a href="#soluciones" data-route="soluciones" class="route-link hover:text-syselec-teal transition-colors">Automatización Industrial</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-white mb-5">Corporativo</h4>
+                    <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-white mb-5">Navegación</h4>
                     <ul class="space-y-2.5 text-xs text-slate-400">
-                        <li><a href="#sobre-nosotros" class="hover:text-syselec-teal transition-colors">Quiénes Somos</a></li>
-                        <li><a href="#proyectos-destacados" class="hover:text-syselec-teal transition-colors">Proyectos Destacados</a></li>
-                        <li><a href="#sig" class="hover:text-syselec-teal transition-colors">Sistema Integrado (HSEQ)</a></li>
-                        <li><a href="#clientes" class="hover:text-syselec-teal transition-colors">Clientes y Aliados</a></li>
+                        <li><a href="#inicio" data-route="inicio" class="route-link hover:text-syselec-teal transition-colors">Inicio</a></li>
+                        <li><a href="#empresa" data-route="empresa" class="route-link hover:text-syselec-teal transition-colors">Empresa &amp; Sistema SIG</a></li>
+                        <li><a href="#proyectos" data-route="proyectos" class="route-link hover:text-syselec-teal transition-colors">Proyectos en Obra</a></li>
+                        <li><a href="#sectores" data-route="sectores" class="route-link hover:text-syselec-teal transition-colors">Sectores y Aliados</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1124,7 +1218,7 @@
     <div class="fixed bottom-6 right-6 z-40">
         <a href="https://wa.me/573203399577?text=Hola%20Syselec%20Ingeniería,%20deseo%20más%20información"
             target="_blank" rel="noopener noreferrer"
-            class="w-13 h-13 p-3.5 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-2xl shadow-lg hover:bg-emerald-700 transition-colors">
+            class="p-3.5 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-2xl shadow-lg hover:bg-emerald-700 transition-colors">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
@@ -1198,9 +1292,87 @@
         </div>
     </div>
 
-    <!-- Script Application Logic -->
+    <!-- Script Application Logic & Multi-View Router -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // =================================================================
+            // 1. MULTI-VIEW SPA ROUTER (IEB-STYLE DEDICATED PAGE VIEWS)
+            // =================================================================
+            const validRoutes = ['inicio', 'empresa', 'soluciones', 'proyectos', 'sectores', 'contacto'];
+            const viewSections = document.querySelectorAll('.view-section');
+            const routeLinks = document.querySelectorAll('.route-link');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+
+            function navigateTo(route, updateHash = true) {
+                const targetRoute = validRoutes.includes(route) ? route : 'inicio';
+
+                // Switch active view
+                viewSections.forEach(sec => {
+                    if (sec.id === `view-${targetRoute}`) {
+                        sec.classList.add('active-view');
+                    } else {
+                        sec.classList.remove('active-view');
+                    }
+                });
+
+                // Highlight active nav link
+                routeLinks.forEach(link => {
+                    if (link.dataset.route === targetRoute && link.classList.contains('nav-underline')) {
+                        link.classList.add('active-nav', 'text-syselec-teal');
+                    } else {
+                        link.classList.remove('active-nav', 'text-syselec-teal');
+                    }
+                });
+
+                // Close mobile menu if open
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    hamburgerBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+                }
+
+                // Update URL hash & scroll cleanly to top
+                if (updateHash) {
+                    history.pushState(null, '', `#${targetRoute}`);
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            routeLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetRoute = link.dataset.route;
+                    if (targetRoute) {
+                        e.preventDefault();
+                        navigateTo(targetRoute, true);
+                    }
+                });
+            });
+
+            window.addEventListener('hashchange', () => {
+                const hashRoute = window.location.hash.replace('#', '');
+                navigateTo(hashRoute || 'inicio', false);
+            });
+
+            // Initialize initial view from URL hash
+            const initialHash = window.location.hash.replace('#', '');
+            navigateTo(initialHash || 'inicio', false);
+
+            // Mobile Hamburger Toggle
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.addEventListener('click', () => {
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    mobileMenu.classList.toggle('hidden');
+                    hamburgerBtn.setAttribute('aria-expanded', String(isHidden));
+                    hamburgerBtn.innerHTML = isHidden
+                        ? '<i class="fas fa-times text-xl"></i>'
+                        : '<i class="fas fa-bars text-xl"></i>';
+                });
+            }
+
+            // =================================================================
+            // 2. SERVICES DATA & TECHNICAL MODAL
+            // =================================================================
             const servicesData = {
                 instalaciones: {
                     title: 'Instalaciones Eléctricas en Media y Baja Tensión',
@@ -1365,61 +1537,7 @@
                 }
             };
 
-            // 1. Mobile Menu Toggle
-            const hamburgerBtn = document.getElementById('hamburger-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-
-            if (hamburgerBtn && mobileMenu) {
-                hamburgerBtn.addEventListener('click', () => {
-                    const isHidden = mobileMenu.classList.contains('hidden');
-                    mobileMenu.classList.toggle('hidden');
-                    hamburgerBtn.setAttribute('aria-expanded', String(isHidden));
-                    hamburgerBtn.innerHTML = isHidden
-                        ? '<i class="fas fa-times text-xl"></i>'
-                        : '<i class="fas fa-bars text-xl"></i>';
-                });
-
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                        hamburgerBtn.setAttribute('aria-expanded', 'false');
-                        hamburgerBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
-                    });
-                });
-            }
-
-            // 2. Scroll Reveal Observer
-            const revealElements = document.querySelectorAll('.reveal');
-            if ('IntersectionObserver' in window) {
-                const revealObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-                revealElements.forEach(el => revealObserver.observe(el));
-            } else {
-                revealElements.forEach(el => el.classList.add('active'));
-            }
-
-            // 3. IEB-Style Transparent-to-Solid Navbar on Scroll
-            const navbar = document.getElementById('navbar');
-            function updateNavbarStyle() {
-                if (window.scrollY > 60) {
-                    navbar.classList.remove('bg-syselec-darker/80', 'text-white', 'border-white/10');
-                    navbar.classList.add('bg-white/95', 'text-syselec-dark', 'shadow-sm', 'border-slate-200');
-                } else {
-                    navbar.classList.add('bg-syselec-darker/80', 'text-white', 'border-white/10');
-                    navbar.classList.remove('bg-white/95', 'text-syselec-dark', 'shadow-sm', 'border-slate-200');
-                }
-            }
-            window.addEventListener('scroll', updateNavbarStyle);
-            updateNavbarStyle();
-
-            // 4. Featured Projects Switcher
+            // 3. Featured Projects Switcher
             const projectsData = [
                 {
                     title: "Tablero Principal y Centro de Control de Motores Línea MPL1",
@@ -1466,10 +1584,8 @@
                 });
             });
 
-            // 5. Paginated Gallery Rendering
+            // 4. Gallery Rendering inside Projects View
             const galleryContainer = document.getElementById('gallery-container');
-            const loadMoreWrap = document.getElementById('gallery-load-more-wrap');
-            const loadMoreBtn = document.getElementById('gallery-load-more-btn');
             const allGalleryPhotos = [];
 
             Object.keys(servicesData).forEach(catKey => {
@@ -1484,18 +1600,11 @@
                 });
             });
 
-            let currentFilter = 'all';
-            let visibleCount = 8;
-
-            function renderGallery() {
+            function renderGallery(filter = 'all') {
                 galleryContainer.innerHTML = '';
-                const filtered = currentFilter === 'all'
-                    ? allGalleryPhotos
-                    : allGalleryPhotos.filter(p => p.category === currentFilter);
+                const filtered = filter === 'all' ? allGalleryPhotos : allGalleryPhotos.filter(p => p.category === filter);
 
-                const slice = filtered.slice(0, visibleCount);
-
-                slice.forEach(photo => {
+                filtered.forEach(photo => {
                     const card = document.createElement('div');
                     card.className = 'bg-white rounded-lg overflow-hidden border border-slate-200 hover:border-syselec-teal transition-all flex flex-col cursor-pointer group';
                     card.innerHTML = `
@@ -1508,22 +1617,8 @@
                     card.addEventListener('click', () => openLightbox(photo.url, photo.caption, photo.tag));
                     galleryContainer.appendChild(card);
                 });
-
-                if (filtered.length > visibleCount) {
-                    const remaining = filtered.length - visibleCount;
-                    loadMoreWrap.classList.remove('hidden');
-                    loadMoreBtn.querySelector('span').textContent = `Cargar más registros en obra (${remaining} restantes)`;
-                } else {
-                    loadMoreWrap.classList.add('hidden');
-                }
             }
-
-            renderGallery();
-
-            loadMoreBtn.addEventListener('click', () => {
-                visibleCount += 12;
-                renderGallery();
-            });
+            renderGallery('all');
 
             const filterBtns = document.querySelectorAll('.gallery-filter-btn');
             filterBtns.forEach(btn => {
@@ -1534,14 +1629,11 @@
                     });
                     btn.classList.remove('bg-white', 'text-slate-700');
                     btn.classList.add('bg-syselec-blueDark', 'text-white');
-
-                    currentFilter = btn.getAttribute('data-filter');
-                    visibleCount = 8;
-                    renderGallery();
+                    renderGallery(btn.getAttribute('data-filter'));
                 });
             });
 
-            // 6. Lightbox & Modals
+            // 5. Lightbox & Modals
             const lightboxModal = document.getElementById('lightbox-modal');
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxCaption = document.getElementById('lightbox-caption');
@@ -1586,7 +1678,7 @@
                 }
             });
 
-            // 7. Service Modal
+            // 6. Service Modal
             const serviceModal = document.getElementById('service-modal');
             document.querySelectorAll('.open-service-modal').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -1618,7 +1710,7 @@
                 });
             });
 
-            // 8. Contact Form Submit
+            // 7. Contact Form Submit
             const contactForm = document.getElementById('contact-form');
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
